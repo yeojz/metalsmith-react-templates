@@ -11,4 +11,4 @@ A metalsmith plugin to render files
 
 ## CLI Usage
 
-  Install the node modules and then add the `metalsmith-templates` key to your `metalsmith.json` plugins. The simplest use case just requires the template engine you want to use:
+  Install the node modules and then add the `metalsmith-react-templates` key to your `metalsmith.json` plugins. The simplest use case just requires the template engine you want to use:
