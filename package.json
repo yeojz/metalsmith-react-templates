@@ -1,0 +1,19 @@
+{
+  "name": "metalsmith-react",
+  "description": "A metalsmith plugin for react templates.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "devDependencies": {
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "debug": "^2.1.1",
+    "extend": "^2.0.0",
+    "lodash": "^3.1.0",
+    "lodash.omit": "^3.0.0",
+    "lodash.template": "^3.0.1",
+    "react": "^0.12.2",
+    "react-tools": "^0.12.2"
+  }
+}
