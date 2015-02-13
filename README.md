@@ -1,10 +1,10 @@
 # metalsmith-react-templates
-A templating plugin using React JS templates
+A templating plugin using React.js templates
 
 
 
 ## About
-`metalsmith-react-tempates` is a metalsmith plugin to render files using ReactJS based templates. It can be used as a drop-in replacement for `metalsmith-templates`.
+`metalsmith-react-tempates` is a [metalsmith](http://http://www.metalsmith.io/) plugin to render files using [React.js](http://http://facebook.github.io/react/) based templates. 
 
 
 
