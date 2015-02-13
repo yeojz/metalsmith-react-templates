@@ -29,7 +29,7 @@ A templating plugin using React.js templates
 ```json
 {
   "plugins": {
-    "metalsmith-templates": {
+    "metalsmith-react-templates": {
       "baseFile": "base.html",
       "nonStatic": false,
       "directory": "templates"
@@ -40,7 +40,7 @@ A templating plugin using React.js templates
 
 ## Javascript Usage
 
-  For the simplest use case, just pass your templating engine:
+  Ssimplest use case:
 
 ```js
 var templates = require('metalsmith-react-templates');
@@ -95,7 +95,7 @@ If a `template` field is set in the `yaml` front-matter of your markdown files, 
 
 
 ## Other Links
-- [`License`](/LICENSE.md)
+- [`License`](/LICENSE)
 
 
 
