@@ -30,7 +30,7 @@ A templating plugin using React.js templates
 {
   "plugins": {
     "metalsmith-templates": {
-      "baseFile": "base.html"
+      "baseFile": "base.html",
       "nonStatic": false,
       "directory": "templates"
     }
@@ -82,6 +82,10 @@ metalsmith.use(templates({
 
 - Sets the directory which your react templates (or baseFile) resides.
 
+#### `pattern` (optional)
+( default: *null* )
+
+- specifies a file filter pattern
 
 ## Other Usage Notes
 
