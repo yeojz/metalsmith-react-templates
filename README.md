@@ -4,7 +4,7 @@ A templating plugin using React.js templates
 
 
 ## About
-`metalsmith-react-tempates` is a [metalsmith](http://http://www.metalsmith.io/) plugin to render files using [React.js](http://http://facebook.github.io/react/) based templates. 
+`metalsmith-react-templates` is a [metalsmith](http://http://www.metalsmith.io/) plugin to render files using [React.js](http://http://facebook.github.io/react/) based templates. 
 
 
 
