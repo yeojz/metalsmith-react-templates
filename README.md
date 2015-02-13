@@ -1,7 +1,11 @@
 # metalsmith-react-templates
+A templating plugin using React JS templates
 
-  A metalsmith plugin to render files using ReactJS based templates.
-  It is a drop-in replacement for `metalsmith-templates` that focuses only on React JS as a templating tool.
+
+
+## About
+`metalsmith-react-tempates` is a metalsmith plugin to render files using ReactJS based templates. It can be used as a drop-in replacement for `metalsmith-templates`.
+
 
 
 ## Installation
@@ -53,3 +57,44 @@ metalsmith.use(templates({
   directory: 'templates'
 }));
 ```
+
+
+
+### Options
+
+#### `baseFile` (optional)
+( default: *null* )
+
+- Specifies a file which the contents of the react template will render into. 
+- This is similar to the index.html file which you React.render() your components in.
+
+
+#### `nonStatic` (optional) 
+( default: *false* )
+
+- Since this is a static site generator, by default, it will render the React Templates using `renderToStaticMarkup()`
+- However, you may choose to make a static site generator with React functionalities (similar to first render from server) and subsequently pull page routes via JavaScript / React.
+- Setting this parameter to true will cause templates to be parsed using `renderToString()`
+
+
+#### `directory` (optional) 
+( default: *'templates'* )
+
+- Sets the directory which your react templates (or baseFile) resides.
+
+
+## Other Usage Notes
+
+### Specifying Templates
+If a `template` field is set in the `yaml` front-matter of your markdown files, `metalsmith-react-templates` will use the specified template instead of `default.jsx`
+
+
+
+## Other Links
+- [`License`](/LICENSE.md)
+
+
+
+
+
+
