@@ -40,7 +40,7 @@ A templating plugin using React.js templates
 
 ## Javascript Usage
 
-  Ssimplest use case:
+  Simplest use case:
 
 ```js
 var templates = require('metalsmith-react-templates');
@@ -67,7 +67,7 @@ metalsmith.use(templates({
 
 - Specifies a file which the contents of the react template will render into. 
 - This is similar to the index.html file which you React.render() your components in.
-
+- In your base file, put `{{content}}` in the location where you want your data will render into.
 
 #### `nonStatic` (optional) 
 ( default: *false* )
