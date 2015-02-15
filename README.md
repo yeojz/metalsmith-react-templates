@@ -97,7 +97,7 @@ metalsmith.use(templates({
 ## Other Usage Notes
 
 ### Specifying Templates
-If a `template` field is set in the `yaml` front-matter of your markdown files, `metalsmith-react-templates` will use the specified template instead of `default.jsx`
+If a `rtemplate` field is set in the `yaml` front-matter of your markdown files, `metalsmith-react-templates` will use the specified template instead of `default.jsx`
 
 
 
