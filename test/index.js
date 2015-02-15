@@ -11,7 +11,7 @@ describe('metalsmith-react-templates', function(){
     var metalsmith = Metalsmith('test/fixtures/basic');
 
     metalsmith
-      .use(templates())
+      .use(templates({html: false}))
       .build(function(err){
         if (err) return done(err);
         equal('test/fixtures/basic/expected', 'test/fixtures/basic/build');
@@ -20,13 +20,13 @@ describe('metalsmith-react-templates', function(){
   });
 
 
-
   it('should render a content into base template', function(done){
     var metalsmith = Metalsmith('test/fixtures/base-file');
 
     metalsmith
       .use(templates({
-        baseFile: 'base.html'
+        baseFile: 'base.html',
+        html: false
       }))
       .build(function(err){
         if (err) return done(err);
@@ -34,6 +34,19 @@ describe('metalsmith-react-templates', function(){
         done();
       });
   });  
+
+
+  it('should render html files rather than markdown', function(done){
+    var metalsmith = Metalsmith('test/fixtures/basic-html');
+
+    metalsmith
+      .use(templates({html: true}))
+      .build(function(err){
+        if (err) return done(err);
+        equal('test/fixtures/basic-html/expected', 'test/fixtures/basic-html/build');
+        done();
+      }); 
+  });
 
 
 

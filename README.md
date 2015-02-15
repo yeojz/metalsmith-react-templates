@@ -87,6 +87,13 @@ metalsmith.use(templates({
 
 - specifies a file filter pattern
 
+
+#### `html` (optional)
+( default: *true* )
+
+- Renames files from *.md to *.html
+
+
 ## Other Usage Notes
 
 ### Specifying Templates
