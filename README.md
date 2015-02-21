@@ -4,7 +4,7 @@ A templating plugin using React.js templates
 [![Build Status](https://travis-ci.org/yeojz/metalsmith-react-templates.svg?branch=master)](https://travis-ci.org/yeojz/metalsmith-react-templates)
 [![Dependency Status](https://david-dm.org/yeojz/metalsmith-react-templates.svg)](https://david-dm.org/yeojz/metalsmith-react-templates)
 [![devDependency Status](https://david-dm.org/yeojz/metalsmith-react-templates/dev-status.svg)](https://david-dm.org/yeojz/metalsmith-react-templates#info=devDependencies)
-
+[![Code Climate](https://codeclimate.com/github/yeojz/metalsmith-react-templates/badges/gpa.svg)](https://codeclimate.com/github/yeojz/metalsmith-react-templates)
 
 ## About
 `metalsmith-react-templates` is a [metalsmith](http://http://www.metalsmith.io/) plugin to render files using [React.js](http://http://facebook.github.io/react/) based templates. 

@@ -13,7 +13,7 @@ describe('metalsmith-react-templates', function(){
     metalsmith
       .use(templates({html: false}))
       .build(function(err){
-        if (err) return done(err);
+        if (err){ return done(err); }
         equal('test/fixtures/basic/expected', 'test/fixtures/basic/build');
         done();
       });
@@ -29,7 +29,7 @@ describe('metalsmith-react-templates', function(){
         html: false
       }))
       .build(function(err){
-        if (err) return done(err);
+        if (err){ return done(err); }
         equal('test/fixtures/base-file/expected', 'test/fixtures/base-file/build');
         done();
       });
@@ -42,7 +42,7 @@ describe('metalsmith-react-templates', function(){
     metalsmith
       .use(templates({html: true}))
       .build(function(err){
-        if (err) return done(err);
+        if (err){ return done(err); }
         equal('test/fixtures/basic-html/expected', 'test/fixtures/basic-html/build');
         done();
       }); 
