@@ -12,7 +12,8 @@ var DefaultTemplate = React.createClass({
       <p>First write something into the input</p>
       <input/>
       <p onClick={this.clickHandler} >Then click me!</p>
-    <script id="props" dangerouslySetInnerHTML={{__html: JSON.stringify(this.props)}}></script>
+    <div style={{display: "none"}} id="props" dangerouslySetInnerHTML={{__html: JSON.stringify(this.props)}}></div>
+    <script src="bundle.js"></script>
     </div>
   },
   clickHandler: function() {

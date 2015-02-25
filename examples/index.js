@@ -10,7 +10,6 @@ Metalsmith(__dirname)
     directory: "templates",
     nonStatic: true
   })) 
-  .use(templates('handlebars'))
   .use(browserify({
     files: ['../scripts/loader.js'],
     dest: 'bundle.js',
