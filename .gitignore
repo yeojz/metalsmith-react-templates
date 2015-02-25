@@ -13,3 +13,5 @@ coverage
 build/Release
 node_modules
 test/fixtures/build
+test/fixtures/*/build
+test/logs
