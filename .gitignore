@@ -13,3 +13,4 @@ coverage
 build/Release
 node_modules
 test/fixtures/build
+examples/build
