@@ -3,12 +3,12 @@ var React = require('react');
 var DefaultTemplate = React.createClass({
   getInitialState: function() {
     return {
-      description: this.props.description
+      contents: this.props.contents
     }
   },
   render: function() {
     return <div>
-      <h1>{this.state.description}</h1>
+      <h1>{this.state.contents}</h1>
       <p>First write something into the input</p>
       <input/>
       <p onClick={this.clickHandler} >Then click me!</p>
@@ -16,7 +16,7 @@ var DefaultTemplate = React.createClass({
     </div>
   },
   clickHandler: function() {
-    this.setState({description: "changed!"});
+    this.setState({contents: "changed!"});
   }
 });
 
