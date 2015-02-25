@@ -3,13 +3,13 @@ var React = require('react');
 var DefaultTemplate = React.createClass({
   getInitialState: function() {
     return {
-      contents: this.props.contents
+      contents: this.props.contents //pulled from src/index.html page content
     }
   },
   render: function() {
     return <div>
       <h1>{this.state.contents}</h1>
-      <p>First write something into the input</p>
+      <p>This is a demo of Isomorphic React. This page loaded from a static HTML file. First write something into the input.</p>
       <input/>
       <p onClick={this.clickHandler} >Then click me!</p>
     <div style={{display: "none"}} id="props" dangerouslySetInnerHTML={{__html: JSON.stringify(this.props)}}></div>
@@ -17,7 +17,8 @@ var DefaultTemplate = React.createClass({
     </div>
   },
   clickHandler: function() {
-    this.setState({contents: "changed!"});
+    //this demos a simple client side change
+    this.setState({contents: "The template was changed through a client side template. Note that the input was not cleared."});
   }
 });
 
