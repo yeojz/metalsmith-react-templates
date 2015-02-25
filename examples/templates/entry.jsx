@@ -2,14 +2,12 @@ var React = require('react');
 
 var DefaultTemplate = React.createClass({
   getInitialState: function() {
-    return {
-      contents: this.props.contents //pulled from src/index.html page content
-    }
+    return this.props; //pulled from src/index.html
   },
   render: function() {
     return <div>
-      <h1>{this.state.contents}</h1>
-      <p>This is a demo of Isomorphic React. This page loaded from a static HTML file. First write something into the input.</p>
+      <h1>{this.state.title}</h1>
+      <p>{this.state.contents}</p>
       <input/>
       <p onClick={this.clickHandler} >Then click me!</p>
     <div style={{display: "none"}} id="props" dangerouslySetInnerHTML={{__html: JSON.stringify(this.props)}}></div>
