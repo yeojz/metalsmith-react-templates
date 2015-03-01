@@ -9,7 +9,7 @@ var fs = require('fs');
 describe('lint - ES (JS / JSX)', function(){
 
 
-  var jsResult = './test/logs/lint-js.json';
+  var jsResult = './test/logs/lint-js.txt';
 
   var js = 'eslint' +
         ' --ext .js,.jsx' +

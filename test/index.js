@@ -1,2 +1,2 @@
-require('./specs/feature.spec.js');
-require('./specs/lint-js.spec.js');
+require('./specs/features.js');
+require('./specs/linter-eslint.js');
