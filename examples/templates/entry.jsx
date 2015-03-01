@@ -25,19 +25,19 @@ var DefaultTemplate = React.createClass({
         <p>{this.state.contents}</p>
 
         <div style={{margin: '2em 0'}}>
-          <strong>Input Value: </strong> 
+          <strong>Input Value: </strong>
           <span style={{border: '1px #ccc solid', padding: '0.5em 1em'}}>{this.state.inputValue}</span>
         </div>
 
         <input style={{margin: '1em 0'}} ref='inputData' />
         <button onClick={this.clickHandler}>Submit</button>
-        
 
-        <div style={{display: 'none'}} 
+
+        <div style={{display: 'none'}}
           id='props'
           dangerouslySetInnerHTML={{__html: JSON.stringify(this.props)}}>
         </div>
-      
+
       </div>
     );
   }
