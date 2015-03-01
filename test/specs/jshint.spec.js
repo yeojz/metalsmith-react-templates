@@ -10,7 +10,9 @@ describe('lint - JS files', function(){
 
   var js = 'jsxhint -c .jshintrc' + 
         ' lib/*.js' +
-        ' test/**/*.js';
+        ' test/**/*.js' +
+        ' examples/templates/*.js' +
+        ' examples/scripts/*.js';
 
   var jsResult = './test/logs/jshint.json';
 
@@ -35,7 +37,9 @@ describe('lint - JSX files', function(){
 
   var jsx = 'jsxhint -c .jsxhintrc' + 
         ' lib/*.jsx' +
-        ' test/**/*.jsx';
+        ' test/**/*.jsx' +
+        ' examples/templates/*.jsx' + 
+        ' examples/scripts/*.jsx';
 
   var jsxResult = './test/logs/jsxhint.json';
 

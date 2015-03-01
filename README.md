@@ -96,6 +96,12 @@ metalsmith.use(templates({
 - Renames files from *.md to *.html
 
 
+#### `preserve` (optional)
+( default: *false* )
+
+- Stores a copy of un-templated contents into `rawContents` meta.
+
+
 ## Other Usage Notes
 
 ### Specifying Templates
