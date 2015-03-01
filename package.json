@@ -28,6 +28,8 @@
   "homepage": "https://github.com/yeojz/metalsmith-react-templates",
   "devDependencies": {
     "assert-dir-equal": "^1.0.1",
+    "exec-sync": "^0.1.6",
+    "jsxhint": "^0.12.1",
     "metalsmith": "^1.3.0",
     "mocha": "^2.1.0",
     "mocha-jshint": "0.0.9"

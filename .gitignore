@@ -12,5 +12,7 @@ lib-cov
 coverage
 build/Release
 node_modules
+test/logs
 test/fixtures/build
+test/fixtures/*/build
 examples/build
