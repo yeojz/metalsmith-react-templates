@@ -106,12 +106,12 @@ default: *false*
 Stores a copy of un-templated contents into `rawContents` meta.
 
 
-#### `babel` (options)
+#### `babel` (optional)
 default: *false*
 
 Uses `babel-core` for `.jsx` transformations instead of `react-tools`.
 
-#### `tooling` (options)
+#### `tooling` (optional)
 default (babel): `{}`
 
 default (react-tools): `{harmony: true}`
