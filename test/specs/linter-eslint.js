@@ -8,7 +8,6 @@ var fs = require('fs');
 // JS Only
 describe('lint - ES (JS / JSX)', function(){
 
-
   var jsResult = './test/logs/lint-js.txt';
 
   var js = 'eslint' +
@@ -16,10 +15,10 @@ describe('lint - ES (JS / JSX)', function(){
         ' -c .eslintrc' +
         ' --ignore-path .eslintignore' +
         ' --quiet' +
-        ' lib/*' +
-        ' test/*' +
-        ' examples/templates/*' +
-        ' examples/scripts/*';
+        ' lib/*';
+        // ' test/*';
+        // ' examples/templates/*' +
+        // ' examples/scripts/*';
 
   it('it should pass', function(done){
 

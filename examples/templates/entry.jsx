@@ -1,13 +1,13 @@
-'use strict';
+import React from 'react';
 
-var React = require('react');
 
-var DefaultTemplate = React.createClass({
-  getInitialState: function() {
+
+const DefaultTemplate = React.createClass({
+  getInitialState() {
     return this.props; //pulled from src/index.html
   },
 
-  clickHandler: function() {
+  clickHandler() {
     //this demos a simple client side change
 
     var value = this.refs.inputData.getDOMNode().value;
@@ -18,7 +18,7 @@ var DefaultTemplate = React.createClass({
     });
   },
 
-  render: function() {
+  render() {
     return (
       <div>
         <h1>{this.state.title}</h1>
@@ -43,4 +43,4 @@ var DefaultTemplate = React.createClass({
   }
 });
 
-module.exports = DefaultTemplate;
+export default DefaultTemplate;

@@ -3,20 +3,21 @@
 var Metalsmith = require('metalsmith');
 var reactTemplate = require('metalsmith-react-templates');
 var browserify = require('metalsmith-browserify');
-var reactify = require('reactify');
+var babelify = require('babelify');
 
 new Metalsmith(__dirname)
   .clean(true)
   .use(reactTemplate({
+    babel: false,
     directory: 'templates',
     baseFile: 'base.html',
     nonStatic: true
-  })) 
+  }))
   .use(browserify({
     files: ['../scripts/loader.js'],
     dest: 'bundle.js',
-    transforms: [reactify]
-  })) 
+    transforms: [babelify]
+  }))
   .destination('./build')
   .build(function(err) {
     if (err) {

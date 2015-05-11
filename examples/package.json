@@ -5,11 +5,10 @@
   "main": "index.js",
   "author": "",
   "dependencies": {
+    "babelify": "^6.0.2",
     "metalsmith": "^1.3.0",
-    "metalsmith-react-templates": "^0.1.9",
     "metalsmith-browserify": "git://github.com/mpd106/metalsmith-browserify",
-    "reactify": "^1.0.0",
-    "react": "^0.12.2",
-    "handlebars": "^3.0.0"
+    "metalsmith-react-templates": "..",
+    "react": "^0.13.3"
   }
 }
