@@ -4,10 +4,10 @@
   "description": "A metalsmith plugin to render files using ReactJS based templates",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha",
-    "commit": "npm run compile && git commit -a",
-    "compile": " babel ./src/v2.js --out-file ./lib/index.js",
-    "publish": "npm run compile && npm run test && npm publish"
+    "build": "babel ./src --out-dir ./lib",
+    "ca": "npm run build && git commit -a",
+    "publish": "npm run build && npm run test && npm publish",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   "dependencies": {
     "async": "^0.9.0",
     "babel-core": "^5.2.17",
-    "debug": "^2.1.1",
+    "debug": "^2.2.0",
     "multimatch": "^2.0.0",
     "object-assign": "^2.0.0",
     "react": "^0.13.3",

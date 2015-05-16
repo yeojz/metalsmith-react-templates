@@ -65,7 +65,7 @@ metalsmith.use(templates({
 ### Options
 
 #### `baseFile` (optional)
-default: *null*
+default: `null`
 
 Specifies a file which the contents of the react template will render into. 
 
@@ -74,7 +74,7 @@ This is similar to the index.html file which you React.render() your components 
 In your base file, put `{{content}}` in the location where you want your data will render into.
 
 #### `nonStatic` (optional) 
-default: *false* 
+default: `false`
 
 Since this is a static site generator, by default, it will render the React Templates using `renderToStaticMarkup()`
 
@@ -84,30 +84,30 @@ Setting this parameter to true will cause templates to be parsed using `renderTo
 
 
 #### `directory` (optional) 
-default: *'templates'*
+default: `templates`
 
 Sets the directory which your react templates (or baseFile) resides.
 
 #### `pattern` (optional)
-default: *null*
+default: `**/*`
 
 Specifies a file filter pattern
 
 
 #### `html` (optional)
-default: *true*
+default: `true`
 
 Renames files from *.md to *.html
 
 
 #### `preserve` (optional)
-default: *false*
+default: `false`
 
 Stores a copy of un-templated contents into `rawContents` meta.
 
 
 #### `babel` (optional)
-default: *false*
+default: `false`
 
 Uses `babel-core` for `.jsx` transformations instead of `react-tools`.
 
