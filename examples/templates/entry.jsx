@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 const DefaultTemplate = React.createClass({
   getInitialState() {
     return this.props; //pulled from src/index.html

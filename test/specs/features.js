@@ -12,7 +12,24 @@ describe('metalsmith-react-templates', function(){
   it('should do basic template transformation', function(done){
 
     new Metalsmith('test/fixtures/basic')
-      .use(templates({html: false}))
+      .use(templates({
+        html: false
+      }))
+      .build(function(err){
+        if (err){ return done(err); }
+        equal('test/fixtures/basic/expected', 'test/fixtures/basic/build');
+        done();
+      });
+  });
+
+
+  it('should do basic template transformation (using babel)', function(done){
+
+    new Metalsmith('test/fixtures/basic')
+      .use(templates({
+        babel: true,
+        html: false
+      }))
       .build(function(err){
         if (err){ return done(err); }
         equal('test/fixtures/basic/expected', 'test/fixtures/basic/build');
@@ -24,7 +41,9 @@ describe('metalsmith-react-templates', function(){
   it('should render html files rather than markdown', function(done){
 
     new Metalsmith('test/fixtures/basic-html')
-      .use(templates({html: true}))
+      .use(templates({
+        html: true
+      }))
       .build(function(err){
         if (err){ return done(err); }
         equal('test/fixtures/basic-html/expected', 'test/fixtures/basic-html/build');

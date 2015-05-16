@@ -1,8 +1,8 @@
 
 import fs from 'fs';
 
-import ReactTools from 'react-tools';
-import BabelCore from 'babel-core';
+import {transform as reactTransform} from 'react-tools';
+import {transformFileSync as babelTransform} from 'babel-core';
 
 
 
@@ -14,7 +14,7 @@ import BabelCore from 'babel-core';
 // Runs react-tools transform against the file.
 function requireReactTools(tooling = {harmony: true}, module, filename) {
   let content = fs.readFileSync(filename, 'utf8');
-  let compiled = ReactTools.transform(content, tooling);
+  let compiled = reactTransform(content, tooling);
 
   return module._compile(compiled, filename);
 }
@@ -22,7 +22,7 @@ function requireReactTools(tooling = {harmony: true}, module, filename) {
 
 // Runs babel transform
 function requireBabelCore(tooling = {}, module, filename) {
-  let compiled = BabelCore.transformFileSync(filename, tooling).code;
+  let compiled = babelTransform(filename, tooling).code;
   return module._compile(compiled, filename);
 }
 

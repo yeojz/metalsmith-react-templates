@@ -5,15 +5,19 @@
 // allowing subsequent updates without destroying user input:
 // Modified from: http://www.crmarsh.com/react-ssr/
 
-var EntryTemplate = require('../templates/entry.jsx');
-var React = require('react');
+import EntryTemplate from '../templates/entry.jsx';
+import React from 'react';
 
 // templates/entry.jsx populates this value
-var props = JSON.parse(document.getElementById('props').innerHTML);
+const props = JSON.parse(document.getElementById('props').innerHTML);
 
 // Render
-var Entry = React.createFactory(EntryTemplate);
+let Entry = React.createFactory(EntryTemplate);
+
+
 React.render(
   new Entry(props),
   document.getElementById('contents')
 );
+
+

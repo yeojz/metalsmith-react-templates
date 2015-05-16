@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
+  "scripts": {
+    "build": "node index.js"
+  },
   "author": "",
   "dependencies": {
     "babelify": "^6.0.2",

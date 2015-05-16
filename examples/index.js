@@ -8,7 +8,7 @@ var babelify = require('babelify');
 new Metalsmith(__dirname)
   .clean(true)
   .use(reactTemplate({
-    babel: false,
+    babel: true,
     directory: 'templates',
     baseFile: 'base.html',
     nonStatic: true

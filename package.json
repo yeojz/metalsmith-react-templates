@@ -5,9 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "babel ./src --out-dir ./lib",
-    "ca": "npm run build && git commit -a",
     "publish": "npm run build && npm run test && npm publish",
-    "test": "mocha"
+    "test": "npm run build && mocha"
   },
   "repository": {
     "type": "git",
@@ -31,6 +30,7 @@
   "homepage": "https://github.com/yeojz/metalsmith-react-templates",
   "devDependencies": {
     "assert-dir-equal": "^1.0.1",
+    "babel": "^5.4.3",
     "eslint": "^0.21.1",
     "exec-sync": "^0.1.6",
     "metalsmith": "^1.7.0",
