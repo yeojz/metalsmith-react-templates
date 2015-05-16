@@ -9,7 +9,7 @@ import {each} from 'async';
 
 import naiveTemplates from './naiveTemplates';
 import renderReactTemplates from './renderReactTemplates';
-
+import requireTools from './requireTools';
 
 
 const debug = debugCore('metalsmith-react-templates');
@@ -26,8 +26,34 @@ export default (options = {}) => {
     directory = 'templates',
     html = true,
     pattern = '**/*',
-    preserve = false
+    preserve = false,
+    requireIgnoreExt = []
   } = options;
+
+
+
+  // Ensure .jsx transformation
+  if (!require.extensions['.jsx']) {
+    const tooling = options.tooling;
+
+    if (options.babel){
+      require.extensions['.jsx'] = requireTools.babelCore.bind(null, tooling);
+    } else {
+      require.extensions['.jsx'] = requireTools.reactTools.bind(null, tooling);
+    }
+  }
+
+
+  // Adding File ignore in requires.
+  // In the event build systems like webpack is used.
+  if (Array.isArray(requireIgnoreExt)){
+    requireIgnoreExt.forEach((ext) => {
+      if (!require.extensions[ext]){
+        require.extensions[ext] = requireTools.ignore;
+      }
+    });
+  }
+
 
 
   return (files, metalsmith, done) => {

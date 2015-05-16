@@ -1,22 +1,9 @@
 import React from 'react';
-import requireTools from './requireTools';
-
 
 /**
  * Main rendering function for React
  */
 export default (templatePath, props = {}, options = {}, callback = () => {}) => {
-
-  // Ensure .jsx transformation
-  if (!require.extensions['.jsx']) {
-    const tooling = options.tooling;
-
-    if (options.babel){
-      require.extensions['.jsx'] = requireTools.babelCore.bind(null, tooling);
-    } else {
-      require.extensions['.jsx'] = requireTools.reactTools.bind(null, tooling);
-    }
-  }
 
   // Option for nonStatic rendering
   // Usually used if we want to do a static first load

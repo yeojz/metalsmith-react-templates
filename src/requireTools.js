@@ -28,10 +28,17 @@ function requireBabelCore(tooling = {}, module, filename) {
 
 
 
+// Ignoring Files
+function requireIgnore(){
+  return null;
+}
+
+
 
 
 
 export default {
   babelCore: requireBabelCore,
+  ignore: requireIgnore,
   reactTools: requireReactTools
 };

@@ -6,9 +6,9 @@ var fs = require('fs');
 
 
 // JS Only
-describe('lint - ES (JS / JSX)', function(){
+describe('lint - Source', function(){
 
-  var jsResult = './test/logs/lint-js.txt';
+  var jsResult = './test/logs/lint-source-js.txt';
 
   var js = 'eslint' +
         ' --ext .js,.jsx' +
@@ -16,9 +16,6 @@ describe('lint - ES (JS / JSX)', function(){
         ' --ignore-path .eslintignore' +
         ' --quiet' +
         ' src/*';
-        // ' test/*';
-        // ' examples/templates/*' +
-        // ' examples/scripts/*';
 
   it('it should pass', function(done){
 
