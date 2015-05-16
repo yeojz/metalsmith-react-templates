@@ -26,8 +26,8 @@ export default (templatePath, props = {}, options = {}, callback = () => {}) => 
 
   // Initialize the template as a factory
   // and apply the options into the factory.
-  const tempate = require(templatePath);
-  const component = React.createElement(tempate, props);
+  const template = require(templatePath);
+  const component = React.createElement(template, props);
 
   try {
     let content;
