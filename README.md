@@ -130,7 +130,7 @@ default (react-tools): `{harmony: true}`
 #### `requireIgnoreExt` (optional)
 default: `[]`
 
-A list of extensions to ignore. For example, {requireIgnoreExt: ['.css']} would 
+A list of extensions to ignore. For example, `{requireIgnoreExt: ['.css']}` would 
 ignore declarations like `require('file.css')`
 
 
