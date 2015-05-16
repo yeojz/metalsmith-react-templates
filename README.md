@@ -123,7 +123,7 @@ default (babel): `{}`
 
 default (react-tools): `{harmony: true}`
 
-### `requireIgnoreExt` (optional)
+#### `requireIgnoreExt` (optional)
 default: `[]`
 
 A list of extensions to ignore. For example, {requireIgnoreExt: ['.css']} would 
