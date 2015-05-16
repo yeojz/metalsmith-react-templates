@@ -62,14 +62,14 @@ metalsmith.use(templates({
 
 
 
-### Note on Webpack / Build Systems
+## Note on Webpack / Build Systems
 
 If you import css or any other non-standard js code using 'require', 
 you might want to make use of the `requireIgnoreExt` to ignore those files.
 
 
 
-### Options
+## Options
 
 #### `baseFile` (optional)
 default: `null`
