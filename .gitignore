@@ -1,18 +1,12 @@
-# Files
 *.log
 *.pid
 *.seed
-.grunt
-.lock-wscript
 
-# Directories
 logs
 pids
-lib-cov
-coverage
-build/Release
+
+examples/build
 node_modules
 test/logs
 test/fixtures/build
 test/fixtures/*/build
-examples/build

@@ -35,14 +35,14 @@ describe('metalsmith-react-templates', function(){
 
   it('should render contents into baseFile', function(done){
 
-    new Metalsmith('test/fixtures/base-file')
+    new Metalsmith('test/fixtures/render-with-baseFile')
       .use(templates({
         baseFile: 'base.html',
         html: false
       }))
       .build(function(err){
         if (err){ return done(err); }
-        equal('test/fixtures/base-file/expected', 'test/fixtures/base-file/build');
+        equal('test/fixtures/render-with-baseFile/expected', 'test/fixtures/render-with-baseFile/build');
         done();
       });
   });
@@ -50,17 +50,29 @@ describe('metalsmith-react-templates', function(){
 
   it('should be able to access yaml front matter as variables in baseFile', function(done){
 
-    new Metalsmith('test/fixtures/base-variables')
+    new Metalsmith('test/fixtures/variables-in-baseFile')
       .use(templates({
         baseFile: 'base.html',
         html: true
       }))
       .build(function(err){
         if (err){ return done(err); }
-        equal('test/fixtures/base-variables/expected', 'test/fixtures/base-variables/build');
+        equal('test/fixtures/variables-in-baseFile/expected', 'test/fixtures/variables-in-baseFile/build');
         done();
       });
   });
 
+  it('should be able to access yaml front matter as variables in templates', function(done){
+
+    new Metalsmith('test/fixtures/variables-in-templates')
+      .use(templates({
+        html: true
+      }))
+      .build(function(err){
+        if (err){ return done(err); }
+        equal('test/fixtures/variables-in-templates/expected', 'test/fixtures/variables-in-templates/build');
+        done();
+      });
+  });
 
 });

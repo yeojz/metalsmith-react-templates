@@ -15,7 +15,7 @@ describe('lint - ES (JS / JSX)', function(){
         ' -c .eslintrc' +
         ' --ignore-path .eslintignore' +
         ' --quiet' +
-        ' lib/*';
+        ' src/*';
         // ' test/*';
         // ' examples/templates/*' +
         // ' examples/scripts/*';
