@@ -61,8 +61,12 @@ metalsmith.use(templates({
 ```
 
 
+## Usage Notes
 
-## Note on Webpack / Build Systems
+### Specifying Templates
+If a `rtemplate` field is set in the `yaml` front-matter of your markdown files, `metalsmith-react-templates` will use the specified template instead of `default.jsx`
+
+### Webpack / Build Systems
 
 If you import css or any other non-standard js code using 'require', 
 you might want to make use of the `requireIgnoreExt` to ignore those files.
@@ -131,10 +135,6 @@ ignore declarations like `require('file.css')`
 
 
 
-## Other Usage Notes
-
-### Specifying Templates
-If a `rtemplate` field is set in the `yaml` front-matter of your markdown files, `metalsmith-react-templates` will use the specified template instead of `default.jsx`
 
 
 
