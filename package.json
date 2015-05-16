@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "babel ./src --out-dir ./lib",
-    "publish": "npm run build && npm run test && npm publish",
+    "test-publish": "npm run test && npm publish",
     "test": "npm run build && mocha"
   },
   "repository": {
