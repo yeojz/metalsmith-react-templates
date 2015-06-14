@@ -19,7 +19,7 @@ describe('lint - Source', function(){
 
   it('it should pass', function(done){
 
-    execSync('mkdir -p ./test/logs; rm -f '+ jsResult);
+    execSync('mkdir -p ./test/logs; rm -f ' + jsResult);
 
     var result = execSync(js);
 
