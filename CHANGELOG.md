@@ -1,8 +1,28 @@
 # Change Log
 
+## [v0.2.2](https://github.com/yeojz/metalsmith-react-templates/tree/v0.2.2) (2015-06-14)
+
+[Full Changelog](https://github.com/yeojz/metalsmith-react-templates/compare/v0.2.1...v0.2.2)
+
+**Implemented enhancements:**
+
+- Migrate to sync-exec \(remove node-gyp compilations\) [\#6](https://github.com/yeojz/metalsmith-react-templates/issues/6)
+
+**Merged pull requests:**
+
+- changed to sync-exec [\#7](https://github.com/yeojz/metalsmith-react-templates/pull/7) ([yeojz](https://github.com/yeojz))
+
 ## [v0.2.1](https://github.com/yeojz/metalsmith-react-templates/tree/v0.2.1) (2015-06-14)
 
 [Full Changelog](https://github.com/yeojz/metalsmith-react-templates/compare/v0.2.0...v0.2.1)
+
+**Fixed bugs:**
+
+- v0.2.0 doesn't properly export module [\#4](https://github.com/yeojz/metalsmith-react-templates/issues/4)
+
+**Merged pull requests:**
+
+- added postinstall process. fix \#4 [\#5](https://github.com/yeojz/metalsmith-react-templates/pull/5) ([yeojz](https://github.com/yeojz))
 
 ## [v0.2.0](https://github.com/yeojz/metalsmith-react-templates/tree/v0.2.0) (2015-05-16)
 
