@@ -1,13 +1,14 @@
 {
   "name": "metalsmith-react-templates",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A metalsmith plugin to render files using ReactJS based templates",
   "main": "lib/index.js",
   "scripts": {
     "build": "babel ./src --out-dir ./lib",
     "postinstall": "npm run build",
-    "test-publish": "npm run test && npm publish",
-    "test": "npm run build && mocha"
+    "prepublish": "npm run test",
+    "pretest": "npm run build",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
