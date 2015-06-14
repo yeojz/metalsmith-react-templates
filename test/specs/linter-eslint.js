@@ -1,6 +1,6 @@
 'use strict';
 
-var execSync = require('exec-sync');
+var syncExec = require('sync-exec');
 var assert = require('assert');
 var fs = require('fs');
 
@@ -19,15 +19,18 @@ describe('lint - Source', function(){
 
   it('it should pass', function(done){
 
-    execSync('mkdir -p ./test/logs; rm -f ' + jsResult);
+    syncExec('mkdir -p ./test/logs; rm -f ' + jsResult);
 
-    var result = execSync(js);
+    var result = syncExec(js);
 
     if (result){
       fs.writeFile(jsResult, result, function(){});
     }
 
-    assert.equal(result, '');
+    assert.equal(result.stdout, '');
+    assert.equal(result.stderr, '');
+    assert.equal(result.status, 0);
+
     done();
   });
 });
