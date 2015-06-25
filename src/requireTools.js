@@ -2,7 +2,7 @@
 import fs from 'fs';
 
 import {transform as reactTransform} from 'react-tools';
-import {transformFileSync as babelTransform} from 'babel';
+import {transformFileSync as babelTransform} from 'babel-core';
 
 
 
