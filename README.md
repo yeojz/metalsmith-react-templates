@@ -13,7 +13,7 @@ A templating plugin using React.js templates
 ## Installation
 
 ```
-npm i react metalsmith-react-templates
+npm install metalsmith-react-templates
 ```
 
 ## CLI Usage
