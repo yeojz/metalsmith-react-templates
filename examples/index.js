@@ -11,7 +11,7 @@ new Metalsmith(__dirname)
     babel: true,
     directory: 'templates',
     baseFile: 'base.html',
-    nonStatic: true
+    isStatic: false
   }))
   .use(browserify({
     files: ['../scripts/loader.js'],

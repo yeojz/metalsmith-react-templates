@@ -5,11 +5,16 @@ import React from 'react';
  */
 export default (templatePath, props = {}, options = {}, callback = () => {}) => {
 
-  // Option for nonStatic rendering
-  // Usually used if we want to do a static first load
+  // Option for isStatic rendering
+  // False if we want to do a static first load
   // but dynamic interation subsequently.
   // i.e. React Server side rendering style
-  const isNonStatic = options.nonStatic;
+  var staticConst = (void 0 !== options.isStatic) ? options.isStatic : true;
+  if (void 0 !== options.nonStatic) {
+    staticConst = !options.nonStatic;
+    console.warn('option: isStatic should be used instead of nonStatic.');
+  }
+  const isStatic = staticConst;
 
   // Initialize the template as a factory
   // and apply the options into the factory.
@@ -19,13 +24,12 @@ export default (templatePath, props = {}, options = {}, callback = () => {}) => 
   try {
     let content;
 
-    if (isNonStatic){
-      // renderToString (with React ids)
-      content = React.renderToString(component);
-
-    } else {
+    if (isStatic){
       // renderToStaticMarkup (React ids removed)
       content = React.renderToStaticMarkup(component);
+    } else {
+      // renderToString (with React ids)
+      content = React.renderToString(component);
     }
 
     callback(null, content);
