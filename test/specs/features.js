@@ -16,7 +16,10 @@ describe('metalsmith-react-templates', function(){
         html: false
       }))
       .build(function(err){
-        if (err){ return done(err); }
+        if (err){
+          return done(err);
+        }
+
         equal('test/fixtures/basic/expected', 'test/fixtures/basic/build');
         done();
       });
@@ -31,7 +34,10 @@ describe('metalsmith-react-templates', function(){
         html: false
       }))
       .build(function(err){
-        if (err){ return done(err); }
+        if (err){
+          return done(err);
+        }
+
         equal('test/fixtures/basic/expected', 'test/fixtures/basic/build');
         done();
       });
@@ -45,7 +51,10 @@ describe('metalsmith-react-templates', function(){
         html: true
       }))
       .build(function(err){
-        if (err){ return done(err); }
+        if (err){
+          return done(err);
+        }
+
         equal('test/fixtures/basic-html/expected', 'test/fixtures/basic-html/build');
         done();
       });
@@ -60,7 +69,10 @@ describe('metalsmith-react-templates', function(){
         html: false
       }))
       .build(function(err){
-        if (err){ return done(err); }
+        if (err){
+          return done(err);
+        }
+
         equal('test/fixtures/render-with-baseFile/expected', 'test/fixtures/render-with-baseFile/build');
         done();
       });
@@ -75,7 +87,10 @@ describe('metalsmith-react-templates', function(){
         html: true
       }))
       .build(function(err){
-        if (err){ return done(err); }
+        if (err){
+          return done(err);
+        }
+
         equal('test/fixtures/variables-in-baseFile/expected', 'test/fixtures/variables-in-baseFile/build');
         done();
       });
@@ -88,10 +103,26 @@ describe('metalsmith-react-templates', function(){
         html: true
       }))
       .build(function(err){
-        if (err){ return done(err); }
+        if (err){
+          return done(err); 
+        }
+
         equal('test/fixtures/variables-in-templates/expected', 'test/fixtures/variables-in-templates/build');
         done();
       });
   });
 
+
 });
+
+
+
+
+
+
+
+
+
+
+
+

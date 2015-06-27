@@ -95,11 +95,6 @@ However, you may choose to make a static site generator with React functionaliti
 
 Setting this parameter to `false` will cause templates to be parsed using `renderToString()`
 
-#### `nonStatic` (optional) - Deprecated
-default: `false`
-
-Use `isStatic`; `nonStatic` is only included for backwards compatibility.
-
 #### `directory` (optional) 
 default: `templates`
 
