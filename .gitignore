@@ -10,5 +10,6 @@ node_modules
 test/logs
 test/fixtures/build
 test/fixtures/*/build
+test/fixtures/results
 
 lib

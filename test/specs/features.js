@@ -1,8 +1,36 @@
 'use strict';
 
-var equal = require('assert-dir-equal');
+var assert = require('assert');
+var fs = require('fs');
+var path = require('path');
+
+
 var Metalsmith = require('metalsmith');
 var templates = require('../../lib');
+
+
+
+
+
+
+function assertFileContents(expected, built){
+  var expectedContents = fs.readFileSync(expected, 'utf-8');
+  var buildContents = fs.readFileSync(built, 'utf-8');
+
+  assert.strictEqual(expectedContents, buildContents);
+}
+
+
+function fixturesRel(location){
+  return path.join('..', location);
+}
+
+function fixtures(location){
+  return path.join('test/fixtures', location);
+}
+
+
+
 
 
 
@@ -11,7 +39,9 @@ describe('metalsmith-react-templates', function(){
 
   it('should do basic template transformation', function(done){
 
-    new Metalsmith('test/fixtures/basic')
+    new Metalsmith(fixtures('basic'))
+      .source(fixturesRel('basic/src'))
+      .destination(fixturesRel('results/basic'))
       .use(templates({
         html: false
       }))
@@ -20,7 +50,11 @@ describe('metalsmith-react-templates', function(){
           return done(err);
         }
 
-        equal('test/fixtures/basic/expected', 'test/fixtures/basic/build');
+        assertFileContents(
+          fixtures('basic/expected/source.md'),
+          fixtures('results/basic/source.md')
+        );
+
         done();
       });
   });
@@ -29,6 +63,8 @@ describe('metalsmith-react-templates', function(){
   it('should do basic template transformation (using babel)', function(done){
 
     new Metalsmith('test/fixtures/basic')
+      .source(fixturesRel('basic/src'))
+      .destination(fixturesRel('results/basic-babel'))
       .use(templates({
         babel: true,
         html: false
@@ -38,7 +74,11 @@ describe('metalsmith-react-templates', function(){
           return done(err);
         }
 
-        equal('test/fixtures/basic/expected', 'test/fixtures/basic/build');
+        assertFileContents(
+          fixtures('basic/expected/source.md'),
+          fixtures('results/basic-babel/source.md')
+        );
+
         done();
       });
   });
@@ -47,6 +87,8 @@ describe('metalsmith-react-templates', function(){
   it('should render html files rather than markdown', function(done){
 
     new Metalsmith('test/fixtures/basic-html')
+      .source(fixturesRel('basic/src'))
+      .destination(fixturesRel('results/basic-html'))
       .use(templates({
         html: true
       }))
@@ -55,7 +97,11 @@ describe('metalsmith-react-templates', function(){
           return done(err);
         }
 
-        equal('test/fixtures/basic-html/expected', 'test/fixtures/basic-html/build');
+        assertFileContents(
+          fixtures('basic-html/expected/source.html'),
+          fixtures('results/basic-html/source.html')
+        );
+
         done();
       });
   });
@@ -64,6 +110,8 @@ describe('metalsmith-react-templates', function(){
   it('should render contents into baseFile', function(done){
 
     new Metalsmith('test/fixtures/render-with-baseFile')
+      .source(fixturesRel('basic/src'))
+      .destination(fixturesRel('results/render-with-baseFile'))
       .use(templates({
         baseFile: 'base.html',
         html: false
@@ -73,7 +121,11 @@ describe('metalsmith-react-templates', function(){
           return done(err);
         }
 
-        equal('test/fixtures/render-with-baseFile/expected', 'test/fixtures/render-with-baseFile/build');
+        assertFileContents(
+          fixtures('render-with-baseFile/expected/source.md'),
+          fixtures('results/render-with-baseFile/source.md')
+        );
+
         done();
       });
   });
@@ -82,6 +134,7 @@ describe('metalsmith-react-templates', function(){
   it('should be able to access yaml front matter as variables in baseFile', function(done){
 
     new Metalsmith('test/fixtures/variables-in-baseFile')
+      .destination(fixturesRel('results/variables-in-baseFile'))
       .use(templates({
         baseFile: 'base.html',
         html: true
@@ -91,7 +144,11 @@ describe('metalsmith-react-templates', function(){
           return done(err);
         }
 
-        equal('test/fixtures/variables-in-baseFile/expected', 'test/fixtures/variables-in-baseFile/build');
+        assertFileContents(
+          fixtures('variables-in-baseFile/expected/source.html'),
+          fixtures('results/variables-in-baseFile/source.html')
+        );
+
         done();
       });
   });
@@ -99,19 +156,48 @@ describe('metalsmith-react-templates', function(){
   it('should be able to access yaml front matter as variables in templates', function(done){
 
     new Metalsmith('test/fixtures/variables-in-templates')
+      .destination(fixturesRel('results/variables-in-templates'))
       .use(templates({
         html: true
       }))
       .build(function(err){
         if (err){
-          return done(err); 
+          return done(err);
         }
 
-        equal('test/fixtures/variables-in-templates/expected', 'test/fixtures/variables-in-templates/build');
+        assertFileContents(
+          fixtures('variables-in-templates/expected/source.html'),
+          fixtures('results/variables-in-templates/source.html')
+        );
+
         done();
       });
   });
 
+
+  it('should render react-ids if isStatic is set to false', function(done){
+    new Metalsmith('test/fixtures/basic')
+      .destination(fixturesRel('results/basic-react-ids'))
+      .use(templates({
+        isStatic: false,
+        html: true
+      }))
+      .build(function(err){
+        if (err){
+          return done(err);
+        }
+
+        var content = fs.readFileSync(fixtures('results/basic-react-ids/source.html'), 'utf-8');
+
+        var dataReactId = content.match(/data-reactid/);
+        var dataReactChecksum = content.match(/data-react-checksum/);
+
+        assert(dataReactId.length > 0);
+        assert(dataReactChecksum.length > 0);
+
+        done();
+      });
+  });
 
 });
 

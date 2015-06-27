@@ -31,7 +31,6 @@
   },
   "homepage": "https://github.com/yeojz/metalsmith-react-templates",
   "devDependencies": {
-    "assert-dir-equal": "^1.0.1",
     "babel": "^5.6.7",
     "eslint": "^0.21.1",
     "metalsmith": "^1.7.0",
