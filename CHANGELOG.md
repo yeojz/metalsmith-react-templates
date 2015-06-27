@@ -1,5 +1,33 @@
 # Change Log
 
+## [v2.0.0](https://github.com/yeojz/metalsmith-react-templates/tree/v2.0.0) (2015-06-27)
+
+[Full Changelog](https://github.com/yeojz/metalsmith-react-templates/compare/v1.1.0...v2.0.0)
+
+**Closed issues:**
+
+- nonStatic [\#8](https://github.com/yeojz/metalsmith-react-templates/issues/8)
+
+**Merged pull requests:**
+
+- Deprecated nonStatic + refactored tests [\#10](https://github.com/yeojz/metalsmith-react-templates/pull/10) ([yeojz](https://github.com/yeojz))
+
+## [v1.1.0](https://github.com/yeojz/metalsmith-react-templates/tree/v1.1.0) (2015-06-27)
+
+[Full Changelog](https://github.com/yeojz/metalsmith-react-templates/compare/v1.0.1...v1.1.0)
+
+**Merged pull requests:**
+
+- Added isStatic option [\#9](https://github.com/yeojz/metalsmith-react-templates/pull/9) ([woodyrew](https://github.com/woodyrew))
+
+## [v1.0.1](https://github.com/yeojz/metalsmith-react-templates/tree/v1.0.1) (2015-06-25)
+
+[Full Changelog](https://github.com/yeojz/metalsmith-react-templates/compare/v1.0.0...v1.0.1)
+
+## [v1.0.0](https://github.com/yeojz/metalsmith-react-templates/tree/v1.0.0) (2015-06-25)
+
+[Full Changelog](https://github.com/yeojz/metalsmith-react-templates/compare/v0.2.2...v1.0.0)
+
 ## [v0.2.2](https://github.com/yeojz/metalsmith-react-templates/tree/v0.2.2) (2015-06-14)
 
 [Full Changelog](https://github.com/yeojz/metalsmith-react-templates/compare/v0.2.1...v0.2.2)
