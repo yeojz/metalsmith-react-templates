@@ -35,7 +35,7 @@ npm install metalsmith-react-templates
   "plugins": {
     "metalsmith-react-templates": {
       "baseFile": "base.html",
-      "nonStatic": false,
+      "isStatic": true,
       "directory": "templates"
     }
   }
@@ -57,7 +57,7 @@ metalsmith.use(templates());
 ```js
 metalsmith.use(templates({
   baseFile: 'base.html'
-  nonStatic: false,
+  isStatic: true,
   directory: 'templates'
 }));
 ```
@@ -86,15 +86,19 @@ This is similar to the index.html file which you React.render() your components 
 
 In your base file, put `{{content}}` in the location where you want your data will render into.
 
-#### `nonStatic` (optional) 
-default: `false`
+#### `isStatic` (optional) 
+default: `true`
 
 Since this is a static site generator, by default, it will render the React Templates using `renderToStaticMarkup()`
 
 However, you may choose to make a static site generator with React functionalities (similar to first render from server) and subsequently pull page routes via JavaScript / React.
 
-Setting this parameter to true will cause templates to be parsed using `renderToString()`
+Setting this parameter to `false` will cause templates to be parsed using `renderToString()`
 
+#### `nonStatic` (optional) - Deprecated
+default: `false`
+
+Use `isStatic`; `nonStatic` is only included for backwards compatibility.
 
 #### `directory` (optional) 
 default: `templates`
