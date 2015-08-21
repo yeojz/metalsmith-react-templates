@@ -1,3 +1,10 @@
+/**
+ *  index.js
+ *
+ *  Main Plugin Function
+ */
+
+
 import debugCore from 'debug';
 
 import fs from 'fs';
@@ -15,9 +22,7 @@ import requireTools from './requireTools';
 const debug = debugCore('metalsmith-react-templates');
 
 
-/**
- *  Plugin Exports
- */
+
 export default (options = {}) => {
 
   const {
@@ -35,12 +40,7 @@ export default (options = {}) => {
   // Ensure .jsx transformation
   if (!require.extensions['.jsx']) {
     const tooling = options.tooling;
-
-    if (options.babel){
-      require.extensions['.jsx'] = requireTools.babelCore.bind(null, tooling);
-    } else {
-      require.extensions['.jsx'] = requireTools.reactTools.bind(null, tooling);
-    }
+    require.extensions['.jsx'] = requireTools.babelCore.bind(null, tooling);
   }
 
 

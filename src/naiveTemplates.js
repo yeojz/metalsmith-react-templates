@@ -1,4 +1,6 @@
 /**
+ *  naiveTemplates.js
+ *
  *  Simple Micro Templating Function
  */
 export default (str, data) => {

@@ -1,8 +1,12 @@
+/**
+ *  renderReactTemplates.js
+ *
+ *  Main rendering function to render contents into
+ *  the desired react template
+ */
+
 import React from 'react';
 
-/**
- * Main rendering function for React
- */
 export default (templatePath, props = {}, options = {}, callback = () => {}) => {
 
   // Option for isStatic rendering
