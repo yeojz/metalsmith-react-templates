@@ -1,9 +1,9 @@
 # metalsmith-react-templates
 A templating plugin using React.js templates
 
-[![npm](https://img.shields.io/npm/v/metalsmith-react-templates.svg)](https://www.npmjs.com/package/metalsmith-react-templates)
-[![Build Status](https://img.shields.io/travis/yeojz/metalsmith-react-templates.svg)](https://travis-ci.org/yeojz/metalsmith-react-templates)
-[![Code Climate](https://img.shields.io/codeclimate/github/yeojz/metalsmith-react-templates.svg)](https://codeclimate.com/github/yeojz/metalsmith-react-templates)
+[![npm](https://img.shields.io/npm/v/metalsmith-react-templates.svg?style=flat-square)](https://www.npmjs.com/package/metalsmith-react-templates)
+[![Build Status](https://img.shields.io/travis/yeojz/metalsmith-react-templates.svg?style=flat-square)](https://travis-ci.org/yeojz/metalsmith-react-templates)
+[![Code Climate](https://img.shields.io/codeclimate/github/yeojz/metalsmith-react-templates.svg?style=flat-square)](https://codeclimate.com/github/yeojz/metalsmith-react-templates)
 
 ## About
 `metalsmith-react-templates` is a [metalsmith](http://http://www.metalsmith.io/) plugin to render files using [React.js](http://http://facebook.github.io/react/) based templates. 
