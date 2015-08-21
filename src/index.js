@@ -27,7 +27,8 @@ export default (options = {}) => {
     html = true,
     pattern = '**/*',
     preserve = false,
-    requireIgnoreExt = []
+    requireIgnoreExt = [],
+    noConflict = true
   } = options;
 
 
@@ -45,7 +46,7 @@ export default (options = {}) => {
 
 
   // Adding File ignore in requires.
-  // In the event build systems like webpack is used.
+  // In the event build systms like webpack is used.
   if (Array.isArray(requireIgnoreExt)){
     requireIgnoreExt.forEach((ext) => {
       if (!require.extensions[ext]){
@@ -77,7 +78,8 @@ export default (options = {}) => {
 
       // Start Conversion Process
       debug('Starting conversion: %s', file);
-      const templatePath = metalsmith.path(directory, data.rtemplate || defaultTemplate);
+      const templateKey = (noConflict) ? 'rtemplate' : 'template';
+      const templatePath = metalsmith.path(directory, data[templateKey] || defaultTemplate);
 
 
       renderReactTemplates(templatePath, props, options, (err, result) => {

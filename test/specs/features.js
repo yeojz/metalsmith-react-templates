@@ -199,6 +199,29 @@ describe('metalsmith-react-templates', function(){
       });
   });
 
+
+  it('should use `template` parameter in front-matter instead of `rtemplate`', function(done) {
+    new Metalsmith(fixtures('no-conflict'))
+      .source(fixturesRel('no-conflict/src'))
+      .destination(fixturesRel('results/no-conflict'))
+      .use(templates({
+        html: false,
+        noConflict: false
+      }))
+      .build(function(err){
+        if (err){
+          return done(err);
+        }
+
+        assertFileContents(
+          fixtures('no-conflict/expected/source.md'),
+          fixtures('results/no-conflict/source.md')
+        );
+
+        done();
+      });
+  });
+
 });
 
 
