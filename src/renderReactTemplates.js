@@ -2,7 +2,10 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 /**
- * Main rendering function for React
+ *  renderReactTemplates.js
+ *
+ *  Main rendering function to render contents into
+ *  the desired react template
  */
 export default (templatePath, props = {}, options = {}, callback = () => {}) => {
 

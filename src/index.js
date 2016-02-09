@@ -13,7 +13,9 @@ import requireTools from './requireTools';
 const debug = _debug('metalsmith-react-templates');
 
 /**
- *  Plugin Exports
+ *  index.js
+ *
+ *  Main Plugin Function
  */
 export default (options = {}) => {
 
