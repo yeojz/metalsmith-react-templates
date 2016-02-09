@@ -1,17 +1,20 @@
-'use strict';
+import React from 'react';
 
-var React = require('react');
-
-var DefaultTemplate = React.createClass({
-  render: function() {
-    return (
-      <div>
-        <span>{this.props.title}</span>
-        <span>{this.props.misc}</span>
-        <span>{this.props.contents}</span>
-      </div>
-    );
-  }
+const DefaultTemplate = React.createClass({
+    propTypes: {
+        contents: React.PropTypes.any,
+        misc: React.PropTypes.any,
+        title: React.PropTypes.any
+    },
+    render() {
+        return (
+            <div>
+                <span>{this.props.title}</span>
+                <span>{this.props.misc}</span>
+                <span>{this.props.contents}</span>
+            </div>
+        );
+    }
 });
 
-module.exports = DefaultTemplate;
+export default DefaultTemplate;

@@ -1,17 +1,19 @@
 {
-  "env": {
-    "es6": true,
-    "node": true,
-    "mocha": true
-  },
+    "parser": "babel-eslint",
 
-  "ecmaFeatures": {
-    "modules": true
-  },
+    "env": {
+        "es6": true,
+        "node": true,
+        "mocha": true
+    },
 
-  "rules": {
-    "quotes": [2, "single"],
-    "space-in-brackets": [2, "never"],
-    "no-underscore-dangle": [0]
-  }
+    "ecmaFeatures": {
+        "experimentalObjectRestSpread": true,
+        "modules": true
+    },
+
+    "plugins": [
+        "standard"
+    ]
 }
+

@@ -5,9 +5,13 @@ A templating plugin using React.js templates
 [![Build Status](https://img.shields.io/travis/yeojz/metalsmith-react-templates.svg?style=flat-square)](https://travis-ci.org/yeojz/metalsmith-react-templates)
 [![Code Climate](https://img.shields.io/codeclimate/github/yeojz/metalsmith-react-templates.svg?style=flat-square)](https://codeclimate.com/github/yeojz/metalsmith-react-templates)
 
+
 ## About
 `metalsmith-react-templates` is a [metalsmith](http://http://www.metalsmith.io/) plugin to render files using [React.js](http://http://facebook.github.io/react/) based templates. 
 
+
+## Change Notice
+As of `v3.0.0`, this plugin will only use `babel` as it's transpiler as `react-tools` will be deprecated from `0.14` onwards. Read more about this at React's blog: [Deprecating JSTransform and react-tools](https://facebook.github.io/react/blog/2015/06/12/deprecating-jstransform-and-react-tools.html)
 
 
 ## Installation
@@ -131,16 +135,9 @@ default: `false`
 Stores a copy of un-templated contents into `rawContents` meta.
 
 
-#### `babel` (optional)
-default: `false`
-
-Uses `babel-core` for `.jsx` transformations instead of `react-tools`.
-
-
 #### `tooling` (optional)
-default (babel): `{}`
+default: `{}`
 
-default (react-tools): `{harmony: true}`
 
 
 #### `requireIgnoreExt` (optional)
@@ -154,7 +151,6 @@ ignore declarations like `require('file.css')`
 
 ## Other Links
 - [`License`](/LICENSE)
-
 
 
 

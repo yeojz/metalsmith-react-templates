@@ -1,27 +1,19 @@
-'use strict';
-
-var syncExec = require('sync-exec');
-var assert = require('assert');
-
+import {assert} from 'chai';
+import syncExec from 'sync-exec';
 
 // JS Only
-describe('lint - Source', function(){
+describe('lint - Source', function() {
+    let _command = `eslint --ext .js,.jsx -c .eslintrc --ignore-path .eslintignore --quiet src/*`;
 
-  var js = 'eslint' +
-        ' --ext .js,.jsx' +
-        ' -c .eslintrc' +
-        ' --ignore-path .eslintignore' +
-        ' --quiet' +
-        ' src/*';
 
-  it('it should pass', function(done){
+    it('it should pass', function(done) {
 
-    var result = syncExec(js);
+        const result = syncExec(_command);
 
-    assert.equal(result.stdout, '');
-    assert.equal(result.stderr, '');
-    assert.equal(result.status, 0);
+        assert.equal(result.stdout, '');
+        assert.equal(result.stderr, '');
+        assert.equal(result.status, 0);
 
-    done();
-  });
+        done();
+    });
 });
