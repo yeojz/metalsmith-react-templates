@@ -1,0 +1,5 @@
+test:
+  override:
+    - nvm use 0.12 && npm run test
+    - nvm use 4.2.2 && npm run test
+    - nvm use 5.1 && npm run test
