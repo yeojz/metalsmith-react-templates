@@ -10,5 +10,6 @@ deployment:
     branch: master
     commands:
       - ./npm.sh
+      - npm run build
       - npm publish
       - npm logout

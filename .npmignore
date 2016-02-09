@@ -4,3 +4,4 @@ examples
 src
 .codeclimate.yml
 .travis.yml
+npm.sh
