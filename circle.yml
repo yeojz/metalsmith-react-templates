@@ -9,6 +9,7 @@ deployment:
   production:
     branch: master
     commands:
+      - npm install -g babel-cli
       - ./npm.sh
       - npm run build
       - npm publish
