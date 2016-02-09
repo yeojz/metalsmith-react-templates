@@ -7,7 +7,7 @@ A templating plugin using React.js templates
 
 
 ## About
-`metalsmith-react-templates` is a [metalsmith](http://http://www.metalsmith.io/) plugin to render files using [React.js](http://http://facebook.github.io/react/) based templates. 
+`metalsmith-react-templates` is a [metalsmith](http://http://www.metalsmith.io/) plugin to render files using [React.js](http://http://facebook.github.io/react/) based templates.
 
 
 ## Change Notice
@@ -76,7 +76,7 @@ You can also set `noConflict` to `false` and the plugin will use the `template` 
 
 ### Webpack / Build Systems
 
-If you import css or any other non-standard js code using 'require', 
+If you import css or any other non-standard js code using 'require',
 you might want to make use of the `requireIgnoreExt` to ignore those files.
 
 
@@ -86,14 +86,14 @@ you might want to make use of the `requireIgnoreExt` to ignore those files.
 #### `baseFile` (optional)
 default: `null`
 
-Specifies a file which the contents of the react template will render into. 
+Specifies a file which the contents of the react template will render into.
 
 This is similar to the index.html file which you React.render() your components in.
 
 In your base file, put `{{content}}` in the location where you want your data will render into.
 
 
-#### `isStatic` (optional) 
+#### `isStatic` (optional)
 default: `true`
 
 Since this is a static site generator, by default, it will render the React Templates using `renderToStaticMarkup()`
@@ -106,12 +106,12 @@ Setting this parameter to `false` will cause templates to be parsed using `rende
 #### `noConflict` (optional)
 default: `true`
 
-By default, this plugin will read from the `rtemplate` key in your yaml 
-front-matter. However, if this is the only templating plugin, you may 
+By default, this plugin will read from the `rtemplate` key in your yaml
+front-matter. However, if this is the only templating plugin, you may
 set `noConflict` to `false` to use the `template` key instead.
 
 
-#### `directory` (optional) 
+#### `directory` (optional)
 default: `templates`
 
 Sets the directory which your react templates (or baseFile) resides.
@@ -143,7 +143,7 @@ default: `{}`
 #### `requireIgnoreExt` (optional)
 default: `[]`
 
-A list of extensions to ignore. For example, `{requireIgnoreExt: ['.css']}` would 
+A list of extensions to ignore. For example, `{requireIgnoreExt: ['.css']}` would
 ignore declarations like `require('file.css')`
 
 
@@ -154,5 +154,6 @@ ignore declarations like `require('file.css')`
 
 
 
+MIT © [Gerald Yeo](https://www.fusedthought.com)
 
 

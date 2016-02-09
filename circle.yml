@@ -1,6 +1,9 @@
 machine:
   node:
-    version: 5.1.0
+    version: 5.5.0
+dependencies:
+  post:
+    - npm install -g babel-cli
 test:
   override:
     - nvm use 4.2.2 && npm run test
@@ -9,7 +12,6 @@ deployment:
   production:
     branch: master
     commands:
-      - npm install -g babel-cli
       - ./npm.sh
       - npm run build
       - npm publish
