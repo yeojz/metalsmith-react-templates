@@ -7,7 +7,7 @@ A templating plugin using React.js templates
 
 
 ## About
-`metalsmith-react-templates` is a [metalsmith](http://http://www.metalsmith.io/) plugin to render files using [React.js](http://http://facebook.github.io/react/) based templates.
+`metalsmith-react-templates` is a [metalsmith](http://www.metalsmith.io/) plugin to render files using [React](https://facebook.github.io/react/) based templates.
 
 
 ## Change Notice
@@ -46,7 +46,7 @@ npm install metalsmith-react-templates
 }
 ```
 
-## Javascript Usage
+## JavaScript Usage
 
   Simplest use case:
 
@@ -70,13 +70,13 @@ metalsmith.use(templates({
 ## Usage Notes
 
 ### Specifying Templates
-If a `rtemplate` field is set in the `yaml` front-matter of your markdown files, `metalsmith-react-templates` will use the specified template instead of `default.jsx`
+If an `rtemplate` field is set in the `yaml` front-matter of your markdown files, `metalsmith-react-templates` will use the specified template instead of `default.jsx`.
 
-You can also set `noConflict` to `false` and the plugin will use the `template` field instead of `rtemplate` field in the yaml front-matter.
+You can also set `noConflict` to `false` and the plugin will use the `template` field instead of `rtemplate` field in the `yaml` front-matter.
 
 ### Webpack / Build Systems
 
-If you import css or any other non-standard js code using 'require',
+If you import css or any other non-standard JavaScript code using `require`,
 you might want to make use of the `requireIgnoreExt` to ignore those files.
 
 
@@ -88,7 +88,7 @@ default: `null`
 
 Specifies a file which the contents of the react template will render into.
 
-This is similar to the index.html file which you React.render() your components in.
+This is similar to the `index.html` file which you `React.render()` your components in.
 
 In your base file, put `{{content}}` in the location where you want your data will render into.
 
@@ -96,17 +96,17 @@ In your base file, put `{{content}}` in the location where you want your data wi
 #### `isStatic` (optional)
 default: `true`
 
-Since this is a static site generator, by default, it will render the React Templates using `renderToStaticMarkup()`
+Since this is a static site generator, by default, it will render the React Templates using `renderToStaticMarkup()`.
 
 However, you may choose to make a static site generator with React functionalities (similar to first render from server) and subsequently pull page routes via JavaScript / React.
 
-Setting this parameter to `false` will cause templates to be parsed using `renderToString()`
+Setting this parameter to `false` will cause templates to be parsed using `renderToString()`.
 
 
 #### `noConflict` (optional)
 default: `true`
 
-By default, this plugin will read from the `rtemplate` key in your yaml
+By default, this plugin will read from the `rtemplate` key in your `yaml`
 front-matter. However, if this is the only templating plugin, you may
 set `noConflict` to `false` to use the `template` key instead.
 
@@ -120,13 +120,13 @@ Sets the directory which your react templates (or baseFile) resides.
 #### `pattern` (optional)
 default: `**/*`
 
-Specifies a file filter pattern
+Specifies a file filter pattern.
 
 
 #### `html` (optional)
 default: `true`
 
-Renames files from *.md to *.html
+Renames files from `*.md` to `*.html`.
 
 
 #### `preserve` (optional)
