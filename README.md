@@ -13,6 +13,8 @@ A templating plugin using React.js templates
 ## Change Notice
 As of `v3.0.0`, this plugin will only use `babel` as it's transpiler as `react-tools` will be deprecated from `0.14` onwards. Read more about this at React's blog: [Deprecating JSTransform and react-tools](https://facebook.github.io/react/blog/2015/06/12/deprecating-jstransform-and-react-tools.html)
 
+As of `babel 6`, additional [plugin](https://babeljs.io/docs/plugins/) packages are needed for it to run. I've added the basic as peer dependency.
+
 
 ## Installation
 
