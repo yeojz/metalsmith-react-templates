@@ -4,6 +4,6 @@ This example generates a static site with Metalsmith. It uses React as a templat
 
 ```
 npm install
-node index
+node build
 # open build/index.html in a browser
 ```
