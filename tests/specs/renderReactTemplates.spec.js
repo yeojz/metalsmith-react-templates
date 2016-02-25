@@ -31,6 +31,7 @@ describe('renderReactTemplates', () => {
         const args = spy.args[0];
         expect(args[0]).to.eql(null);
         expect(args[1]).to.be.a('string');
+        expect(args[1].indexOf('data-reactid')).to.not.eql(-1);
     });
 
     it('should return a result (2)', () => {
@@ -43,5 +44,7 @@ describe('renderReactTemplates', () => {
         const args = spy.args[0];
         expect(args[0]).to.eql(null);
         expect(args[1]).to.be.a('string');
+        expect(args[1].indexOf('data-reactid')).to.eql(-1);
     });
 });
+
