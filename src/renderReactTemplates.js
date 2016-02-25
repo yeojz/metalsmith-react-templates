@@ -15,12 +15,12 @@ export default (templatePath, props = {}, options = {}, callback = () => {}) => 
     // i.e. React Server side rendering style
     const isStatic = (options.isStatic !== void 0) ? options.isStatic : true;
 
-    // Initialize the template as a factory
-    // and apply the options into the factory.
-    const template = require(templatePath);
-    const component = React.createElement(template, props);
-
     try {
+        // Initialize the template as a factory
+        // and apply the options into the factory.
+        const template = require(templatePath);
+        const component = React.createElement(template, props);
+
         let content;
 
         if (isStatic){

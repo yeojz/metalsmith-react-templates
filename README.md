@@ -149,6 +149,13 @@ A list of extensions to ignore. For example, `{requireIgnoreExt: ['.css']}` woul
 ignore declarations like `require('file.css')`
 
 
+#### `templateTag` (optional)
+default: `null`
+
+*Note*: only available when using metalsmith programmatically.
+
+Accepts a function `pattern(key)` which returns a regex object used to find
+and replace template tags in your output file.
 
 
 ## Other Links

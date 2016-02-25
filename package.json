@@ -1,13 +1,13 @@
 {
   "name": "metalsmith-react-templates",
-  "version": "3.1.4",
+  "version": "3.1.5",
   "description": "A metalsmith plugin to render files using ReactJS based templates",
   "main": "lib/index.js",
   "scripts": {
     "build": "babel ./src -d ./lib",
     "clean": "rm -rf ./lib",
     "release": "npm run build && npm run publish",
-    "test": "mocha"
+    "test": "mocha --compilers js:babel-core/register --require ./tests/helpers.js 'tests/specs/**/*.spec.@(js|jsx)'"
   },
   "repository": {
     "type": "git",
@@ -46,6 +46,8 @@
     "mocha": "^2.4.5",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0",
     "sync-exec": "^0.6.2"
   },
   "dependencies": {

@@ -28,7 +28,8 @@ export default (options = {}) => {
         preserve = false,
         requireIgnoreExt = [],
         noConflict = true,
-        tooling = {}
+        tooling = {},
+        templateTag = null
     } = options;
 
 
@@ -93,7 +94,7 @@ export default (options = {}) => {
                     const baseFilePath = metalsmith.path(directory, baseFile);
                     const baseFileContent = fs.readFileSync(baseFilePath, 'utf8');
 
-                    data = naiveTemplates(baseFileContent, data);
+                    data = naiveTemplates(baseFileContent, data, templateTag);
                 }
 
                 // if `html` is set
