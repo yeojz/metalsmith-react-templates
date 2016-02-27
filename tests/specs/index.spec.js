@@ -103,6 +103,21 @@ describe('index', () => {
         });
     });
 
+    it('should not process file if no template/rtemplate and no defaultTemplate', (done) => {
+        const test = {
+            'default.md': {
+                ...files['default.md']
+            }
+        }
+
+        const plugin = index({defaultTemplate: null});
+
+        plugin(test, metalsmith, (err) => {
+            expect(getContent(test['default.md'])).to.eql(getContent(files['default.md']));
+            done();
+        });
+    });
+
     it('should be able to access yaml front matter parameters as variables in template', (done) => {
         const test = {
             'variable.md': {

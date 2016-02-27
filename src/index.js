@@ -1,10 +1,8 @@
+import {each} from 'async';
 import _debug from 'debug';
-
 import fs from 'fs';
 import multimatch from 'multimatch';
 import path from 'path';
-
-import {each} from 'async';
 
 import naiveTemplates from './naiveTemplates';
 import renderReactTemplates from './renderReactTemplates';
@@ -25,13 +23,13 @@ export default (options = {}) => {
         defaultTemplate = 'Default.jsx',
         directory = 'templates',
         html = true,
+        isStatic = true,
+        noConflict = true,
         pattern = '**/*',
         preserve = false,
         requireIgnoreExt = [],
-        noConflict = true,
-        tooling = {},
         templateTag = null,
-        useDefault = true
+        tooling = {}
     } = options;
 
     let {
@@ -88,7 +86,7 @@ export default (options = {}) => {
 
             // If useDefault is false, and no template defined
             // then ignore this file.
-            if (!useDefault && !templateDefined) {
+            if (!templateDefined && !defaultTemplate) {
                 callback();
                 return;
             }
@@ -98,7 +96,9 @@ export default (options = {}) => {
 
             // Start templating
             debug('Starting conversion: %s', file);
-            const {err, result} = renderReactTemplates(templatePath, props, options);
+            const {err, result} = renderReactTemplates(templatePath, props, {
+                isStatic
+            });
 
             if (err){
                 callback(err);

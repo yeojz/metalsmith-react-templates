@@ -18,7 +18,7 @@ describe('naiveTemplates', () => {
     });
 
     it('should replace value for custom tag patterns', () => {
-        const result= naiveTemplates('<tag>', {tag: 'value'}, (v) => new RegExp(`<${v}>`, 'g'));
+        const result= naiveTemplates('<!--tag-->', {tag: 'value'}, (v) => new RegExp(`<!--${v}-->`, 'g'));
 
         expect(result.tag).to.eql('value');
         expect(result.contents.toString()).to.eql('value');

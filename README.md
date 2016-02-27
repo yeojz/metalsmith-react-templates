@@ -92,6 +92,7 @@ All parameters are optional.
 | ------------- | ------------- | ------------- |
 | `baseFile` | `null` | Specifies a file which the contents of the react template will render into. <br /><br /> This is similar to the `index.html` file which you `React.render()` your components in. <br /><br /> In your base file, put `{{content}}` in the location where you want your data will render into. <br /><br /> You may also override this value by placing a baseFile key in your source file's front matter.
 | `baseFileDirectory` | `null` | Sets the directory which your baseFile resides. By default, it assumes your base file is in the same directory as your templates.
+| `defaultTemplate` | `Default.jsx` | The default template file to use if no template is specified. <br /><br /> Set to `''` or `null` if you do not want metalsmith to not apply template transformation on files that do not have a 'template / rtemplate' key present.
 | `directory` | `templates` | Sets the directory which your react templates resides.
 | `extension` | `null` | Option to rename your files to a specified extension.
 | `html` | `true` | (alias) Sets the extension parameter to `.html` if it's not already set.
@@ -99,10 +100,9 @@ All parameters are optional.
 | `noConflict` | `true` | By default, this plugin will read from the `rtemplate` key in your `yaml` front matter. However, if this is the only templating plugin, you may set `noConflict` to `false` to use the `template` key instead.
 | `pattern` | `**/*` | Specifies a file filter pattern.
 | `preserve` | `false` | Stores a copy of un-templated contents into `rawContents` meta which you can access in your React components.
-| `requireIgnoreExt` | `[ ]` | A list of extensions to ignore. For example, `{requireIgnoreExt: ['.css']}` would ignore declarations like `require('file.css')`
-| `templateTag` | `null` | *Note*: only available when using metalsmith programmatically. <br /><br /> Accepts a function `pattern(key)` which returns a regex object used to find and replace template tags in your output file.
+| `requireIgnoreExt` | `[ ]` | A list of extensions to ignore. <br /><br /> For example, `{requireIgnoreExt: ['.css']}` would ignore declarations like `require('file.css')`
+| `templateTag` | `null` | Accepts a function `pattern(key)` which returns a regex object used to find and replace template tags in your output file. <br /><br /> By default, template tags are assumed to be `{{tag}}`. You may use this to allow for other tag formats (eg. you may want `<!--tag-->` instead). <br /> <br /> Check the test case for an example.
 | `tooling` | `{ }` | Options to pass into the `babel` transpiler.
-| `useDefault` | `true` | if `useDefault` is set to false, metalsmith will not apply template transformation on files that do not have a 'template / rtemplate' key present.
 
 
 ## Other Links
