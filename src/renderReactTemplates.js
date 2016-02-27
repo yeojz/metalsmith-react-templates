@@ -7,7 +7,7 @@ import ReactDOMServer from 'react-dom/server';
  *  Main rendering function to render contents into
  *  the desired react template
  */
-export default (templatePath, props = {}, options = {}, callback = () => {}) => {
+export default (templatePath, props = {}, options = {}) => {
 
     // Option for isStatic rendering
     // False if we want to do a static first load
@@ -21,19 +21,25 @@ export default (templatePath, props = {}, options = {}, callback = () => {}) => 
         const template = require(templatePath);
         const component = React.createElement(template, props);
 
-        let content;
+        let result;
 
         if (isStatic){
             // renderToStaticMarkup (React ids removed)
-            content = ReactDOMServer.renderToStaticMarkup(component);
+            result = ReactDOMServer.renderToStaticMarkup(component);
         } else {
             // renderToString (with React ids)
-            content = ReactDOMServer.renderToString(component);
+            result = ReactDOMServer.renderToString(component);
         }
 
-        callback(null, content);
+        return {
+            err: null,
+            result
+        };
 
     } catch (err) {
-        callback(err);
+        return {
+            err,
+            result: null
+        };
     }
 };

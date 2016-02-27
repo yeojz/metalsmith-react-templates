@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Template extends React.Component {
+class OtherTemplate extends React.Component {
 
     static propTypes = {
         contents: React.PropTypes.any
@@ -9,12 +9,11 @@ class Template extends React.Component {
     render() {
         return (
             <article>
-                <h2>Template</h2>
+                <h1>Other</h1>
                 <section>{this.props.contents}</section>
             </article>
         );
     }
 }
 
-
-export default Template;
+export default OtherTemplate;

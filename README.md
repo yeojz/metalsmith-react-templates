@@ -62,9 +62,9 @@ metalsmith.use(templates());
 
 ```js
 metalsmith.use(templates({
-  baseFile: 'base.html'
-  isStatic: true,
-  directory: 'templates'
+    baseFile: 'base.html'
+    isStatic: true,
+    directory: 'templates'
 }));
 ```
 
@@ -72,9 +72,9 @@ metalsmith.use(templates({
 ## Usage Notes
 
 ### Specifying Templates
-If an `rtemplate` field is set in the `yaml` front-matter of your markdown files, `metalsmith-react-templates` will use the specified template instead of `default.jsx`.
+If an `rtemplate` field is set in the `yaml` front matter of your markdown files, `metalsmith-react-templates` will use the specified template instead of `Default.jsx`.
 
-You can also set `noConflict` to `false` and the plugin will use the `template` field instead of `rtemplate` field in the `yaml` front-matter.
+You can also set `noConflict` to `false` and the plugin will use the `template` field instead of `rtemplate` field in the `yaml` front matter.
 
 ### Webpack / Build Systems
 
@@ -85,77 +85,21 @@ you might want to make use of the `requireIgnoreExt` to ignore those files.
 
 ## Options
 
-#### `baseFile` (optional)
-default: `null`
+All parameters are optional.
 
-Specifies a file which the contents of the react template will render into.
-
-This is similar to the `index.html` file which you `React.render()` your components in.
-
-In your base file, put `{{content}}` in the location where you want your data will render into.
-
-
-#### `isStatic` (optional)
-default: `true`
-
-Since this is a static site generator, by default, it will render the React Templates using `renderToStaticMarkup()`.
-
-However, you may choose to make a static site generator with React functionalities (similar to first render from server) and subsequently pull page routes via JavaScript / React.
-
-Setting this parameter to `false` will cause templates to be parsed using `renderToString()`.
-
-
-#### `noConflict` (optional)
-default: `true`
-
-By default, this plugin will read from the `rtemplate` key in your `yaml`
-front-matter. However, if this is the only templating plugin, you may
-set `noConflict` to `false` to use the `template` key instead.
-
-
-#### `directory` (optional)
-default: `templates`
-
-Sets the directory which your react templates (or baseFile) resides.
-
-
-#### `pattern` (optional)
-default: `**/*`
-
-Specifies a file filter pattern.
-
-
-#### `html` (optional)
-default: `true`
-
-Renames files from `*.md` to `*.html`.
-
-
-#### `preserve` (optional)
-default: `false`
-
-Stores a copy of un-templated contents into `rawContents` meta.
-
-
-#### `tooling` (optional)
-default: `{}`
-
-
-
-#### `requireIgnoreExt` (optional)
-default: `[]`
-
-A list of extensions to ignore. For example, `{requireIgnoreExt: ['.css']}` would
-ignore declarations like `require('file.css')`
-
-
-#### `templateTag` (optional)
-default: `null`
-
-*Note*: only available when using metalsmith programmatically.
-
-Accepts a function `pattern(key)` which returns a regex object used to find
-and replace template tags in your output file.
+| Parameter | Default Value | Description |
+| ------------- | ------------- | ------------- |
+| `baseFile` | `null` | Specifies a file which the contents of the react template will render into. <br /><br /> This is similar to the `index.html` file which you `React.render()` your components in. <br /><br /> In your base file, put `{{content}}` in the location where you want your data will render into. <br /><br /> You may also override this value by placing a baseFile key in your source file's front matter.
+| `directory` | `templates` | Sets the directory which your react templates (or baseFile) resides.
+| `html` | `true` | Renames files from `*.md` to `*.html`.
+| `isStatic` | `true` | Since this is a static site generator, by default, it will render the React Templates using `renderToStaticMarkup()`. <br /><br /> However, you may choose to make a static site generator with React functionalities (similar to first render from server) and subsequently pull page routes via JavaScript / React.<br /><br /> Setting this parameter to `false` will cause templates to be parsed using `renderToString()`.
+| `noConflict` | `true` | By default, this plugin will read from the `rtemplate` key in your `yaml` front matter. However, if this is the only templating plugin, you may set `noConflict` to `false` to use the `template` key instead.
+| `pattern` | `**/*` | Specifies a file filter pattern.
+| `preserve` | `false` | Stores a copy of un-templated contents into `rawContents` meta which you can access in your React components.
+| `requireIgnoreExt` | `[ ]` | A list of extensions to ignore. For example, `{requireIgnoreExt: ['.css']}` would ignore declarations like `require('file.css')`
+| `templateTag` | `null` | *Note*: only available when using metalsmith programmatically. <br /><br /> Accepts a function `pattern(key)` which returns a regex object used to find and replace template tags in your output file.
+| `tooling` | `{ }` | Options to pass into the `babel` transpiler.
+| `useDefault` | `true` | if `useDefault` is set to false, metalsmith will not apply template transformation on files that do not have a 'template / rtemplate' key present.
 
 
 ## Other Links

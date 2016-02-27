@@ -8,10 +8,12 @@ class DefaultTemplate extends React.Component {
 
     render() {
         return (
-            <div>{this.props.contents}</div>
+            <article>
+                <h1>Default</h1>
+                <section>{this.props.contents}</section>
+            </article>
         );
     }
 }
-
 
 export default DefaultTemplate;
