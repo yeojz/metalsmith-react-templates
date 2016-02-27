@@ -7,7 +7,7 @@
     "build": "babel ./src -d ./lib",
     "clean": "rm -rf ./lib",
     "release": "npm run build && npm run publish",
-    "test": "mocha"
+    "test": "mocha --compilers js:babel-core/register 'tests/specs/**/*.spec.@(js|jsx)'"
   },
   "repository": {
     "type": "git",

@@ -21,22 +21,32 @@ export default (options = {}) => {
 
     const {
         baseFile = null,
-        defaultTemplate = 'default.jsx',
+        baseFileDirectory = null,
+        defaultTemplate = 'Default.jsx',
         directory = 'templates',
         html = true,
         pattern = '**/*',
         preserve = false,
         requireIgnoreExt = [],
         noConflict = true,
-        tooling = {}
+        tooling = {},
+        templateTag = null,
+        useDefault = true
     } = options;
 
+    let {
+        extension = null,
+    } = options;
+
+    // Backward compatibility
+    if (html && extension === null) {
+        extension = '.html';
+    }
 
     // Ensure .jsx transformation
     if (!require.extensions['.jsx']) {
         require.extensions['.jsx'] = requireTools.babelCore.bind(null, tooling);
     }
-
 
     // Adding File ignore in requires.
     // In the event build systms like webpack is used.
@@ -48,9 +58,8 @@ export default (options = {}) => {
         });
     }
 
-
-
-    return (files, metalsmith, done) => {
+    // Returns plugin function (non-arrow)
+    return function(files, metalsmith, done) {
         const metadata = metalsmith.metadata();
 
         each(multimatch(Object.keys(files), pattern), (file, callback) => {
@@ -60,6 +69,7 @@ export default (options = {}) => {
             debug('Preparing Props: %s', file);
             let props = {
                 ...data,
+                filename: file,
                 metadata,
                 contents: data.contents.toString()
             }
@@ -72,51 +82,70 @@ export default (options = {}) => {
             }
 
             // Start Conversion Process
-            debug('Starting conversion: %s', file);
+            debug('Preparing template: %s', file);
             const templateKey = (noConflict) ? 'rtemplate' : 'template';
-            const templatePath = metalsmith.path(directory, data[templateKey] || defaultTemplate);
+            const templateDefined = data[templateKey];
 
-
-            renderReactTemplates(templatePath, props, options, (err, result) => {
-
-                if (err){
-                    return callback(err);
-                }
-
-                // Buffer back the result
-                data.contents = new Buffer(result);
-
-                // If `baseFile` is specified,
-                // insert content into the file.
-                if (baseFile){
-                    debug('Applying baseFile to contents: %s', file);
-                    const baseFilePath = metalsmith.path(directory, baseFile);
-                    const baseFileContent = fs.readFileSync(baseFilePath, 'utf8');
-
-                    data = naiveTemplates(baseFileContent, data);
-                }
-
-                // if `html` is set
-                // Rename markdown files to html
-                if (html){
-                    let fileDir = path.dirname(file);
-                    let fileName = path.basename(file, path.extname(file)) + '.html';
-
-                    if (fileDir !== '.'){
-                        fileName = fileDir + '/' + fileName;
-                    }
-
-                    debug('Renaming file: %s -> %s', file, fileName);
-
-                    delete files[file];
-                    files[fileName] = data;
-                }
-
-                // Complete
-                debug('Saved file: %s', file);
+            // If useDefault is false, and no template defined
+            // then ignore this file.
+            if (!useDefault && !templateDefined) {
                 callback();
-            }); // renderReactTemplate
+                return;
+            }
+
+            // Generate the template path
+            const templatePath = metalsmith.path(directory, templateDefined || defaultTemplate);
+
+            // Start templating
+            debug('Starting conversion: %s', file);
+            const {err, result} = renderReactTemplates(templatePath, props, options);
+
+            if (err){
+                callback(err);
+                return;
+            }
+
+            // Buffer back the result
+            data.contents = new Buffer(result);
+
+            // Allow for per source baseFile overrides
+            const baseFileDefined = data.baseFile || baseFile;
+
+            // If `baseFile` is specified,
+            // insert content into the file.
+            if (baseFileDefined){
+                debug('Applying baseFile to contents: %s', file);
+                const baseFilePath = metalsmith.path(baseFileDirectory || directory, baseFileDefined);
+
+                try {
+                    const baseFileContent = fs.readFileSync(baseFilePath, 'utf8');
+                    data = naiveTemplates(baseFileContent, data, templateTag);
+
+                } catch (err) {
+                    callback(err);
+                    return;
+                }
+            }
+
+            // Rename markdown files to desired extension
+            if (extension){
+                let fileDir = path.dirname(file);
+                let fileName = path.basename(file, path.extname(file)) + extension;
+
+                if (fileDir !== '.'){
+                    fileName = fileDir + '/' + fileName;
+                }
+
+                debug('Renaming file: %s -> %s', file, fileName);
+
+                delete files[file];
+                files[fileName] = data;
+            }
+
+            // Complete
+            debug('Saved file: %s', file);
+            callback();
 
         }, done); // Each
-    }; // Return
-}; // export
+    }; // Return function
+};
