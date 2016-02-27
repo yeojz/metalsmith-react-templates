@@ -4,6 +4,7 @@ A templating plugin using React.js templates
 [![npm](https://img.shields.io/npm/v/metalsmith-react-templates.svg?style=flat-square)](https://www.npmjs.com/package/metalsmith-react-templates)
 [![Build Status](https://img.shields.io/travis/yeojz/metalsmith-react-templates.svg?style=flat-square)](https://travis-ci.org/yeojz/metalsmith-react-templates)
 [![Code Climate](https://img.shields.io/codeclimate/github/yeojz/metalsmith-react-templates.svg?style=flat-square)](https://codeclimate.com/github/yeojz/metalsmith-react-templates)
+[![npm downloads](https://img.shields.io/npm/dt/metalsmith-react-templates.svg?style=flat-square)](https://www.npmjs.com/package/metalsmith-react-templates)
 
 
 ## About
