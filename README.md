@@ -91,8 +91,10 @@ All parameters are optional.
 | Parameter | Default Value | Description |
 | ------------- | ------------- | ------------- |
 | `baseFile` | `null` | Specifies a file which the contents of the react template will render into. <br /><br /> This is similar to the `index.html` file which you `React.render()` your components in. <br /><br /> In your base file, put `{{content}}` in the location where you want your data will render into. <br /><br /> You may also override this value by placing a baseFile key in your source file's front matter.
-| `directory` | `templates` | Sets the directory which your react templates (or baseFile) resides.
-| `html` | `true` | Renames files from `*.md` to `*.html`.
+| `baseFileDirectory` | `null` | Sets the directory which your baseFile resides. By default, it assumes your base file is in the same directory as your templates.
+| `directory` | `templates` | Sets the directory which your react templates resides.
+| `extension` | `null` | Option to rename your files to a specified extension.
+| `html` | `true` | (alias) Sets the extension parameter to `.html` if it's not already set.
 | `isStatic` | `true` | Since this is a static site generator, by default, it will render the React Templates using `renderToStaticMarkup()`. <br /><br /> However, you may choose to make a static site generator with React functionalities (similar to first render from server) and subsequently pull page routes via JavaScript / React.<br /><br /> Setting this parameter to `false` will cause templates to be parsed using `renderToString()`.
 | `noConflict` | `true` | By default, this plugin will read from the `rtemplate` key in your `yaml` front matter. However, if this is the only templating plugin, you may set `noConflict` to `false` to use the `template` key instead.
 | `pattern` | `**/*` | Specifies a file filter pattern.
