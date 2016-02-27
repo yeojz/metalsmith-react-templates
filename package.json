@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-react-templates",
-  "version": "3.1.5",
+  "version": "4.0.0",
   "description": "A metalsmith plugin to render files using ReactJS based templates",
   "main": "lib/index.js",
   "scripts": {
