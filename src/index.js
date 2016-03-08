@@ -27,6 +27,7 @@ export default (options = {}) => {
         noConflict = true,
         pattern = '**/*',
         preserve = false,
+        preserveProps = false,
         requireIgnoreExt = [],
         templateTag = null,
         tooling = {}
@@ -77,6 +78,13 @@ export default (options = {}) => {
             if (preserve){
                 debug('Preserving untouched contents: %s', file);
                 data.rawContents = data.contents;
+            }
+
+            // if opt.preserveProps is set
+            // preserve the props provided to the template
+            if (preserveProps) {
+                debug('Preserving props: %s', file);
+                data.props = props;
             }
 
             // Start Conversion Process

@@ -100,6 +100,7 @@ All parameters are optional.
 | `noConflict` | `true` | By default, this plugin will read from the `rtemplate` key in your `yaml` front matter. However, if this is the only templating plugin, you may set `noConflict` to `false` to use the `template` key instead.
 | `pattern` | `**/*` | Specifies a file filter pattern.
 | `preserve` | `false` | Stores a copy of un-templated contents into `rawContents` meta which you can access in your React components.
+| `preserveProps` | `false` | Stores a copy of the props objects provided to the Reach template into `props` which you can access in downstream plugins.
 | `requireIgnoreExt` | `[ ]` | A list of extensions to ignore. <br /><br /> For example, `{requireIgnoreExt: ['.css']}` would ignore declarations like `require('file.css')`
 | `templateTag` | `null` | Accepts a function `pattern(key)` which returns a regex object used to find and replace template tags in your output file. <br /><br /> By default, template tags are assumed to be `{{tag}}`. You may use this to allow for other tag formats (eg. you may want `<!--tag-->` instead). <br /> <br /> Check the test case for an example.
 | `tooling` | `{ }` | Options to pass into the `babel` transpiler.
