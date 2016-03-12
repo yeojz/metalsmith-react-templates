@@ -29,7 +29,8 @@ export default (options = {}) => {
         preserve = false,
         requireIgnoreExt = [],
         templateTag = null,
-        tooling = {}
+        tooling = {},
+        propsKey = null
     } = options;
 
     let {
@@ -65,11 +66,16 @@ export default (options = {}) => {
 
             // Prepare Props
             debug('Preparing Props: %s', file);
-            let props = {
-                ...data,
-                filename: file,
-                metadata,
-                contents: data.contents.toString()
+            let props = null;
+            if (propsKey) {
+                props = data[propsKey];
+            } else {
+                props = {
+                    ...data,
+                    filename: file,
+                    metadata,
+                    contents: data.contents.toString()
+                };
             }
 
             // if opt.preserve is set
