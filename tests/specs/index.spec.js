@@ -3,9 +3,11 @@ import fs from 'fs';
 import Metalsmith from 'metalsmith';
 import path from 'path';
 
-import {fixtures, getContent, trimContent} from '../helpers';
+import helpers from '../helpers';
 import outputs from '../fixtures/outputs';
 import index from '../../src/index';
+
+const {fixtures, getContent, trimContent} = helpers;
 
 describe('index', () => {
     let files;
@@ -14,6 +16,7 @@ describe('index', () => {
     before((done) => {
         metalsmith = new Metalsmith(fixtures);
         metalsmith.read((err, result) => {
+            if (err) throw err;
             files = result;
             done();
         });
@@ -88,14 +91,14 @@ describe('index', () => {
     });
 
     it('should throw an error when template is not found', (done) => {
+        const plugin = index();
+
         const test = {
             'default.md': {
                 ...files['default.md'],
                 rtemplate: 'Error.jsx'
             }
         }
-
-        const plugin = index();
 
         plugin(test, metalsmith, (err) => {
             expect(err).to.not.be.eql(null);
@@ -104,29 +107,29 @@ describe('index', () => {
     });
 
     it('should not process file if no template/rtemplate and no defaultTemplate', (done) => {
+        const plugin = index({defaultTemplate: null});
+
         const test = {
             'default.md': {
                 ...files['default.md']
             }
         }
 
-        const plugin = index({defaultTemplate: null});
-
-        plugin(test, metalsmith, (err) => {
+        plugin(test, metalsmith, () => {
             expect(getContent(test['default.md'])).to.eql(getContent(files['default.md']));
             done();
         });
     });
 
     it('should be able to access yaml front matter parameters as variables in template', (done) => {
+        const plugin = index();
+
         const test = {
             'variable.md': {
                 ...files['variable.md'],
                 rtemplate: 'Variable.jsx'
             }
         }
-
-        const plugin = index();
 
         plugin(test, metalsmith, () => {
             expect(getContent(test['variable.html'])).to.eql(trimContent(outputs.variable));
@@ -135,13 +138,13 @@ describe('index', () => {
     });
 
     it('should be able to access yaml front matter parameters as variables in baseFile', (done) => {
+        const plugin = index();
+
         const test = {
             'baseFile.md': {
                 ...files['baseFile.md']
             }
         }
-
-        const plugin = index();
 
         plugin(test, metalsmith, () => {
             expect(getContent(test['baseFile.html'])).to.eql(trimContent(outputs.baseFileDefault));
@@ -163,13 +166,14 @@ describe('index', () => {
     });
 
     it('should render react-ids if isStatic is set to false', (done) => {
+        const plugin = index({isStatic: false});
+
         const test = {
             'baseFile.md': {
                 ...files['baseFile.md']
             }
         }
 
-        const plugin = index({isStatic: false});
         plugin(test, metalsmith, () => {
             const content = getContent(test['baseFile.html']);
 
@@ -191,6 +195,26 @@ describe('index', () => {
 
         plugin(test, metalsmith, () => {
             expect(getContent(test['default.html'])).to.eql(trimContent(outputs.default));
+            done();
+        });
+    });
+
+    it('should use props defined by propsKey', (done) => {
+        const plugin = index({
+            propsKey: 'customKey'
+        });
+
+        const test = {
+            'default.md': {
+                ...files['default.md'],
+                customKey: {
+                    contents: 'Test content from custom key'
+                }
+            }
+        };
+
+        plugin(test, metalsmith, () => {
+            expect(getContent(test['default.html'])).to.eql(trimContent(outputs.defaultCustomKey));
             done();
         });
     });
