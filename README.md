@@ -90,7 +90,7 @@ All parameters are optional.
 
 | Parameter | Default Value | Description |
 | ------------- | ------------- | ------------- |
-| `baseFile` | `null` | Specifies a file which the contents of the react template will render into. <br /><br /> This is similar to the `index.html` file which you `React.render()` your components in. <br /><br /> In your base file, put `{{content}}` in the location where you want your data will render into. <br /><br /> You may also override this value by placing a baseFile key in your source file's front matter.
+| `baseFile` | `null` | Specifies a file which the contents of the react template will render into. <br /><br /> This is similar to the `index.html` file which you `React.render()` your components in. <br /><br /> In your base file, put `{{contents}}` in the location where you want your data will render into. <br /><br /> You may also override this value by placing a baseFile key in your source file's front matter.
 | `baseFileDirectory` | `null` | Sets the directory which your baseFile resides. By default, it assumes your base file is in the same directory as your templates.
 | `defaultTemplate` | `Default.jsx` | The default template file to use if no template is specified. <br /><br /> Set to `''` or `null` if you do not want metalsmith to not apply template transformation on files that do not have a 'template / rtemplate' key present.
 | `directory` | `templates` | Sets the directory which your react templates resides.
