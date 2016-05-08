@@ -10,10 +10,6 @@
     "ecmaFeatures": {
         "experimentalObjectRestSpread": true,
         "modules": true
-    },
-
-    "plugins": [
-        "standard"
-    ]
+    }
 }
 
