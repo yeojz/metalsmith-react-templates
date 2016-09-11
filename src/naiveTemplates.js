@@ -1,26 +1,21 @@
-/**
- *  naiveTemplates.js
- *
- *  Simple Micro Templating Function
- */
+import forEach from 'lodash.forown';
 
-// Generating the tag pattern
-const defaultPattern = (key) => new RegExp(`{{${key}}}`, 'g');
+// default pattern: {{key}}
+const DEFAULT_PATTERN = (key) => new RegExp(`{{${key}}}`, 'g');
 
-// Replacement function
-export default (str, data, pattern = null) => {
+// Iterates through the keys in data object
+// and replace the search pattern with it's value
+const findAndReplaceKeyPattern = (str, data, pattern) => {
+    forEach(data, (value, key) => {
+        const regex = pattern(key);
+        str = str.replace(regex, value);
+    });
+    return str;
+}
 
-    // Iterates through the keys in file object
-    // and interpolate / replace {{key}} with it's value
-    for (let k in data){
-        if (data.hasOwnProperty(k)){
-            const regex = (typeof pattern === 'function') ? pattern(k) : defaultPattern(k);
-            str = str.replace(regex, data[k]);
-        }
+export default (str, data, pattern) => {
+    if (!pattern) {
+        pattern = DEFAULT_PATTERN;
     }
-
-    // Assign the final result back into the contents field
-    data.contents = new Buffer(str);
-
-    return data;
+    return findAndReplaceKeyPattern(str, data, pattern)
 };

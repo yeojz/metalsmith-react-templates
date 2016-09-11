@@ -1,15 +1,16 @@
 {
     "parser": "babel-eslint",
-
     "env": {
         "es6": true,
         "node": true,
         "mocha": true
     },
-
-    "ecmaFeatures": {
-        "experimentalObjectRestSpread": true,
-        "modules": true
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        }
     }
 }
-
