@@ -17,5 +17,5 @@ export default (str, data, pattern) => {
     if (!pattern) {
         pattern = DEFAULT_PATTERN;
     }
-    return findAndReplaceKeyPattern(str, data, pattern)
-};
+    return findAndReplaceKeyPattern(str, data, pattern);
+}

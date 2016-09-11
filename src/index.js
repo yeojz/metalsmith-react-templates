@@ -13,6 +13,22 @@ import {requireBabelCore, requireIgnore} from './requireTools';
 
 const debug = _debug('metalsmith-react-templates');
 
+const defaultOptions = {
+    baseFile: null,
+    baseFileDirectory: null,
+    defaultTemplate: 'Default.jsx',
+    directory: 'templates',
+    extension: '.html',
+    isStatic: true,
+    noConflict: true,
+    pattern: '**/*',
+    preserve: false,
+    requireIgnoreExt: [],
+    templateTag: null,
+    tooling: {},
+    propsKey: null
+}
+
 const patchRequireForJSX = (tooling) => {
     if (!require.extensions['.jsx']) {
         require.extensions['.jsx'] = requireBabelCore(tooling);
@@ -31,7 +47,7 @@ const getProps = (filename, file, options, metalsmith) => {
     debug('[%s] Preparing Props', filename);
 
     if (options.propsKey) {
-        return get(file, options.propsKey);
+        return get(file, options.propsKey, {});
     }
 
     return {
@@ -56,16 +72,20 @@ const preserveRawContents = (filename, file, {preserve}) => {
 const getTemplatePath = (file, options, metalsmith) => {
     const templateKey = (options.noConflict) ? 'rtemplate' : 'template';
     const template = get(file, templateKey) || options.defaultTemplate;
+
     if (!template) {
         throw 'No template found';
     }
+
     return metalsmith.path(options.directory, template);
 }
 
 const applyTemplate = (metalsmith, props) => (filename, file, options) => {
     debug('[%s] Starting react conversion', filename);
+
     const templatePath = getTemplatePath(file, options, metalsmith);
     const contents = renderReactTemplates(templatePath, props,  options.isStatic);
+
     assignContentsToFile(contents, file)
 }
 
@@ -82,6 +102,7 @@ const interpolateBaseFile = (metalsmith) => (filename, file, options) => {
     const baseFilePath = metalsmith.path(directory, baseFile);
     const baseFileContent = fs.readFileSync(baseFilePath, 'utf8');
     const contents = naiveTemplates(baseFileContent, file, options.templateTag);
+
     assignContentsToFile(contents, file);
 }
 
@@ -95,11 +116,13 @@ const getFilename = (directory, basename, extension) => {
 const renameFileExtension = (filename, extension) => {
     const directory =  path.dirname(filename);
     const basename = path.basename(filename, path.extname(filename));
+
     return getFilename(directory, basename, extension);
 }
 
 const renameFile = (files, filename, file, extension) => {
     const newFilename = renameFileExtension(filename, extension);
+
     files[newFilename] = file;
     delete files[filename];
 
@@ -111,13 +134,15 @@ const finishProcessing = (files) => (filename, file, {extension}) => {
     if (extension) {
         filename = renameFile(files, filename, file, extension);
     }
+
     debug('[%s] Finished processing', filename);
 }
 
 const fileProcessor = (files, metalsmith, options) => (filename, callback) => {
     const file = get(files, filename);
     const props = getProps(filename, file, options, metalsmith);
-    const chain = [
+
+    const processingChain = [
         preserveRawContents,
         applyTemplate(metalsmith, props),
         interpolateBaseFile(metalsmith),
@@ -125,7 +150,7 @@ const fileProcessor = (files, metalsmith, options) => (filename, callback) => {
     ];
 
     try {
-        forEach(chain, (fn) => fn(filename, file, options));
+        forEach(processingChain, (fn) => fn(filename, file, options));
     } catch (err) {
         if (err !== 'No template found') {
             callback(err);
@@ -136,28 +161,14 @@ const fileProcessor = (files, metalsmith, options) => (filename, callback) => {
 }
 
 export default (options = {}) => {
-
-    defaults(options, {
-        baseFile: null,
-        baseFileDirectory: null,
-        defaultTemplate: 'Default.jsx',
-        directory: 'templates',
-        extension: '.html',
-        isStatic: true,
-        noConflict: true,
-        pattern: '**/*',
-        preserve: false,
-        requireIgnoreExt: [],
-        templateTag: null,
-        tooling: {},
-        propsKey: null
-    });
-
+    defaults(options, defaultOptions);
     patchRequireForJSX(options.tooling);
     patchRequireToIgnoreFileExtension(options.requireIgnoreExt);
 
-    return function(files, metalsmith, done) {
+    return function reactTemplates(files, metalsmith, done) {
         const matchedFiles = multimatch(Object.keys(files), options.pattern);
-        each(matchedFiles, fileProcessor(files, metalsmith, options), done);
-    };
-};
+        const processor = fileProcessor(files, metalsmith, options);
+
+        each(matchedFiles, processor, done);
+    }
+}
