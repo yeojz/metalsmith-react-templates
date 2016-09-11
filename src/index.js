@@ -23,10 +23,10 @@ const defaultOptions = {
     noConflict: true,
     pattern: '**/*',
     preserve: false,
+    propsKey: null,
     requireIgnoreExt: [],
     templateTag: null,
-    tooling: {},
-    propsKey: null
+    tooling: {}
 }
 
 const patchRequireForJSX = (tooling) => {
