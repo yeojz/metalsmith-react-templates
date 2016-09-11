@@ -27,15 +27,21 @@ export const patchRequireToIgnoreFileExtension = (requireIgnoreExt) => {
 
 export const getProps = (filename, file, options, metalsmith) => {
     debug('[%s] Preparing Props', filename);
+    const metadata = metalsmith.metadata();
+    const {propsKey} = options;
 
-    if (options.propsKey) {
-        return get(file, options.propsKey, {});
+    if (typeof propsKey === 'function') {
+        return propsKey(filename, file, metadata);
+    }
+
+    if (typeof propsKey === 'string') {
+        return get(file, propsKey, {});
     }
 
     return {
         ...file,
         filename,
-        metadata: metalsmith.metadata(),
+        metadata,
         contents: file.contents.toString()
     };
 }
