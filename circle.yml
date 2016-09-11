@@ -6,8 +6,9 @@ dependencies:
     - npm install -g babel-cli
 test:
   override:
-    - nvm use 4.2.2 && npm run test
-    - nvm use 5.1 && npm run test
+    - nvm use 4 && npm run test
+    - nvm use 5 && npm run test
+    - nvm use 6 && npm run test
 deployment:
   production:
     branch: master
