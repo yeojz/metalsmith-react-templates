@@ -1,12 +1,6 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
-/**
- *  renderReactTemplates.js
- *
- *  Main rendering function to render contents into
- *  the desired react template
- */
 export default (templatePath, props = {}, isStatic = true) => {
 
     // Initialize the template as a factory
