@@ -6,9 +6,15 @@ dependencies:
     - npm install -g babel-cli
 test:
   override:
-    - nvm use 4 && npm run test
-    - nvm use 5 && npm run test
-    - nvm use 6 && npm run test
+    - nvm use 4 && npm run test -- --reporter mocha-junit-reporter:
+        environment:
+          MOCHA_FILE: "$CIRCLE_TEST_REPORTS/node-4-mocha-results.xml"
+    - nvm use 5 && npm run test -- --reporter mocha-junit-reporter:
+        environment:
+          MOCHA_FILE: "$CIRCLE_TEST_REPORTS/node-5-mocha-results.xml"
+    - nvm use 6 && npm run test -- --reporter mocha-junit-reporter:
+        environment:
+          MOCHA_FILE: "$CIRCLE_TEST_REPORTS/node-6-mocha-results.xml"
 deployment:
   production:
     branch: master

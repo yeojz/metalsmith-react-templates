@@ -7,7 +7,7 @@ import fs from 'fs';
 import path from 'path';
 
 import naiveTemplates from './naiveTemplates';
-import renderReactTemplates from './renderReactTemplates';
+import * as reactTemplates from './reactTemplates';
 import {requireBabelCore, requireIgnore} from './requireTools';
 
 const debug = _debug('metalsmith-react-templates');
@@ -73,7 +73,8 @@ export const applyTemplate = (metalsmith, props) => (filename, file, options) =>
     debug('[%s] Starting react conversion', filename);
 
     const templatePath = getTemplatePath(file, options, metalsmith);
-    const contents = renderReactTemplates(templatePath, props,  options.isStatic);
+    const Component = reactTemplates.getComponent(templatePath);
+    const contents = reactTemplates.render(Component, props, options.isStatic);
 
     assignContentsToFile(contents, file)
 }
