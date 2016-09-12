@@ -1,8 +1,13 @@
-node_modules
-test
+docs
 examples
+node_modules
 src
+tests
+.babelrc
 .codeclimate.yml
+.editorconfig
 .travis.yml
-npm.sh
+.eslintignore
+.eslintrc
 circle.yml
+npm.sh

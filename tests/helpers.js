@@ -1,17 +1,12 @@
 import path from 'path';
 
-const fixtures = path.resolve(__dirname, 'fixtures');
+export const fixtures = path.resolve(__dirname, 'fixtures');
 
-const trimContent = (content) => {
-    return content.replace(/(\r\n|\n|\r)/gm, ''); // Remove line breaks;
+// Remove line breaks;
+export const trimContent = (content) => {
+    return content.replace(/(\r\n|\n|\r)/gm, '');
 }
 
-const getContent = (file) => {
+export const getContent = (file) => {
     return trimContent(file.contents.toString());
-}
-
-export default {
-    fixtures,
-    getContent,
-    trimContent
 }
