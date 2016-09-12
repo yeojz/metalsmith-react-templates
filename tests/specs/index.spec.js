@@ -207,6 +207,7 @@ describe('index', () => {
         const test = {
             'default.md': {
                 ...files['default.md'],
+                rtemplate: 'CustomKey.jsx',
                 customKey: {
                     contents: 'Test content from custom key'
                 }

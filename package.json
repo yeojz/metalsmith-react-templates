@@ -52,6 +52,7 @@
     "lodash.foreach": "^4.5.0",
     "lodash.forown": "^4.4.0",
     "lodash.get": "^4.4.2",
+    "lodash.pick": "^4.4.0",
     "multimatch": "^2.1.0"
   },
   "peerDependencies": {

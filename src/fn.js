@@ -2,6 +2,7 @@ import {each} from 'async';
 import _debug from 'debug';
 import forEach from 'lodash.foreach';
 import get from 'lodash.get';
+import pick from 'lodash.pick';
 import fs from 'fs';
 import path from 'path';
 
@@ -34,8 +35,8 @@ export const getProps = (filename, file, options, metalsmith) => {
         return propsKey(filename, file, metadata);
     }
 
-    if (typeof propsKey === 'string') {
-        return get(file, propsKey, {});
+    if (typeof propsKey === 'string' || Array.isArray(propsKey)) {
+        return pick(file, propsKey);
     }
 
     return {
