@@ -3,7 +3,7 @@ import fs from 'fs';
 import Metalsmith from 'metalsmith';
 import path from 'path';
 
-import helpers from '../helpers';
+import * as helpers from '../helpers';
 import outputs from '../fixtures/outputs';
 import index from '../../src/index';
 
@@ -36,7 +36,7 @@ describe('index', () => {
     });
 
     it('should keep original file extension', (done) => {
-        const plugin = index({html: false});
+        const plugin = index({extension: null});
 
         const test = {
             'default.md': {...files['default.md']}
@@ -207,6 +207,7 @@ describe('index', () => {
         const test = {
             'default.md': {
                 ...files['default.md'],
+                rtemplate: 'CustomKey.jsx',
                 customKey: {
                     contents: 'Test content from custom key'
                 }
