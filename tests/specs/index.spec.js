@@ -61,6 +61,19 @@ describe('index', () => {
         });
     });
 
+    it('should keep subdirectory structure', (done) => {
+        const plugin = index({extension: '.html'});
+
+        const test = {
+            'subdir/structure.md': {...files['subdir/structure.md']}
+        }
+
+        plugin(test, metalsmith, () => {
+            expect(test['subdir/structure.html']).to.exist;
+            done();
+        });
+    });
+
     it('should use a base file', (done) => {
         const plugin = index({baseFile: 'base.html'});
 

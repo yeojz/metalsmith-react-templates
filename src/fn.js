@@ -100,7 +100,7 @@ const getFilename = (directory, basename, extension) => {
     if (directory === '.') {
         return `${basename}${extension}`;
     }
-    return `${directory}${basename}${extension}`;
+    return path.join(directory, `${basename}${extension}`);
 }
 
 const renameFileExtension = (filename, extension) => {
