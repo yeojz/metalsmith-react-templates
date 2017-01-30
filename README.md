@@ -1,5 +1,7 @@
 # metalsmith-react-templates [![npm package][npm-badge]][npm-link]
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/yeojz/metalsmith-react-templates.svg)](https://greenkeeper.io/)
+
 A templating plugin using React.js templates
 
 [![Build Status][build-badge]][build-link] 
