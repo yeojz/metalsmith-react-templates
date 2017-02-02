@@ -6,20 +6,15 @@ dependencies:
     - npm install -g babel-cli
 test:
   override:
-    - nvm use 4 && npm run test -- --reporter mocha-junit-reporter:
-        environment:
-          MOCHA_FILE: "$CIRCLE_TEST_REPORTS/node-4-mocha-results.xml"
-    - nvm use 5 && npm run test -- --reporter mocha-junit-reporter:
-        environment:
-          MOCHA_FILE: "$CIRCLE_TEST_REPORTS/node-5-mocha-results.xml"
-    - nvm use 6 && npm run test -- --reporter mocha-junit-reporter:
-        environment:
-          MOCHA_FILE: "$CIRCLE_TEST_REPORTS/node-6-mocha-results.xml"
+    - nvm use 4 && npm run test -- --reporter mocha-junit-reporter
+    - nvm use 5 && npm run test -- --reporter mocha-junit-reporter
+    - nvm use 6 && npm run test -- --reporter mocha-junit-reporter
 deployment:
-  production:
-    branch: master
+  release:
+    tag: /^v[0-9]+(\.[0-9]+)*$/
+    owner: yeojz
     commands:
-      - ./npm.sh
-      - npm run build
+      - npm run build-library
+      - echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
       - npm publish
       - npm logout

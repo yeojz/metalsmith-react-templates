@@ -1,4 +1,3 @@
-import {each} from 'async';
 import _debug from 'debug';
 import forEach from 'lodash.foreach';
 import get from 'lodash.get';

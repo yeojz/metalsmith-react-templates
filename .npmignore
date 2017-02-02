@@ -1,6 +1,8 @@
+.DS_Store
 docs
 examples
 node_modules
+node_modules-*
 src
 tests
 .babelrc
