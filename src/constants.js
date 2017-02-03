@@ -1,4 +1,4 @@
 export default {
   INVALID_COMPONENT: 'invalid component',
-  NO_TEMPLATE_FOUND: 'no template found'
+  TEMPLATE_NOT_DEFINED: 'template not defined'
 }

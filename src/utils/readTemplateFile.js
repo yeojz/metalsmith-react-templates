@@ -22,7 +22,7 @@ const readTemplateFile = (syntheticFile) => {
   const template = getTemplate(syntheticFile, templateKey);
 
   if (!template) {
-    throw new Error(constants.NO_TEMPLATE_FOUND);
+    throw new Error(constants.TEMPLATE_NOT_DEFINED);
   }
 
   const templatePath = getTemplatePath(syntheticFile, template);

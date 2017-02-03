@@ -39,8 +39,8 @@ const fileProcessor = (files, metalsmith, options) => (filename, callback) => {
       callback();
     })
     .catch((err) => {
-      if (err.message === constants.NO_TEMPLATE_FOUND) {
-        debug(`[${filename}] Unable to find template`);
+      if (err.message === constants.TEMPLATE_NOT_DEFINED) {
+        debug(`[${filename}] Template not defined`);
         noTemplate(files, data, filename);
       }
       callback(err)
