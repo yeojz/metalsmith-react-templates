@@ -2,9 +2,11 @@
 
 A templating plugin using React.js templates
 
-[![Build Status][build-badge]][build-link] 
+[![Build Status][build-badge]][build-link]
+[![Coverage Status][coveralls-badge]][coveralls-link]
 [![Code Climate][code-climate-badge]][code-climate-link]
-[![npm downloads][npm-downloads-badge]][npm-downloads-link] 
+[![npm downloads][npm-downloads-badge]][npm-downloads-link]
+[![PRs Welcome][pr-welcome-badge]][pr-welcome-badge]
 
 ## About
 `metalsmith-react-templates` is a [metalsmith](http://www.metalsmith.io/) plugin to render files using [React](https://facebook.github.io/react/) based templates.
@@ -14,8 +16,8 @@ A templating plugin using React.js templates
 Using [npm](https://www.npmjs.com/):
 
     $ npm install --save metalsmith-react-templates
-   
-If you're using an older version of React, you may need to install an older version of this package. 
+
+If you're using an older version of React, you may need to install an older version of this package.
 
 | React Version | Package Version
 -------|:-------|:-------
@@ -28,7 +30,7 @@ If you're upgrading, you may want to check out the [Upgrade Notes](/docs/UPGRADE
 
 ## CLI Usage
 
-Install the node modules and then add the `metalsmith-react-templates` key to your `metalsmith.json` plugins. 
+Install the node modules and then add the `metalsmith-react-templates` key to your `metalsmith.json` plugins.
 
 ```json
 {
@@ -116,8 +118,14 @@ MIT [`License`](/LICENSE) © Gerald Yeo
 [build-badge]: https://img.shields.io/travis/yeojz/metalsmith-react-templates.svg?style=flat-square
 [build-link]: https://travis-ci.org/yeojz/metalsmith-react-templates
 
+[coveralls-badge]: https://img.shields.io/coveralls/yeojz/metalsmith-react-templates?style=flat-square
+[coveralls-link]: https://coveralls.io/github/yeojz/metalsmith-react-templates
+
 [code-climate-badge]: https://img.shields.io/codeclimate/github/yeojz/metalsmith-react-templates.svg?style=flat-square
 [code-climate-link]: https://codeclimate.com/github/yeojz/metalsmith-react-templates
 
 [npm-downloads-badge]: https://img.shields.io/npm/dt/metalsmith-react-templates.svg?style=flat-square
 [npm-downloads-link]: https://www.npmjs.com/package/metalsmith-react-templates
+
+[pr-welcome-badge]: https://img.shields.io/badge/PRs-Welcome-ff69b4.svg?style=flat-square
+[pr-welcome-link]: https://github.com/yeojz/metalsmith-react-templates/blob/master/CONTRIBUTING.md
