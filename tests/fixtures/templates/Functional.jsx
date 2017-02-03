@@ -1,15 +1,14 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
-export default ({
-    contents
-}) => {
-    return (
-        <article>
-            <h1>Default</h1>
-            <section>{contents}</section>
-        </article>
-    );
-};
+const Functional = (props) => (
+  <article>
+    <h1>Default</h1>
+    <section>{props.contents}</section>
+  </article>
+);
 
+Functional.propTypes = {
+  contents: PropTypes.any
+}
 
-
+export default Functional;

@@ -1,24 +1,22 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 class VariableTemplate extends React.Component {
-
-    static propTypes = {
-        contents: React.PropTypes.any,
-        misc: React.PropTypes.any,
-        title: React.PropTypes.any
-    };
-
-    render() {
-        return (
-            <article>
-                <h1>Variable</h1>
-                <section>{this.props.title}</section>
-                <section>{this.props.misc}</section>
-                <section>{this.props.contents}</section>
-            </article>
-        );
-    }
+  render() {
+    return (
+      <article>
+        <h1>Variable</h1>
+        <section>{this.props.title}</section>
+        <section>{this.props.misc}</section>
+        <section>{this.props.contents}</section>
+      </article>
+    );
+  }
 }
 
+VariableTemplate.propTypes = {
+  contents: PropTypes.any,
+  misc: PropTypes.any,
+  title: PropTypes.any
+};
 
 export default VariableTemplate;

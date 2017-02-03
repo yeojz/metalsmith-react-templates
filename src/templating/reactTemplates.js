@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import get from 'lodash/get';
+import constants from '../constants';
 
-const reactTemplates = (syntheticFile) => {
-  const Component = syntheticFile.template;
-  const props = get(syntheticFile, 'props', {});
-  const isStatic = get(syntheticFile, 'options.isStatic', true);
+const reactTemplates = (Component, props = {}, options = {}) => {
+  if (!Component) {
+    throw new Error(constants.INVALID_COMPONENT);
+  }
 
-  if (isStatic){
+  if (options.isStatic){
       return ReactDOMServer.renderToStaticMarkup(<Component {...props} />);
   }
 

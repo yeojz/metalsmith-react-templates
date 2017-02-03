@@ -1,14 +1,16 @@
 machine:
   node:
-    version: 5.5.0
-dependencies:
-  post:
-    - npm install -g babel-cli
+    version: "6"
+general:
+  branches:
+    ignore:
+      - gh-pages
 test:
+  pre:
+    - npm run clean
   override:
-    - nvm use 4 && npm run test -- --reporter mocha-junit-reporter
-    - nvm use 5 && npm run test -- --reporter mocha-junit-reporter
-    - nvm use 6 && npm run test -- --reporter mocha-junit-reporter
+    - npm run test && npm run coveralls
+    - npm run lint
 deployment:
   release:
     tag: /^v[0-9]+(\.[0-9]+)*$/
