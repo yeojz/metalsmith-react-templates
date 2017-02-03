@@ -118,7 +118,7 @@ MIT [`License`](/LICENSE) © Gerald Yeo
 [build-badge]: https://img.shields.io/circleci/project/github/yeojz/metalsmith-react-templates.svg?style=flat-square
 [build-link]: https://circleci.com/gh/yeojz/metalsmith-react-templates
 
-[coveralls-badge]: https://img.shields.io/coveralls/yeojz/metalsmith-react-templates?style=flat-square
+[coveralls-badge]: https://img.shields.io/coveralls/yeojz/metalsmith-react-templates.svg?style=flat-square
 [coveralls-link]: https://coveralls.io/github/yeojz/metalsmith-react-templates
 
 [code-climate-badge]: https://img.shields.io/codeclimate/github/yeojz/metalsmith-react-templates.svg?style=flat-square
