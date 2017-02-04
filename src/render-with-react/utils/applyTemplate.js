@@ -2,7 +2,7 @@ import debug from '../debug';
 
 const getRenderer = (options) => {
   if (options.renderer === 'react') {
-    return require('../templating/reactTemplates').default;
+    return require('../strategy/reactTemplates').default;
   }
 };
 

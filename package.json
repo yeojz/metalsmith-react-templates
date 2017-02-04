@@ -10,8 +10,8 @@
     "coverage": "cross-env NODE_ENV=test nyc report --reporter=lcov",
     "coveralls": "cross-env NODE_ENV=test nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint --ext js src tests",
-    "test": "cross-env NODE_ENV=test nyc --reporter=text-summary mocha 'tests/**/*.spec.@(js|jsx)'",
-    "test:watch": "npm run test -- --watch"
+    "test": "NODE_PATH=./ cross-env NODE_ENV=test nyc --reporter=text-summary mocha 'tests/**/*.spec.@(js|jsx)'",
+    "test:watch": "NODE_PATH=./ npm run test -- --watch"
   },
   "repository": {
     "type": "git",

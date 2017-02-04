@@ -5,23 +5,13 @@ import multimatch from 'multimatch';
 
 import registerExtensionWithTransformer from './utils/registerExtensionWithTransformer';
 import registerExtensionToIgnore  from './utils/registerExtensionToIgnore';
-import fileProcessor from './fileProcessor';
+import renderWithReact, {renderOptions} from './render-with-react';
 
 const defaultOptions = {
-  baseFile: null,
-  baseFileDirectory: null,
-  defaultTemplate: 'Default.jsx',
-  directory: 'templates',
-  extension: '.html',
-  isStatic: true,
-  noConflict: true,
+  ...renderOptions,
   pattern: '**/*',
-  preserve: false,
-  propsKey: null,
-  renderer: 'react',
   requireIgnoreExt: [],
   requireTemplateExt: ['.jsx'],
-  templateTag: null,
   tooling: {}
 }
 
@@ -37,7 +27,7 @@ const registerExtensions = (options) => {
 
 const reactTemplateProcessor = (options) => (files, metalsmith, done) => {
   const matchedFiles = multimatch(Object.keys(files), options.pattern);
-  const processor = fileProcessor(files, metalsmith, options);
+  const processor = renderWithReact(files, metalsmith, options);
   each(matchedFiles, processor, done);
 };
 

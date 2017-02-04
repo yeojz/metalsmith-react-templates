@@ -1,15 +1,15 @@
 import fs from 'fs';
 import get from 'lodash/get';
-import naiveTemplates from '../templating/naiveTemplates';
 import debug from '../debug';
+import naiveTemplates from '../strategy/naiveTemplates';
 
 const getDirectory = (syntheticFile) => (
   get(syntheticFile, 'options.baseFileDirectory')
   || get(syntheticFile, 'options.directory')
 );
 
-const getBaseFileContent = (baseFile, directory, metalsmith) => {
-  const baseFilePath = metalsmith.path(directory, baseFile);
+const getBaseFileContent = (baseFile, directory, context) => {
+  const baseFilePath = context.path(directory, baseFile);
   return fs.readFileSync(baseFilePath, 'utf8');
 }
 
@@ -25,7 +25,7 @@ const applyBaseFile = (syntheticFile) => {
   const baseFileContent = getBaseFileContent(
     baseFile,
     directory,
-    syntheticFile.metalsmith
+    syntheticFile.context
   );
 
   const contents = naiveTemplates(

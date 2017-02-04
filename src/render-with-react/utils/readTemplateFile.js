@@ -13,7 +13,7 @@ const getTemplate = (syntheticFile, templateKey) => (
 
 const getTemplatePath = (syntheticFile, template) => {
   const directory = get(syntheticFile, 'options.directory', '');
-  return syntheticFile.metalsmith.path(directory, template);
+  return syntheticFile.context.path(directory, template);
 };
 
 const readTemplateFile = (syntheticFile) => {

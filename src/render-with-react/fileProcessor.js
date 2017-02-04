@@ -15,12 +15,12 @@ const noTemplate = (files, data, name) => {
   addFileToCollection(files)({data, name});
 }
 
-const fileProcessor = (files, metalsmith, options) => (filename, callback) => {
+const fileProcessor = (files, context, options) => (filename, callback) => {
   const data = get(files, filename, {});
 
   Promise
     .resolve({
-      metalsmith,
+      context,
       options,
       data,
       name: filename

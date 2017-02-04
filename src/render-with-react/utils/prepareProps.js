@@ -30,7 +30,7 @@ const getProps = (propsKey, metadata, syntheticFile) => {
 const prepareProps = (syntheticFile) => {
   debug(`[${syntheticFile.name}] Preparing props`);
 
-  const metadata = syntheticFile.metalsmith.metadata();
+  const metadata = syntheticFile.context.metadata();
   const propsKey = get(syntheticFile, 'options.propsKey');
 
   syntheticFile.props = getProps(propsKey, metadata, syntheticFile);

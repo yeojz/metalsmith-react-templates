@@ -1,9 +1,9 @@
 import {expect} from 'chai';
 import Metalsmith from 'metalsmith';
 
-import * as helpers from '../helpers';
-import outputs from '../fixtures/outputs';
-import index from '../../src/index';
+import * as helpers from 'tests/helpers';
+import outputs from 'tests/fixtures/outputs';
+import index from 'src/index';
 
 const {fixtures, getContent, trimContent} = helpers;
 
