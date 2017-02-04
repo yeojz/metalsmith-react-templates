@@ -5,17 +5,15 @@ import omit from 'lodash/omit';
 const createPseudoFile = (config = {}) => ({
   ...config,
   contents: new Buffer(get(config, 'contents', ''))
-})
+});
 
-const createRoutes = (routes = []) => {
-  return function routeProcessor(files, metalsmith, done) {
-    forEach(routes, (route) => {
-      const config = omit(route, ['path']);
-      files[route.path] = createPseudoFile(config)
-    });
+const createRoutes = (routes = []) => (files, metalsmith, done) => {
+  forEach(routes, (route) => {
+    const config = omit(route, ['path']);
+    files[route.path] = createPseudoFile(config)
+  });
 
-    done();
-  }
-}
+  done();
+};
 
 export default createRoutes;
