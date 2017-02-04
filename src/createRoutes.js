@@ -1,9 +1,10 @@
 import forEach from 'lodash/forEach';
+import get from 'lodash/get';
 import omit from 'lodash/omit';
 
 const createPseudoFile = (config = {}) => ({
   ...config,
-  contents: new Buffer('')
+  contents: new Buffer(get(config, 'contents', ''))
 })
 
 const createRoutes = (routes = []) => {
