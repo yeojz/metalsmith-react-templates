@@ -5,7 +5,8 @@ import multimatch from 'multimatch';
 
 import registerExtensionWithTransformer from './utils/registerExtensionWithTransformer';
 import registerExtensionToIgnore  from './utils/registerExtensionToIgnore';
-import renderWithReact, {renderOptions} from './render-with-react';
+import renderWithReact from './render-with-react';
+import renderOptions from './render-with-react/options';
 
 const defaultOptions = {
   ...renderOptions,
@@ -28,6 +29,7 @@ const registerExtensions = (options) => {
 const reactTemplateProcessor = (options) => (files, metalsmith, done) => {
   const matchedFiles = multimatch(Object.keys(files), options.pattern);
   const processor = renderWithReact(files, metalsmith, options);
+
   each(matchedFiles, processor, done);
 };
 
