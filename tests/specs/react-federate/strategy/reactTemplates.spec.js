@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import path from 'path';
-import reactTemplates from 'src/render-with-react/strategy/reactTemplates';
+import reactTemplates from 'src/react-federate/strategy/reactTemplates';
 
 const file = path.join(__dirname, '..', '..', '..', 'fixtures', 'templates', 'Default.jsx');
 
