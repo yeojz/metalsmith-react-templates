@@ -2,11 +2,10 @@ import each from 'async/each';
 import defaults from 'lodash/defaults';
 import forEach from 'lodash/forEach';
 import multimatch from 'multimatch';
-
-import registerExtensionWithTransformer from './utils/registerExtensionWithTransformer';
-import registerExtensionToIgnore  from './utils/registerExtensionToIgnore';
-import renderWithReact from './react-federate';
-import renderOptions from './react-federate/options';
+import registerExtensionWithTransformer from '../utils/registerExtensionWithTransformer';
+import registerExtensionToIgnore  from '../utils/registerExtensionToIgnore';
+import processor from './processor';
+import renderOptions from './options';
 
 const defaultOptions = {
   ...renderOptions,
@@ -28,7 +27,7 @@ const registerExtensions = (options) => {
 
 const reactTemplateProcessor = (options) => (files, metalsmith, done) => {
   const matchedFiles = multimatch(Object.keys(files), options.pattern);
-  const render = renderWithReact(files, metalsmith, options);
+  const render = processor(files, metalsmith, options);
 
   each(matchedFiles, render, done);
 };

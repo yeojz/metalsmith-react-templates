@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import naiveTemplates from 'src/render-with-react/strategy/naiveTemplates';
+import naiveTemplates from 'src/strategy/naiveTemplates';
 
 describe('naiveTemplates', () => {
   it('should replace value for predefined tag pattern', () => {

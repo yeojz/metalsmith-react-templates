@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import Metalsmith from 'metalsmith';
 
-import * as helpers from 'tests/helpers';
+import helpers from 'tests/helpers';
 import outputs from 'tests/fixtures/outputs';
 import index from 'src/index';
 

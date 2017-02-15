@@ -1,15 +1,15 @@
 import get from 'lodash/get';
 
-import constants from './constants';
-import debug from './debug';
-import addFileToCollection from './utils/addFileToCollection';
-import applyBaseFile from './utils/applyBaseFile';
-import applyFileRenames from './utils/applyFileRenames';
-import applyTemplate from './utils/applyTemplate';
-import prepareProps from './utils/prepareProps';
-import preserveRawContents from './utils/preserveRawContents';
-import readTemplateFile from './utils/readTemplateFile';
-import removeFileFromCollection from './utils/removeFileFromCollection';
+import constants from '../constants';
+import debug from '../debug';
+import addFileToCollection from '../utils/addFileToCollection';
+import applyBaseFile from '../utils/applyBaseFile';
+import applyFileRenames from '../utils/applyFileRenames';
+import applyTemplate from '../utils/applyTemplate';
+import prepareProps from '../utils/prepareProps';
+import preserveRawContents from '../utils/preserveRawContents';
+import readTemplateFile from '../utils/readTemplateFile';
+import removeFileFromCollection from '../utils/removeFileFromCollection';
 import renderOptions from './options';
 
 const noTemplate = (files, data, name) => {

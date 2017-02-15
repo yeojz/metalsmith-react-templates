@@ -11,5 +11,6 @@ tests
 .travis.yml
 .eslintignore
 .eslintrc
+.eslintrc.json
 circle.yml
 npm.sh
