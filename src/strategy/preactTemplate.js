@@ -5,7 +5,7 @@ import Preact from 'preact';
 import renderToString from 'preact-render-to-string';
 import constants from '../constants';
 
-const reactTemplates = (Component, props = {}) => {
+function preactTemplates(props = {}, Component = null) {
   if (!Component) {
     throw new Error(constants.INVALID_COMPONENT);
   }
@@ -13,4 +13,4 @@ const reactTemplates = (Component, props = {}) => {
   return renderToString(<Component {...props} />);
 }
 
-export default reactTemplates;
+export default preactTemplates;

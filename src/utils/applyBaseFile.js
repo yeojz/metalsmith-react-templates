@@ -28,14 +28,16 @@ const applyBaseFile = (syntheticFile) => {
     syntheticFile.context
   );
 
-  const contents = naiveTemplates(
+  const renderer = naiveTemplates(
     baseFileContent,
     syntheticFile.data,
     get(syntheticFile, 'options.templateTag')
   );
 
-  syntheticFile.data.contents = new Buffer(contents);
-  return syntheticFile;
+  return renderer.then((contents) => {
+    syntheticFile.data.contents = new Buffer(contents);
+    return syntheticFile;
+  })
 };
 
 export default applyBaseFile;

@@ -1,19 +1,31 @@
 import {expect} from 'chai';
 import naiveTemplates from 'src/strategy/naiveTemplates';
 
-describe('naiveTemplates', () => {
-  it('should replace value for predefined tag pattern', () => {
-    const result = naiveTemplates('{{tag}}', {tag: 'value'});
-    expect(result).to.eql('value');
+describe('naiveTemplates', function () {
+  it('should replace value for predefined tag pattern', function (done) {
+    naiveTemplates('{{tag}}', {tag: 'value'})
+      .then((result) => {
+        expect(result).to.eql('value');
+        done();
+      })
+      .catch((err) => done(err));
   });
 
-  it('should not have any changes to content', () => {
-    const result = naiveTemplates('{{random}}', {tag: 'value'});
-    expect(result).to.eql('{{random}}');
+  it('should not have any changes to content', function (done) {
+    naiveTemplates('{{random}}', {tag: 'value'})
+      .then((result) => {
+        expect(result).to.eql('{{random}}');
+        done();
+      })
+      .catch((err) => done(err));
   });
 
-  it('should replace value for custom tag patterns', () => {
-    const result= naiveTemplates('<!--tag-->', {tag: 'value'}, (v) => new RegExp(`<!--${v}-->`, 'g'));
-    expect(result).to.eql('value');
+  it('should replace value for custom tag patterns', function (done) {
+    naiveTemplates('<!--tag-->', {tag: 'value'}, (v) => new RegExp(`<!--${v}-->`, 'g'))
+      .then((result) => {
+        expect(result).to.eql('value');
+        done();
+      })
+      .catch((err) => done(err));
   });
 });

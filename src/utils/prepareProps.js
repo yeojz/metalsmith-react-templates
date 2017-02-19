@@ -5,6 +5,7 @@ import isString from 'lodash/isString';
 import pick from 'lodash/pick';
 
 import debug from '../debug';
+import getDefaultProps from './getDefaultProps';
 
 const getProps = (propsKey, metadata, syntheticFile) => {
   if (isFunction(propsKey)) {
@@ -19,15 +20,10 @@ const getProps = (propsKey, metadata, syntheticFile) => {
     return pick(syntheticFile.data, propsKey);
   }
 
-  return {
-    ...syntheticFile.data,
-    metadata,
-    filename: syntheticFile.name,
-    contents: syntheticFile.data.contents.toString()
-  };
+  return getDefaultProps(propsKey, metadata, syntheticFile);
 }
 
-const prepareProps = (syntheticFile) => {
+function prepareProps(syntheticFile) {
   debug(`[${syntheticFile.name}] Preparing props`);
 
   const metadata = syntheticFile.context.metadata();
@@ -35,6 +31,6 @@ const prepareProps = (syntheticFile) => {
 
   syntheticFile.props = getProps(propsKey, metadata, syntheticFile);
   return syntheticFile;
-};
+}
 
 export default prepareProps;

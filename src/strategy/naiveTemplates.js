@@ -21,7 +21,8 @@ function naiveTemplates(str, data, pattern) {
     pattern = DEFAULT_PATTERN;
   }
 
-  return findAndReplaceKeyPattern(str, data, pattern);
+  const value = findAndReplaceKeyPattern(str, data, pattern);
+  return Promise.resolve(value);
 }
 
 export default naiveTemplates;

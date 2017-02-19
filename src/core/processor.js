@@ -8,7 +8,6 @@ import applyFileRenames from '../utils/applyFileRenames';
 import applyTemplate from '../utils/applyTemplate';
 import prepareProps from '../utils/prepareProps';
 import preserveRawContents from '../utils/preserveRawContents';
-import readTemplateFile from '../utils/readTemplateFile';
 import removeFileFromCollection from '../utils/removeFileFromCollection';
 import defaultOptions from './options';
 
@@ -44,7 +43,6 @@ export default (files, context, fileOptions) => {
       .then(removeFileFromCollection(files))
       .then(preserveRawContents)
       .then(prepareProps)
-      .then(readTemplateFile)
       .then(applyTemplate)
       .then(applyBaseFile)
       .then(applyFileRenames)

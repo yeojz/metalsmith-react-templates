@@ -1,7 +1,8 @@
 import debug from '../debug';
 import isFunction from 'lodash/isFunction';
+import readTemplateFile from './readTemplateFile';
 
-const getRenderer = (options) => {
+const getStrategy = (options) => {
   if (isFunction(options.strategy)) {
     return options.strategy;
   }
@@ -11,16 +12,18 @@ const getRenderer = (options) => {
 
 const applyTemplate = (syntheticFile) => {
   debug(`[${syntheticFile.name}] Applying template`);
-  const renderer = getRenderer(syntheticFile.options);
+  const strategy = getStrategy(syntheticFile.options);
 
-  const contents = renderer(
-    syntheticFile.template,
+  const renderer = strategy(
     syntheticFile.props,
-    syntheticFile.options
+    syntheticFile.options,
+    readTemplateFile(syntheticFile)
   );
 
-  syntheticFile.data.contents = new Buffer(contents);
-  return syntheticFile;
+  return renderer.then((contents) => {
+    syntheticFile.data.contents = new Buffer(contents);
+    return syntheticFile;
+  });
 };
 
 export default applyTemplate;

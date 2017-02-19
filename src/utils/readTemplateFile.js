@@ -16,7 +16,7 @@ const getTemplatePath = (syntheticFile, template) => {
   return syntheticFile.context.path(directory, template);
 };
 
-const readTemplateFile = (syntheticFile) => {
+const readTemplateFile = (syntheticFile) => () => {
   debug(`[${syntheticFile.name}] Reading template file`);
   const templateKey = getTemplateKey(syntheticFile);
   const template = getTemplate(syntheticFile, templateKey);
@@ -26,9 +26,7 @@ const readTemplateFile = (syntheticFile) => {
   }
 
   const templatePath = getTemplatePath(syntheticFile, template);
-
-  syntheticFile.template = require(templatePath).default;
-  return syntheticFile;
+  return require(templatePath).default;
 };
 
 export default readTemplateFile;
