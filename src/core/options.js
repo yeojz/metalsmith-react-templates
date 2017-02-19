@@ -1,4 +1,4 @@
-export default {
+const processor = {
   baseFile: null,
   baseFileDirectory: null,
   defaultTemplate: 'Default.jsx',
@@ -10,4 +10,17 @@ export default {
   propsKey: null,
   renderer: 'react',
   templateTag: null
+}
+
+const plugin = {
+  ...processor,
+  pattern: '**/*',
+  requireIgnoreExt: [],
+  requireTemplateExt: ['.jsx'],
+  tooling: {}
+}
+
+export default {
+  plugin,
+  processor
 }

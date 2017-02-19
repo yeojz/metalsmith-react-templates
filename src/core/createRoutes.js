@@ -9,7 +9,10 @@ const createPseudoFile = (config = {}) => ({
 
 const createRoutes = (routes = []) => (files, metalsmith, done) => {
   forEach(routes, (route) => {
-    const config = omit(route, ['path']);
+    const config = omit(route, [
+      'path'
+    ]);
+
     files[route.path] = createPseudoFile(config)
   });
 

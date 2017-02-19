@@ -5,15 +5,7 @@ import multimatch from 'multimatch';
 import registerExtensionWithTransformer from '../utils/registerExtensionWithTransformer';
 import registerExtensionToIgnore  from '../utils/registerExtensionToIgnore';
 import processor from './processor';
-import renderOptions from './options';
-
-const defaultOptions = {
-  ...renderOptions,
-  pattern: '**/*',
-  requireIgnoreExt: [],
-  requireTemplateExt: ['.jsx'],
-  tooling: {}
-}
+import defaultOptions from './options';
 
 const registerExtensions = (options) => {
   forEach(options.requireTemplateExt, (ext) => {
@@ -33,7 +25,7 @@ const reactTemplateProcessor = (options) => (files, metalsmith, done) => {
 };
 
 export default (options = {}) => {
-  defaults(options, defaultOptions);
+  defaults(options, defaultOptions.plugin);
   registerExtensions(options);
 
   return reactTemplateProcessor(options);
