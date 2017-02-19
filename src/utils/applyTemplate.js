@@ -1,9 +1,12 @@
 import debug from '../debug';
+import isFunction from 'lodash/isFunction';
 
 const getRenderer = (options) => {
-  if (options.renderer === 'react') {
-    return require('../strategy/reactTemplates').default;
+  if (isFunction(options.strategy)) {
+    return options.strategy;
   }
+
+  return require('../strategy/reactTemplates').default;
 };
 
 const applyTemplate = (syntheticFile) => {

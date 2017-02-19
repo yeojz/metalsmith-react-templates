@@ -8,7 +8,7 @@ const processor = {
   noConflict: true,
   preserve: false,
   propsKey: null,
-  renderer: 'react',
+  strategy: 'react',
   templateTag: null
 }
 

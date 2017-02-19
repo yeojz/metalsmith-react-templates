@@ -21,7 +21,7 @@ If you're using an older version of React, you may need to install an older vers
 
 | React Version | Package Version
 -------|:-------|:-------
-15.x.x | 5.x.x
+15.x.x | > 5.x.x
 0.14.x | 3.x.x or 4.x.x
 0.13.x | 2.x.x
 0.12.x | 1.x.x
