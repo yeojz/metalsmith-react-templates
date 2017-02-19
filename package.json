@@ -59,19 +59,11 @@
     "async": "^2.0.1",
     "debug": "^2.2.0",
     "lodash": "^4.17.4",
-    "lodash.defaults": "^4.2.0",
-    "lodash.foreach": "^4.5.0",
-    "lodash.forown": "^4.4.0",
-    "lodash.get": "^4.4.2",
-    "lodash.pick": "^4.4.0",
-    "lodash.unset": "^4.5.2",
     "multimatch": "^2.1.0"
   },
   "peerDependencies": {
     "babel-core": "^6.18.2",
     "babel-preset-es2015": "^6.18.0",
-    "babel-preset-react": "^6.11.1",
-    "react": "^0.14.0 || ^15.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0"
+    "babel-preset-react": "^6.11.1"
   }
 }

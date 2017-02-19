@@ -15,7 +15,15 @@ A templating plugin using React.js templates
 
 Using [npm](https://www.npmjs.com/):
 
-    $ npm install --save metalsmith-react-templates
+```
+$ npm install --save metalsmith-react-templates
+```
+
+Install other dependencies:
+
+```
+$ npm install react react-dom
+```
 
 If you're using an older version of React, you may need to install an older version of this package.
 

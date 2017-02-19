@@ -1,4 +1,4 @@
-import forEach from 'lodash.forown';
+import forEach from 'lodash/forOwn';
 
 // default pattern: {{key}}
 const DEFAULT_PATTERN = (key) => (
