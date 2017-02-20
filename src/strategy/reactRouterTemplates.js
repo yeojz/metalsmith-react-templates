@@ -1,24 +1,16 @@
 import {match, RouterContext} from 'react-router';
 import reactTemplates from './reactTemplates';
+import pMatch from '../utils/pMatch';
 
-function matchWithPromise(config) {
-  return new Promise((resolve, reject) => {
-    match(config, (err, redirectLocation, renderProps) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-
-      resolve({redirectLocation, renderProps});
-    });
-  });
-}
+const routeMatch = pMatch(match);
 
 function reactRouterTemplates(props = {}, options = {}) {
-  return matchWithPromise({
-      location: props.location,
-      routes: options.routes,
-    })
+  const config = {
+    location: props.location,
+    routes: options.routes,
+  }
+
+  return routeMatch(config)
     .then((matched) => ({
       ...props.renderProps,
       ...matched.renderProps

@@ -18,7 +18,7 @@ function getMarkup(Component, props, isStatic) {
   return ReactDOMServer.renderToString(<Component {...props} />);
 }
 
-function reactTemplates(props = {}, options = {}, templateReader = null) {
+function react(props = {}, options = {}, templateReader = null) {
   const Component = getComponent(templateReader);
 
   if (!Component) {
@@ -29,4 +29,4 @@ function reactTemplates(props = {}, options = {}, templateReader = null) {
   return Promise.resolve(markup);
 }
 
-export default reactTemplates;
+export default react;

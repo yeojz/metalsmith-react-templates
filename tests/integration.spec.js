@@ -7,11 +7,11 @@ import index from 'src/index';
 
 const {fixtures, getContent, trimContent} = helpers;
 
-describe('index', () => {
+describe('integration - react', function () {
   let files;
   let metalsmith;
 
-  before((done) => {
+  before(function (done) {
     metalsmith = new Metalsmith(fixtures);
     metalsmith.read((err, result) => {
       if (err) throw err;
@@ -20,7 +20,7 @@ describe('index', () => {
     });
   });
 
-  it('should work with default options', (done) => {
+  it('should work with default options', function (done) {
     const plugin = index();
 
     const test = {
@@ -33,7 +33,7 @@ describe('index', () => {
     });
   });
 
-  it('should keep original file extension', (done) => {
+  it('should keep original file extension', function (done) {
     const plugin = index({extension: null});
 
     const test = {
@@ -46,7 +46,7 @@ describe('index', () => {
     });
   });
 
-  it('should rename file extension', (done) => {
+  it('should rename file extension', function (done) {
     const plugin = index({extension: '.htm'});
 
     const test = {
@@ -59,7 +59,7 @@ describe('index', () => {
     });
   });
 
-  it('should keep subdirectory structure', (done) => {
+  it('should keep subdirectory structure', function (done) {
     const plugin = index({extension: '.html'});
 
     const test = {
@@ -72,7 +72,7 @@ describe('index', () => {
     });
   });
 
-  it('should use a base file', (done) => {
+  it('should use a base file', function (done) {
     const plugin = index({baseFile: 'base.html'});
 
     const test = {
@@ -85,7 +85,7 @@ describe('index', () => {
     });
   });
 
-  it('should use a different base file directory', (done) => {
+  it('should use a different base file directory', function (done) {
     const plugin = index({
       baseFile: 'base-alt.html',
       baseFileDirectory: 'others'
@@ -101,7 +101,7 @@ describe('index', () => {
     });
   });
 
-  it('should throw an error when template is not found', (done) => {
+  it('should throw an error when template is not found', function (done) {
     const plugin = index();
 
     const test = {
@@ -117,7 +117,7 @@ describe('index', () => {
     });
   });
 
-  it('should not process file if no template/rtemplate and no defaultTemplate', (done) => {
+  it('should not process file if no template/rtemplate and no defaultTemplate', function (done) {
     const plugin = index({defaultTemplate: null});
 
     const test = {
@@ -132,7 +132,7 @@ describe('index', () => {
     });
   });
 
-  it('should be able to access yaml front matter parameters as variables in template', (done) => {
+  it('should be able to access yaml front matter parameters as variables in template', function (done) {
     const plugin = index();
 
     const test = {
@@ -148,7 +148,7 @@ describe('index', () => {
     });
   });
 
-  it('should be able to access yaml front matter parameters as variables in baseFile', (done) => {
+  it('should be able to access yaml front matter parameters as variables in baseFile', function (done) {
     const plugin = index();
 
     const test = {
@@ -163,7 +163,7 @@ describe('index', () => {
     });
   });
 
-  it('should use template instead of the rtemplate parameter in from the yaml front matter ', (done) => {
+  it('should use template instead of the rtemplate parameter in from the yaml front matter ', function (done) {
     const plugin = index({noConflict: false});
 
     const test = {
@@ -176,7 +176,7 @@ describe('index', () => {
     });
   });
 
-  it('should render react-ids if isStatic is set to false', (done) => {
+  it('should render react-ids if isStatic is set to false', function (done) {
     const plugin = index({isStatic: false});
 
     const test = {
@@ -194,7 +194,7 @@ describe('index', () => {
     });
   });
 
-  it('should render functional templates (react 0.14+)', (done) => {
+  it('should render functional templates (react 0.14+)', function (done) {
     const plugin = index();
 
     const test = {
@@ -210,7 +210,7 @@ describe('index', () => {
     });
   });
 
-  it('should use props defined by propsKey', (done) => {
+  it('should use props defined by propsKey', function (done) {
     const plugin = index({
       propsKey: 'customKey'
     });

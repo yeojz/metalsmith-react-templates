@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import isFunction from 'lodash/isFunction';
 
 import constants from '../constants';
 import debug from '../debug';
@@ -16,8 +17,9 @@ const noTemplate = (files, data, name) => {
 }
 
 const callbackOrThrow = (err, done) => {
-  if (done) {
-    done(err);
+  if (isFunction(done)) {
+    const message = get(err, 'message', err);
+    done(message);
     return;
   }
   throw new Error(err);
