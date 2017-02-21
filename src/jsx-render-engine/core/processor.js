@@ -10,47 +10,54 @@ import prepareProps from '../utils/prepareProps';
 import preserveRawContents from '../utils/preserveRawContents';
 import removeFileFromCollection from '../utils/removeFileFromCollection';
 
-const noTemplate = (files, data, name) => {
-  addFileToCollection(files)({data, name});
+const noTemplate = (files, data, name, debug) => {
+  addFileToCollection(files)({
+    data,
+    name,
+    options: {debug}
+  });
 }
 
 const callbackOrThrow = (err, done) => {
   if (isFunction(done)) {
-    const message = get(err, 'message', err);
-    done(message);
+    done(err.message);
     return;
   }
   throw new Error(err);
 }
 
-export default (files, context, options) => (filename, done) => {
-  const data = get(files, filename, {});
+function processor(files, context, options) {
+  return (filename, done) => {
+    const data = get(files, filename, {});
 
-  if (!data) {
-    callbackOrThrow(`Cannot find ${filename} in the file object`, done);
-    return;
-  }
+    if (!data) {
+      callbackOrThrow(`Cannot find ${filename} in the file object`, done);
+      return;
+    }
 
-  Promise.resolve({
-      context,
-      options,
-      data,
-      name: filename
-    })
-    .then(removeFileFromCollection(files))
-    .then(preserveRawContents)
-    .then(prepareProps)
-    .then(applyTemplate)
-    .then(applyBaseFile)
-    .then(applyFileRenames)
-    .then(addFileToCollection(files))
-    .then(() => done())
-    .catch((err) => {
-      if (err.message === constants.TEMPLATE_NOT_DEFINED) {
-        options.debug(`[${filename}] Template not defined`);
-        noTemplate(files, data, filename);
-      }
+    Promise.resolve({
+        context,
+        options,
+        data,
+        name: filename
+      })
+      .then(removeFileFromCollection(files))
+      .then(preserveRawContents)
+      .then(prepareProps)
+      .then(applyTemplate)
+      .then(applyBaseFile)
+      .then(applyFileRenames)
+      .then(addFileToCollection(files))
+      .then(() => done())
+      .catch((err) => {
+        if (err.message === constants.TEMPLATE_NOT_DEFINED) {
+          options.debug(`[${filename}] Template not defined`);
+          noTemplate(files, data, filename, options.debug);
+        }
 
-      callbackOrThrow(err, done);
-    });
+        callbackOrThrow(err, done);
+      });
+  };
 }
+
+export default processor;

@@ -15,7 +15,7 @@ const replaceFileExtension = (filename, extension) => {
   return getFilePath(directory, basename, extension);
 };
 
-const applyFileRenames = (syntheticFile) => {
+function applyFileRenames(syntheticFile) {
   const extension = get(syntheticFile, 'options.extension');
   if (!extension) {
     return syntheticFile;
@@ -27,6 +27,6 @@ const applyFileRenames = (syntheticFile) => {
   syntheticFile.name = newName;
 
   return syntheticFile;
-};
+}
 
 export default applyFileRenames;

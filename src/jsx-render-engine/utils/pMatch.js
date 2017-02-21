@@ -1,13 +1,11 @@
-function defaultMatchHandler(resolve, reject) {
-  return (err, redirectLocation, renderProps) => {
-    if (err) {
-      reject(err);
-      return;
-    }
+const defaultMatchHandler = (resolve, reject) => (err, redirectLocation, renderProps) => {
+  if (err) {
+    reject(err);
+    return;
+  }
 
-    resolve({redirectLocation, renderProps});
-  };
-}
+  resolve({redirectLocation, renderProps});
+};
 
 function pMatch(match, handler = defaultMatchHandler) {
   return (config) => (

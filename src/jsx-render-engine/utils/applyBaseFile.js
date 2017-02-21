@@ -12,7 +12,7 @@ const getBaseFileContent = (baseFile, directory, context) => {
   return fs.readFileSync(baseFilePath, 'utf8');
 }
 
-const applyBaseFile = (syntheticFile) => {
+function applyBaseFile(syntheticFile) {
   const baseFile = get(syntheticFile, 'data.baseFile') || get(syntheticFile, 'options.baseFile');
 
   if (!baseFile) {
@@ -37,6 +37,6 @@ const applyBaseFile = (syntheticFile) => {
     syntheticFile.data.contents = new Buffer(contents);
     return syntheticFile;
   })
-};
+}
 
 export default applyBaseFile;

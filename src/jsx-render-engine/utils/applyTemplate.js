@@ -18,7 +18,7 @@ const isRendererValid = (renderer) => (
   isFunction(renderer.then)
 );
 
-const applyTemplate = (syntheticFile) => {
+function applyTemplate(syntheticFile) {
   debug(`[${syntheticFile.name}] Applying template`);
   const strategy = getStrategy(syntheticFile.options);
 
@@ -29,13 +29,13 @@ const applyTemplate = (syntheticFile) => {
   );
 
   if (!isRendererValid(renderer)) {
-    return Promise.reject(constants.INVALID_RENDERER);
+    return Promise.reject(new Error(constants.INVALID_RENDERER));
   }
 
   return renderer.then((contents) => {
     syntheticFile.data.contents = new Buffer(contents);
     return syntheticFile;
   });
-};
+}
 
 export default applyTemplate;

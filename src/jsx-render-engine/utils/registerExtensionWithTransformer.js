@@ -5,10 +5,10 @@ const babelify = (tooling = {}) => (module, filename) => {
   return module._compile(compiled, filename);
 };
 
-const registerExtensionWithTransformer = (ext, tooling) => {
+function registerExtensionWithTransformer(ext, tooling) {
   if (require.extensions && !require.extensions[ext]) {
     require.extensions[ext] = babelify(tooling);
   }
-};
+}
 
 export default registerExtensionWithTransformer;
