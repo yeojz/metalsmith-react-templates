@@ -6,6 +6,7 @@ import registerExtensionWithTransformer from '../utils/registerExtensionWithTran
 import registerExtensionToIgnore  from '../utils/registerExtensionToIgnore';
 import processor from './processor';
 import defaultOptions from './options';
+import backwardCompat from './backwardCompat'
 
 const registerExtensions = (options) => {
   forEach(options.requireTemplateExt, (ext) => {
@@ -25,6 +26,9 @@ const reactTemplateProcessor = (options) => (files, metalsmith, done) => {
 };
 
 export default (options = {}) => {
+
+  backwardCompat.options(options);
+
   defaults(options, defaultOptions.plugin);
   registerExtensions(options);
 

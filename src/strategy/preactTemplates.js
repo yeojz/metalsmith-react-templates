@@ -1,6 +1,4 @@
 /** @jsx h */
-/*eslint-disable react/react-in-jsx-scope */
-/*eslint-disable no-unused-vars */
 import {h} from 'preact';
 import isFunction from 'lodash/isFunction';
 

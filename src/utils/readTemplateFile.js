@@ -3,7 +3,7 @@ import constants from '../constants';
 import debug from '../debug';
 
 const getTemplateKey = (syntheticFile) => (
-  syntheticFile.options.noConflict ? 'rtemplate' : 'template'
+  syntheticFile.options.templateKey
 );
 
 const getTemplate = (syntheticFile, templateKey) => (

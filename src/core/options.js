@@ -5,10 +5,10 @@ const processor = {
   directory: 'templates',
   extension: '.html',
   isStatic: true,
-  noConflict: true,
   preserve: false,
   propsKey: null,
-  strategy: 'react',
+  strategy: null,
+  templateKey: 'rtemplate',
   templateTag: null
 }
 

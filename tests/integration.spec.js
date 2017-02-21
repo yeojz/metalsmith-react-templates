@@ -7,7 +7,7 @@ import index from 'src/index';
 
 const {fixtures, getContent, trimContent} = helpers;
 
-describe('integration - react', function () {
+describe('integration', function () {
   let files;
   let metalsmith;
 
@@ -164,7 +164,7 @@ describe('integration - react', function () {
   });
 
   it('should use template instead of the rtemplate parameter in from the yaml front matter ', function (done) {
-    const plugin = index({noConflict: false});
+    const plugin = index({templateKey: 'template'});
 
     const test = {
       'template.md': {...files['template.md']}

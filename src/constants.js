@@ -1,5 +1,5 @@
 export default {
-  INVALID_COMPONENT: 'invalid component',
-  NO_STRATEGY_FOUND: 'no rendering strategy found in options',
-  TEMPLATE_NOT_DEFINED: 'template not defined'
+  INVALID_COMPONENT: 'Invalid component',
+  INVALID_RENDERER: 'Invalid renderer returned from strategy. Renderer should return a promise.',
+  TEMPLATE_NOT_DEFINED: 'Template not defined'
 }
