@@ -1,6 +1,5 @@
 import fs from 'fs';
 import get from 'lodash/get';
-import debug from '../debug';
 import naiveTemplates from '../strategy/naiveTemplates';
 
 const getDirectory = (syntheticFile) => (
@@ -20,7 +19,7 @@ const applyBaseFile = (syntheticFile) => {
     return syntheticFile;
   }
 
-  debug(`[${syntheticFile.name}] Applying base file`);
+  syntheticFile.options.debug(`[${syntheticFile.name}] Applying base file`);
   const directory = getDirectory(syntheticFile);
   const baseFileContent = getBaseFileContent(
     baseFile,

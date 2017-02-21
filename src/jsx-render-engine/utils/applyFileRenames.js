@@ -1,6 +1,5 @@
 import get from 'lodash/get';
 import path from 'path';
-import debug from '../debug';
 
 const getFilePath = (directory, basename, extension) => {
     if (directory === '.') {
@@ -24,7 +23,7 @@ const applyFileRenames = (syntheticFile) => {
 
   const newName = replaceFileExtension(syntheticFile.name, extension);
 
-  debug(`[${syntheticFile.name}] Renaming file to [${newName}]`);
+  syntheticFile.options.debug(`[${syntheticFile.name}] Renaming file to [${newName}]`);
   syntheticFile.name = newName;
 
   return syntheticFile;

@@ -1,8 +1,8 @@
 import {expect} from 'chai';
 import path from 'path';
-import reactTemplates from 'src/strategy/reactTemplates';
+import reactTemplates from 'src/jsx-render-engine/strategy/reactTemplates';
 
-const file = path.join(__dirname, '..', 'fixtures', 'templates', 'Default.jsx');
+const file = path.join(__dirname, '..', '..', 'fixtures', 'templates', 'Default.jsx');
 
 function templateReader() {
   return require(file).default;

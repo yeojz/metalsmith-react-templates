@@ -1,0 +1,56 @@
+import get from 'lodash/get';
+import isFunction from 'lodash/isFunction';
+
+import constants from '../constants';
+import addFileToCollection from '../utils/addFileToCollection';
+import applyBaseFile from '../utils/applyBaseFile';
+import applyFileRenames from '../utils/applyFileRenames';
+import applyTemplate from '../utils/applyTemplate';
+import prepareProps from '../utils/prepareProps';
+import preserveRawContents from '../utils/preserveRawContents';
+import removeFileFromCollection from '../utils/removeFileFromCollection';
+
+const noTemplate = (files, data, name) => {
+  addFileToCollection(files)({data, name});
+}
+
+const callbackOrThrow = (err, done) => {
+  if (isFunction(done)) {
+    const message = get(err, 'message', err);
+    done(message);
+    return;
+  }
+  throw new Error(err);
+}
+
+export default (files, context, options) => (filename, done) => {
+  const data = get(files, filename, {});
+
+  if (!data) {
+    callbackOrThrow(`Cannot find ${filename} in the file object`, done);
+    return;
+  }
+
+  Promise.resolve({
+      context,
+      options,
+      data,
+      name: filename
+    })
+    .then(removeFileFromCollection(files))
+    .then(preserveRawContents)
+    .then(prepareProps)
+    .then(applyTemplate)
+    .then(applyBaseFile)
+    .then(applyFileRenames)
+    .then(addFileToCollection(files))
+    .then(() => done())
+    .catch((err) => {
+      if (err.message === constants.TEMPLATE_NOT_DEFINED) {
+        options.debug(`[${filename}] Template not defined`);
+        noTemplate(files, data, filename);
+      }
+
+      callbackOrThrow(err, done);
+    });
+}

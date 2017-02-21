@@ -1,4 +1,7 @@
-const processor = {
+import debug from '../debug';
+
+export default {
+  // Processor
   baseFile: null,
   baseFileDirectory: null,
   defaultTemplate: 'Default.jsx',
@@ -9,18 +12,13 @@ const processor = {
   propsKey: null,
   strategy: null,
   templateKey: 'rtemplate',
-  templateTag: null
-}
+  templateTag: null,
 
-const plugin = {
-  ...processor,
-  pattern: '**/*',
+  // Engine
   requireIgnoreExt: [],
   requireTemplateExt: ['.jsx'],
-  tooling: {}
-}
+  tooling: {},
 
-export default {
-  plugin,
-  processor
+  // Extra
+  debug
 }

@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import naiveTemplates from 'src/strategy/naiveTemplates';
+import naiveTemplates from 'src/jsx-render-engine/strategy/naiveTemplates';
 
 describe('naiveTemplates', function () {
   it('should replace value for predefined tag pattern', function (done) {
