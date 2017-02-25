@@ -6,6 +6,10 @@ function options(opt) {
     if (opt.noConflict === false) {
       opt.templateKey = 'template';
     }
+
+    if (opt.propsKey) {
+      opt.props = opt.propsKey;
+    }
 }
 
 export default {

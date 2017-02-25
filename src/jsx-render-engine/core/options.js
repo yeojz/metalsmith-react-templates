@@ -9,7 +9,7 @@ export default {
   extension: '.html',
   isStatic: true,
   preserve: false,
-  propsKey: null,
+  props: null,
   strategy: null,
   templateKey: 'rtemplate',
   templateTag: null,
