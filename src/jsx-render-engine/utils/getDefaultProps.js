@@ -1,9 +1,9 @@
-function defaultProps(propsKey, metadata, syntheticFile) {
+function defaultProps(filename, data, metadata) {
   return {
-    ...syntheticFile.data,
-     metadata,
-     filename: syntheticFile.name,
-     contents: syntheticFile.data.contents.toString()
+    ...data,
+    filename,
+    metadata,
+    contents: data.contents.toString()
   }
 }
 
