@@ -9,9 +9,13 @@ test:
   pre:
     - npm run clean
   override:
-    - npm run test && npm run coveralls
+    - npm run test
     - npm run lint
 deployment:
+  coverage:
+    branch: [master, /^project\/*$/, /^hotfix\/*$/, /^feature\/*$/]
+    commands:
+      - npm run coveralls
   release:
     tag: /^v[0-9]+(\.[0-9]+)*$/
     owner: yeojz
