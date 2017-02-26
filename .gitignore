@@ -1,15 +1,19 @@
+.DS_Store
 *.log
 *.pid
 *.seed
+.nyc_output
 
 logs
 pids
 
 examples/build
 node_modules
+node_modules-*
 test/logs
 test/fixtures/build
 test/fixtures/*/build
 test/fixtures/results
 
 lib
+coverage

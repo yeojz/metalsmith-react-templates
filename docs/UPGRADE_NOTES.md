@@ -2,6 +2,10 @@
 
 Only key upgrade points are written here. To view the change log, please visit the [release page](https://github.com/yeojz/metalsmith-react-templates/releases)
 
+## v6.0.0
+ - Support for other rendering strategies (Preact, React Router)
+ - Deprecated `noConflict` and `propKeys` in favor of `templateKey` and `props`
+
 ## v5.0.0
  - The `html` option has been dropped. In replacement `extensions` has been defaulted to `.html`.
  - `propKeys` option has been tweaked.

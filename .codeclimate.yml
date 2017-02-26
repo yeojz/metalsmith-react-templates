@@ -3,4 +3,5 @@ languages:
 exclude_paths:
 - "lib"
 - "examples"
-- "test"
+- "tests"
+- "docs"
