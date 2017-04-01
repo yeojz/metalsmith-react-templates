@@ -5,7 +5,7 @@ A templating plugin using JSX templates (React / Preact / React-Router etc.)
 [![Build Status][build-badge]][build-link]
 [![Coverage Status][coveralls-badge]][coveralls-link]
 [![npm downloads][npm-downloads-badge]][npm-downloads-link]
-[![PRs Welcome][pr-welcome-badge]][pr-welcome-badge]
+[![PRs Welcome][pr-welcome-badge]][pr-welcome-link]
 
 ## About
 `metalsmith-react-templates` is a [metalsmith](http://www.metalsmith.io/) plugin to render files using [React](https://facebook.github.io/react/) based templates.
@@ -28,12 +28,14 @@ $ npm install react react-dom
 
 If you're using an older version of React, you may need to install an older version of this package.
 
-| React Version | Package Version
--------|:-------|:-------
-15.x.x | > 5.x.x
-0.14.x | 3.x.x or 4.x.x
-0.13.x | 2.x.x
-0.12.x | 1.x.x
+| React Version | Package Version |
+|:------------- |:-------------   | 
+| 15.x.x        | > 5.x.x         |
+| 0.14.x        | 3.x.x or 4.x.x  |
+| 0.13.x        | 2.x.x           |
+| 0.12.x        | 1.x.x           |
+
+
 
 If you're upgrading, you may want to check out the [Upgrade Notes](/docs/UPGRADE_NOTES.md)
 
@@ -128,10 +130,6 @@ All parameters are optional.
 | `propsKey` | `null` | Specifies a key containing the props to provide to the template. If left unspecified, a generic props containing all keys is provided.
 | `noConflict` | `true` | By default, this plugin will read from the `rtemplate` key in your `yaml` front matter. However, if this is the only templating plugin, you may set `noConflict` to `false` to use the `template` key instead.
 
-## Related
-
-- [jsx-render-engine](https://github.com/yeojz/jsx-render-engine)
-
 ## License
 
 MIT [`License`](/LICENSE) © Gerald Yeo
@@ -139,14 +137,11 @@ MIT [`License`](/LICENSE) © Gerald Yeo
 [npm-badge]: https://img.shields.io/npm/v/metalsmith-react-templates.svg?style=flat-square
 [npm-link]: https://www.npmjs.com/package/metalsmith-react-templates
 
-[build-badge]: https://img.shields.io/circleci/project/github/yeojz/metalsmith-react-templates.svg?style=flat-square
+[build-badge]: https://img.shields.io/circleci/project/github/yeojz/metalsmith-react-templates/master.svg?style=flat-square
 [build-link]: https://circleci.com/gh/yeojz/metalsmith-react-templates
 
-[coveralls-badge]: https://img.shields.io/coveralls/yeojz/metalsmith-react-templates.svg?style=flat-square
+[coveralls-badge]: https://img.shields.io/coveralls/yeojz/metalsmith-react-templates/master.svg?style=flat-square
 [coveralls-link]: https://coveralls.io/github/yeojz/metalsmith-react-templates
-
-[code-climate-badge]: https://img.shields.io/codeclimate/github/yeojz/metalsmith-react-templates.svg?style=flat-square
-[code-climate-link]: https://codeclimate.com/github/yeojz/metalsmith-react-templates
 
 [npm-downloads-badge]: https://img.shields.io/npm/dt/metalsmith-react-templates.svg?style=flat-square
 [npm-downloads-link]: https://www.npmjs.com/package/metalsmith-react-templates
