@@ -20,7 +20,7 @@ const noTemplate = (files, data, name, debug) => {
 
 const callbackOrThrow = (err, done) => {
   if (isFunction(done)) {
-    done(err.message);
+    done(err);
     return;
   }
   throw new Error(err);
