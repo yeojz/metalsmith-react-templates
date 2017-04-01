@@ -9,8 +9,9 @@
     "coverage": "cross-env NODE_ENV=test nyc report --reporter=lcov",
     "coveralls": "cross-env NODE_ENV=test nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint --ext js src tests",
-    "test": "NODE_PATH=./ cross-env NODE_ENV=test nyc --reporter=text-summary mocha 'tests/**/*.spec.@(js|jsx)'",
-    "test:watch": "NODE_PATH=./ npm run test -- --watch"
+    "test": "cross-env NODE_PATH=./ NODE_ENV=test npm run test:run",
+    "test:run": "nyc --reporter=text-summary mocha 'tests/**/*.spec.@(js|jsx)'",
+    "test:watch": "npm run test -- -- --watch"
   },
   "repository": {
     "type": "git",
@@ -45,7 +46,7 @@
     "babel-register": "^6.22.0",
     "chai": "^3.5.0",
     "coveralls": "^2.11.15",
-    "cross-env": "^3.1.4",
+    "cross-env": "^4.0.0",
     "eslint": "^3.13.1",
     "eslint-plugin-react": "^6.9.0",
     "metalsmith": "^2.3.0",
