@@ -1,18 +1,19 @@
-import React, {PropTypes} from 'react';
-import {RouterContext} from 'react-router';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 class Provider extends React.Component {
   getChildContext = () => ({
-      defaultProps: this.props.defaultProps || {}
+    defaultProps: this.props.defaultProps || {}
   })
 
   render() {
-    return <RouterContext {...this.props} />;
+    return React.Children.only(this.props.children);
   }
 }
 
 Provider.propTypes = {
-  defaultProps: PropTypes.object
+  defaultProps: PropTypes.object,
+  children: PropTypes.any
 }
 
 Provider.childContextTypes = {

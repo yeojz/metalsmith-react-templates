@@ -1,40 +1,43 @@
-import merge from 'lodash/merge';
-import {match} from 'react-router';
-import pMatch from '../../utils/pMatch';
-import reactTemplates from '../reactTemplates';
+import React from 'react';
+import {renderToStaticMarkup, renderToString} from 'react-dom/server';
+import {StaticRouter} from 'react-router';
+import constants from './constants';
 import Provider from './Provider';
 
-export const INVALID_RENDER_PROPS = 'No route found for this location';
-export const REDIRECT_LOCATION = 'Redirection detected';
-
-const routeMatch = pMatch(match);
+function getRouter(location, context, defaultProps, routes) {
+  return (
+    <StaticRouter location={location} context={context}>
+      <Provider defaultProps={defaultProps}>
+        {routes}
+      </Provider>
+    </StaticRouter>
+  );
+}
 
 function reactRouterTemplates(props = {}, options = {}) {
-  const config = {
-    location: props.location,
-    routes: options.routes,
+
+  let context = {};
+
+  const router = getRouter(
+    props.location,
+    context,
+    props.defaultProps,
+    options.routes
+  );
+
+  const markup = (options.isStatic)
+    ? renderToStaticMarkup(router)
+    : renderToString(router);
+
+  if (!markup) {
+     return Promise.reject(constants.INVALID_MARKUP);
   }
 
-  const renderProps = {
-    defaultProps: props.defaultProps
+  if (context.url) {
+    return Promise.reject(constants.REDIRECT_LOCATION);
   }
 
-  return routeMatch(config)
-    .then((matched) => {
-      if (matched.redirectLocation) {
-        throw new Error(REDIRECT_LOCATION)
-      }
-      if (!matched.renderProps) {
-        throw new Error(INVALID_RENDER_PROPS)
-      }
-      return matched;
-    })
-    .then((matched) => (
-      merge(renderProps, matched.renderProps)
-    ))
-    .then((renderProps) => (
-      reactTemplates(renderProps, options, () => Provider)
-    ));
+  return Promise.resolve(markup);
 }
 
 export default reactRouterTemplates;
