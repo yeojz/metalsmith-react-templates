@@ -10,6 +10,8 @@ function options(opt) {
   if (opt.propsKey) {
     opt.props = opt.propsKey;
   }
+
+  return opt;
 }
 
 export default {

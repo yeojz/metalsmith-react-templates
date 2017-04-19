@@ -13,9 +13,9 @@ const getStrategy = (options) => {
 };
 
 const isRendererValid = (renderer) => (
-  renderer &&
-  isObject(renderer) &&
-  isFunction(renderer.then)
+  renderer
+  && isObject(renderer)
+  && isFunction(renderer.then)
 );
 
 function applyTemplate(syntheticFile) {
