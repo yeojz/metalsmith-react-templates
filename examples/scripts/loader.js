@@ -1,3 +1,4 @@
+/* global document */
 /*
   Isomorphic React renders twice. Once on the HTML page, once in JavaScript.
   If the props are the same on HTML and JavaScript, the template is synced,
@@ -20,8 +21,6 @@ const props = JSON.parse(document.getElementById('props').innerHTML);
 const Entry = React.createFactory(EntryTemplate);
 
 ReactDOM.render(
-    new Entry(props),
-    document.getElementById('contents')
+  new Entry(props),
+  document.getElementById('contents')
 );
-
-

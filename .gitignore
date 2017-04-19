@@ -15,5 +15,6 @@ test/fixtures/build
 test/fixtures/*/build
 test/fixtures/results
 
-lib
-coverage
+/lib
+/coverage
+/jsx-render-engine

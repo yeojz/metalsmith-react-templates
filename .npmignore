@@ -13,4 +13,3 @@ tests
 .eslintrc
 .eslintrc.json
 circle.yml
-npm.sh

@@ -1,6 +1,6 @@
 # metalsmith-react-templates [![npm package][npm-badge]][npm-link]
 
-A templating plugin using JSX templates (React / Preact / React-Router etc.)
+> A metalsmith templating plugin using JSX templates. Supports React / Preact / React-Router etc.
 
 [![Build Status][build-badge]][build-link]
 [![Coverage Status][coveralls-badge]][coveralls-link]
@@ -29,13 +29,11 @@ $ npm install react react-dom
 If you're using an older version of React, you may need to install an older version of this package.
 
 | React Version | Package Version |
-|:------------- |:-------------   | 
+|:------------- |:-------------   |
 | 15.x.x        | > 5.x.x         |
 | 0.14.x        | 3.x.x or 4.x.x  |
 | 0.13.x        | 2.x.x           |
 | 0.12.x        | 1.x.x           |
-
-
 
 If you're upgrading, you may want to check out the [Upgrade Notes](/docs/UPGRADE_NOTES.md)
 
@@ -79,9 +77,9 @@ To specify additional options:
 
 ```js
 metalsmith.use(templates({
-    baseFile: 'base.html'
-    isStatic: true,
-    directory: 'templates'
+  baseFile: 'base.html'
+  isStatic: true,
+  directory: 'templates'
 }));
 ```
 
@@ -99,7 +97,6 @@ If you import css or any other non-standard JavaScript code using `require`,
 you might want to make use of the `requireIgnoreExt` to ignore those files.
 
 You may also add other extensions that are treated as JSX. using `requireTemplateExt`.
-
 
 ## Options
 
@@ -129,6 +126,10 @@ All parameters are optional.
 :-------------|:-------------|:-------------
 | `propsKey` | `null` | Specifies a key containing the props to provide to the template. If left unspecified, a generic props containing all keys is provided.
 | `noConflict` | `true` | By default, this plugin will read from the `rtemplate` key in your `yaml` front matter. However, if this is the only templating plugin, you may set `noConflict` to `false` to use the `template` key instead.
+
+## Related
+
+-   [jsx-render-engine](https://www.npmjs.com/package/jsx-render-engine) - The core of this module.
 
 ## License
 
