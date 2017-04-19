@@ -28,8 +28,7 @@ function writePackageJson(folderName) {
       'debug',
       'lodash'
     ]),
-    devDependencies: {},
-    peerDependencies: {}
+    devDependencies: {}
   });
 
   fs.writeFileSync(
