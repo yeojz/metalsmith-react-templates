@@ -38,7 +38,7 @@ describe('integration - react router', function () {
     }
 
     plugin(test, metalsmith, () => {
-      expect(getContent(test['default.html'])).to.eql(`<div>${trimContent(outputs.default)}</div>`);
+      expect(getContent(test['default.html'])).to.eql(trimContent(outputs.default));
       done();
     });
   });
