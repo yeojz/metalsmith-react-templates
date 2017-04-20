@@ -28,7 +28,7 @@ const callbackOrThrow = (err, done) => {
 
 function processor(files, context, options) {
   return (filename, done) => {
-    const data = get(files, filename, {});
+    const data = get(files, filename);
 
     if (!data) {
       callbackOrThrow(`Cannot find ${filename} in the file object`, done);
