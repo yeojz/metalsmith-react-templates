@@ -4,7 +4,7 @@ import Metalsmith from 'metalsmith';
 import helpers from 'tests/helpers';
 import outputs from 'tests/fixtures/outputs';
 
-import index from 'src/lib/index';
+import index from 'src/index';
 import preactTemplates from 'src/jsx-render-engine/strategy/preactTemplates';
 
 const {fixtures, getContent, trimContent} = helpers;

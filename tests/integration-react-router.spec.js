@@ -5,7 +5,7 @@ import helpers from 'tests/helpers';
 import AppRoutes from 'tests/fixtures/templates/AppRoutes';
 import outputs from 'tests/fixtures/outputs';
 
-import index from 'src/lib/index';
+import index from 'src/index';
 import reactRouterTemplates, {getDefaultPropsWithLocation} from 'src/jsx-render-engine/strategy/reactRouterTemplates';
 
 const {fixtures, getContent, trimContent} = helpers;
