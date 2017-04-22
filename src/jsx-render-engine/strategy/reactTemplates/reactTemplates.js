@@ -1,11 +1,11 @@
 import React from 'react';
 import {renderToStaticMarkup, renderToString} from 'react-dom/server';
 import isFunction from 'lodash/isFunction';
-import constants from '../constants';
+import constants from '../../constants';
 
 const getComponent = (templateReader) => {
   if (isFunction(templateReader)) {
-      return templateReader();
+    return templateReader();
   }
 }
 
@@ -22,7 +22,6 @@ function reactTemplates(props = {}, options = {}, templateReader = null) {
   if (!Component) {
     return Promise.reject(new Error(constants.INVALID_COMPONENT));
   }
-
   const markup = getMarkup(Component, props, options.isStatic);
   return Promise.resolve(markup);
 }

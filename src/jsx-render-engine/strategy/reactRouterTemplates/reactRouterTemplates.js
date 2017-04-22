@@ -1,7 +1,7 @@
 import React from 'react';
 import {renderToStaticMarkup, renderToString} from 'react-dom/server';
 import {StaticRouter} from 'react-router';
-import constants from './constants';
+import constants from '../../constants';
 import Provider from './Provider';
 
 function getRouter(location, context, defaultProps, routes) {

@@ -18,3 +18,5 @@ test/fixtures/results
 /lib
 /coverage
 /jsx-render-engine
+/index.js
+/withInitialProps.js
