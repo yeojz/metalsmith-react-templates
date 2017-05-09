@@ -3,7 +3,7 @@ import defaults from 'lodash/defaults';
 import multimatch from 'multimatch';
 
 import backwardCompat from './backwardCompat';
-import Engine, {registerExtensions} from './jsx-render-engine';
+import Engine, {registerExtensions} from '../jsx-render-engine';
 
 const pluginOptions = {
   pattern: '**/*'

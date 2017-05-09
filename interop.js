@@ -1,4 +1,4 @@
-var lib = require('./lib');
+var index = require('./index');
 
-exports.createRoutes = lib.createRoutes;
-module.exports = lib.default;
+exports.createRoutes = index.createRoutes;
+module.exports = index.default;

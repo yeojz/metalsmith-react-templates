@@ -1,46 +1,48 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react';
-import {findDOMNode} from 'react-dom';
+import withInitialProps from 'metalsmith-react-templates/withInitialProps';
 
-const Entry = React.createClass({
-    getInitialState() {
-        return this.props; //pulled from src/index.html
-    },
+class Entry extends React.Component {
+  state = {}
 
-    _handleSubmit(evt) {
-        evt.preventDefault();
+  componentDidMount = () => {
+    this.setState({
+      contents: this.props.contents,
+      inputValue: this.props.inputValue
+    });
+  }
 
-        //this demos a simple client side change
-        const value = findDOMNode(this.refs.inputData).value;
+  handleSubmit = (evt) => {
+    evt.preventDefault();
 
-        this.setState({
-            contents: 'Page changed without page reload',
-            inputValue: value
-        });
-    },
+    //this demos a simple client side change
+    const value = this.input.value;
 
-    render() {
-        return (
-            <div>
-                <h1>{this.state.title}</h1>
-                <p>{this.state.contents}</p>
+    this.setState({
+      contents: 'Page changed without page reload',
+      inputValue: value
+    });
+  }
 
-                <div style={{margin: '2em 0'}}>
-                  <strong>Input Value: </strong>
-                  <span style={{border: '1px #ccc solid', padding: '0.5em 1em'}}>{this.state.inputValue}</span>
-                </div>
+  render() {
+    return (
+      <div>
+        <h1>{this.props.title}</h1>
+        <p>{this.props.contents}</p>
 
-                <form onSubmit={this._handleSubmit}>
-                    <input style={{margin: '1em 0'}} ref='inputData' />
-                    <button type='submit'>Submit</button>
-                </form>
+        <div style={{margin: '2em 0'}}>
+          <strong>Input Value: </strong>
+          <span style={{border: '1px #ccc solid', padding: '0.5em 1em'}}>{this.state.inputValue}</span>
+        </div>
 
-                <div style={{display: 'none'}}
-                    id='props'
-                    dangerouslySetInnerHTML={{__html: JSON.stringify(this.props)}}>
-                </div>
-            </div>
-        );
-    }
-});
+        <form onSubmit={this.handleSubmit}>
+          <input style={{margin: '1em 0'}} ref={(input) => this.input = input} />
+          <button type='submit'>Submit</button>
+        </form>
+      </div>
+    )
+  }
+}
 
-export default Entry;
+export default withInitialProps(Entry);

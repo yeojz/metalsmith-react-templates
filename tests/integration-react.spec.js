@@ -7,7 +7,7 @@ import index from 'src/index';
 
 const {fixtures, getContent, trimContent} = helpers;
 
-describe('integration', function () {
+describe('integration - react', function () {
   let files;
   let metalsmith;
 

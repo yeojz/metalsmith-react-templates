@@ -1,6 +1,6 @@
 # metalsmith-react-templates [![npm package][npm-badge]][npm-link]
 
-A templating plugin using JSX templates (React / Preact / React-Router etc.)
+> A metalsmith templating plugin using JSX templates. Supports React / Preact / React-Router etc.
 
 [![Build Status][build-badge]][build-link]
 [![Coverage Status][coveralls-badge]][coveralls-link]
@@ -8,9 +8,10 @@ A templating plugin using JSX templates (React / Preact / React-Router etc.)
 [![PRs Welcome][pr-welcome-badge]][pr-welcome-link]
 
 ## About
-`metalsmith-react-templates` is a [metalsmith](http://www.metalsmith.io/) plugin to render files using [React](https://facebook.github.io/react/) based templates.
 
-There is also support for other JSX oriented libraries like [Preact](https://github.com/developit/preact)
+`metalsmith-react-templates` is a [metalsmith](http://www.metalsmith.io/) plugin to render files using JSX templates like [React](https://facebook.github.io/react/) and [Preact](https://github.com/developit/preact).
+
+It is extensible, and thus could be expanded to support other similar libraries like [Inferno](https://github.com/infernojs/inferno) as long as they have support server-side rendering.
 
 ## Installation
 
@@ -20,7 +21,8 @@ Using [npm](https://www.npmjs.com/):
 $ npm install --save metalsmith-react-templates
 ```
 
-Install other dependencies:
+Install other dependencies.
+For example, if you're using just React:
 
 ```
 $ npm install react react-dom
@@ -29,15 +31,15 @@ $ npm install react react-dom
 If you're using an older version of React, you may need to install an older version of this package.
 
 | React Version | Package Version |
-|:------------- |:-------------   | 
+|:------------- |:-------------   |
 | 15.x.x        | > 5.x.x         |
 | 0.14.x        | 3.x.x or 4.x.x  |
 | 0.13.x        | 2.x.x           |
 | 0.12.x        | 1.x.x           |
 
+If you're upgrading, you may want to check out the [Upgrade Notes](/docs/UPGRADE_NOTES.md). For example, react-router v4 is only supported for package versions > 7.0.0
 
-
-If you're upgrading, you may want to check out the [Upgrade Notes](/docs/UPGRADE_NOTES.md)
+For more information on engine usage, you can check out the corresponding integration test files. i.e. `integration-[LIBRARY].spec.js`.
 
 ## CLI Usage
 
@@ -79,9 +81,9 @@ To specify additional options:
 
 ```js
 metalsmith.use(templates({
-    baseFile: 'base.html'
-    isStatic: true,
-    directory: 'templates'
+  baseFile: 'base.html'
+  isStatic: true,
+  directory: 'templates'
 }));
 ```
 
@@ -106,7 +108,6 @@ If you are using [`material-ui`](https://github.com/callemall/material-ui/) v1.0
 
 The solution is to use a higher-order component (HOC) so that the inline css is rendered when `metalsmith` runs. See [this issue and solution](https://github.com/callemall/material-ui/issues/6822).
 
-
 ## Options
 
 All parameters are optional.
@@ -124,6 +125,7 @@ All parameters are optional.
 | `props` | `null` | Accepts a `function` returning props or a `string` containing the props to provide to the template. If `null` the defualt set of props will be returned.
 | `requireIgnoreExt` | `[ ]` | A list of extensions to ignore. <br /><br /> For example, `{requireIgnoreExt: ['.css']}` would ignore declarations like `require('file.css')`
 | `requireTemplateExt` | `['.jsx']` | A list of extensions to treat as JSX.
+| `strategy` | `reactTemplates` (function) | The function handler of different library types
 | `templateKey` | `null` | Allows you to specify the key in the markdown file that will serve as the template file name. By default, it is `rtemplate`.
 | `templateTag` | `null` | Accepts a function `pattern(key)` which returns a regex object used to find and replace template tags in your output file. <br /><br /> By default, template tags are assumed to be `{{tag}}`. You may use this to allow for other tag formats (eg. you may want `<!--tag-->` instead). <br /> <br /> Check the test case for an example.
 | `tooling` | `{ }` | Options to pass into the `babel` transpiler.
@@ -135,6 +137,10 @@ All parameters are optional.
 :-------------|:-------------|:-------------
 | `propsKey` | `null` | Specifies a key containing the props to provide to the template. If left unspecified, a generic props containing all keys is provided.
 | `noConflict` | `true` | By default, this plugin will read from the `rtemplate` key in your `yaml` front matter. However, if this is the only templating plugin, you may set `noConflict` to `false` to use the `template` key instead.
+
+## Related
+
+-   [jsx-render-engine](https://www.npmjs.com/package/jsx-render-engine) - The core of this module, also published as a independent package.
 
 ## License
 

@@ -26,7 +26,8 @@ function readTemplateFile(syntheticFile) {
     }
 
     const templatePath = getTemplatePath(syntheticFile, template);
-    return require(templatePath).default;
+    const templateContent = require(templatePath);
+    return get(templateContent, 'default', templateContent);
   };
 }
 

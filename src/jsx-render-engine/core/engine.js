@@ -9,9 +9,10 @@ class Engine {
   }
 
   handleError(err) {
-    if (err) {
-      throw err;
+    if (!err || err == null) {
+      return;
     }
+    throw new Error(err);
   }
 
   getInstance() {

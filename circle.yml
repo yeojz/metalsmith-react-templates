@@ -19,7 +19,12 @@ deployment:
     owner: yeojz
     commands:
       - npm run clean
-      - npm run build
+      - npm run build:lib
+      - echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
+      - npm publish
+      - npm logout
+      - npm run build:engine
+      - cd jsx-render-engine
       - echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
       - npm publish
       - npm logout

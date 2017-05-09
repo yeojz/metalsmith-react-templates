@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import naiveTemplates from 'src/jsx-render-engine/strategy/naiveTemplates';
 
-describe('naiveTemplates', function () {
+describe('jsx-render-engine/strategy/naiveTemplates', function () {
   it('should replace value for predefined tag pattern', function (done) {
     naiveTemplates('{{tag}}', {tag: 'value'})
       .then((result) => {

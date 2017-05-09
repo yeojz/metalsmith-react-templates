@@ -26,7 +26,7 @@ describe('integration - react router', function () {
 
   it('should be able to render with react router strategy', function (done) {
     const plugin = index({
-      propsKey: getDefaultPropsWithLocation,
+      props: getDefaultPropsWithLocation,
       routes: AppRoutes,
       strategy: reactRouterTemplates
     });

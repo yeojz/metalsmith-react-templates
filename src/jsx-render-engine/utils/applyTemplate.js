@@ -1,5 +1,6 @@
 import isFunction from 'lodash/isFunction';
 import isObject from 'lodash/isObject';
+import get from 'lodash/get';
 import constants from '../constants';
 import debug from '../debug';
 import readTemplateFile from './readTemplateFile';
@@ -9,13 +10,14 @@ const getStrategy = (options) => {
     return options.strategy;
   }
 
-  return require('../strategy/reactTemplates').default;
+  const strategy = require('../strategy/reactTemplates');
+  return get(strategy, 'default', strategy);
 };
 
 const isRendererValid = (renderer) => (
-  renderer &&
-  isObject(renderer) &&
-  isFunction(renderer.then)
+  renderer
+  && isObject(renderer)
+  && isFunction(renderer.then)
 );
 
 function applyTemplate(syntheticFile) {
