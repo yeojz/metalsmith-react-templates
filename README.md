@@ -100,6 +100,12 @@ you might want to make use of the `requireIgnoreExt` to ignore those files.
 
 You may also add other extensions that are treated as JSX. using `requireTemplateExt`.
 
+### material-ui
+
+If you are using [`material-ui`](https://github.com/callemall/material-ui/) v1.0, components are not properly styled due to the way `material-ui`'s server-side theming system works.
+
+The solution is to use a higher-order component (HOC) so that the inline css is rendered when `metalsmith` runs. See [this issue and solution](https://github.com/callemall/material-ui/issues/6822).
+
 
 ## Options
 
