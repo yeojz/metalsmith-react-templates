@@ -29,7 +29,7 @@ class Entry extends React.Component {
     return (
       <div>
         <h1>{this.props.title}</h1>
-        <p>{this.props.contents}</p>
+        <p>{this.state.contents}</p>
 
         <div style={{margin: '2em 0'}}>
           <strong>Input Value: </strong>

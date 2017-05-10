@@ -1,2 +1,2 @@
-import withInitialProps from './jsx-render-engine/strategy/reactTemplates/withInitialProps';
+import withInitialProps from './jsx-render-engine/strategy/react/withInitialProps';
 export default withInitialProps;
