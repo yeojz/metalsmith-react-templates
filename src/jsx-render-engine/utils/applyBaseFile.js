@@ -1,6 +1,6 @@
 import fs from 'fs';
 import get from 'lodash/get';
-import naiveTemplates from '../strategy/naiveTemplates';
+import naiveTemplates from '../strategy/naive';
 
 const getDirectory = (syntheticFile) => (
   get(syntheticFile, 'options.baseFileDirectory')

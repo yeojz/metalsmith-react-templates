@@ -14,7 +14,7 @@ function getRouter(location, context, defaultProps, routes) {
   );
 }
 
-function reactRouterTemplates(props = {}, options = {}) {
+function v4reactRouterTemplates(props = {}, options = {}) {
 
   let context = {};
 
@@ -40,4 +40,4 @@ function reactRouterTemplates(props = {}, options = {}) {
   return Promise.resolve(markup);
 }
 
-export default reactRouterTemplates;
+export default v4reactRouterTemplates;
