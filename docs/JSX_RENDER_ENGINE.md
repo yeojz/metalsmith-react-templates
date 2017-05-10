@@ -6,7 +6,7 @@
 
 `jsx-render-engine` is a an in-place object manipulation engine to transform object content using a JSX library as template.
 
-It is used in, and developed as part of [metalsmith-react-templates](https://github.com/yeojz/metalsmith-react-templates).
+It is developed as part of [metalsmith-react-templates](https://github.com/yeojz/metalsmith-react-templates).
 
 You can easily write your own rendering strategies, but it currently supports the following out of the box:
 
@@ -74,6 +74,12 @@ const context = {
   metadata: () => {}
 }
 ```
+
+## Notes
+
+### Version jump to v7.0.0
+
+As part of this package moving back into `metalsmith-react-templates` repository, the version has jumped from `v0.1.2` to `v7.0.0` to keep in-sync with the parent repository
 
 ## License
 

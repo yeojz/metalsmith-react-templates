@@ -4,8 +4,11 @@ Only key upgrade points are written here. To view the change log, please visit t
 
 ## v7.0.0
 
--   Support for react-router v4 (which is not backward compatible)
+-   Support for react-router v4
+    -   v3 is still available as a render option
+    -   v4 is not backward compatible due to how react-router has changed.
 -   `jsx-render-engine` is also available as a separate package published from this repository
+-   `jsx-render-engine` strategy folder has changed to reflect the actual package name
 
 ## v6.0.0
 
