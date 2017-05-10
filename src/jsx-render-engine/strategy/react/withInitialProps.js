@@ -1,34 +1,15 @@
 import React from 'react';
-import omit from 'lodash/omit';
-
-const RESERVED_PROPS = [
-  'children',
-  'mode',
-  'stats'
-];
+import InitialState from './InitialState';
 
 function withInitialProps(Component) {
 
-  class PropsProvider extends React.Component {
-    shouldComponentUpdate = () => false;
-
-    render() {
-      const initialState = omit(this.props, RESERVED_PROPS);
-
-      return (
-        <div className='withInitialProps'>
-          <Component {...this.props} />
-
-          <div
-            style={{display: 'none'}}
-            className='initalState'
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(initialState)
-            }}
-          />
-        </div>
-      )
-    }
+  function PropsProvider(props) {
+    return (
+      <div className='withInitialProps'>
+        <Component {...props} />
+        <InitialState {...props} />
+      </div>
+    );
   }
 
   return PropsProvider;
