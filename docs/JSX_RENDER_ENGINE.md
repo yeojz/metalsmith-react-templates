@@ -6,13 +6,13 @@
 
 `jsx-render-engine` is a an in-place object manipulation engine to transform object content using a JSX library as template.
 
-It is developed as part of [metalsmith-react-templates](https://github.com/yeojz/metalsmith-react-templates).
+It is used in, and developed as part of [metalsmith-react-templates](https://github.com/yeojz/metalsmith-react-templates).
 
 You can easily write your own rendering strategies, but it currently supports the following out of the box:
 
 -   [React](https://facebook.github.io/react/),
 -   [Preact](https://www.npmjs.com/package/preact),
--   [React Router](https://www.npmjs.com/package/react-router)
+-   [React Router](https://www.npmjs.com/package/react-router) - v3, v4
 
 ## Installation
 
