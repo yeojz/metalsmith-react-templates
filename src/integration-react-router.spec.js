@@ -5,8 +5,8 @@ import helpers from 'tests/helpers';
 import AppRoutes from 'tests/fixtures/templates/AppRoutes';
 import outputs from 'tests/fixtures/outputs';
 
-import index from 'src/index';
-import reactRouterTemplates, {getDefaultPropsWithLocation} from 'src/jsx-render-engine/strategy/reactRouterTemplates';
+import index from './index';
+import reactRouterTemplates, {getDefaultPropsWithLocation} from './jsx-render-engine/strategy/react-router';
 
 const {fixtures, getContent, trimContent} = helpers;
 
@@ -24,7 +24,7 @@ describe('integration - react router', function () {
     });
   });
 
-  it('should be able to render with react router strategy', function (done) {
+  it('should be able to render with react router latest strategy', function (done) {
     const plugin = index({
       props: getDefaultPropsWithLocation,
       routes: AppRoutes,
@@ -42,5 +42,4 @@ describe('integration - react router', function () {
       done();
     });
   });
-
 });

@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {spy} from 'sinon';
-import registerExtensions from 'src/jsx-render-engine/core/registerExtensions';
+import registerExtensions from './registerExtensions';
 
 describe('jsx-render-engine/core/registerExtensions', function () {
   it('should register babel and ignored extensions', function () {

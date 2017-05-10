@@ -1,6 +1,7 @@
 {
   "exclude": [
-    "tests/**/*"
+    "tests/**/*",
+    "src/**/*.spec.*"
   ],
   "require": [
     "babel-register"

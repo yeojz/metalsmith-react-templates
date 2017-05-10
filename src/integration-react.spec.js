@@ -3,7 +3,7 @@ import Metalsmith from 'metalsmith';
 
 import helpers from 'tests/helpers';
 import outputs from 'tests/fixtures/outputs';
-import index from 'src/index';
+import index from './index';
 
 const {fixtures, getContent, trimContent} = helpers;
 

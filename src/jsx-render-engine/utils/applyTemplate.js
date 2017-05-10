@@ -10,7 +10,7 @@ const getStrategy = (options) => {
     return options.strategy;
   }
 
-  const strategy = require('../strategy/reactTemplates');
+  const strategy = require('../strategy/react');
   return get(strategy, 'default', strategy);
 };
 

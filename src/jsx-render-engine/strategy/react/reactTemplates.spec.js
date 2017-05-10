@@ -1,14 +1,15 @@
 import {expect} from 'chai';
 import path from 'path';
-import reactTemplates from 'src/jsx-render-engine/strategy/reactTemplates';
+import reactTemplates from './reactTemplates';
+import constants from 'tests/constants';
 
-const file = path.join(__dirname, '..', '..', '..', 'fixtures', 'templates', 'Default.jsx');
+const file = path.join(constants.TEST_FOLDER, 'fixtures', 'templates', 'Default.jsx');
 
 function templateReader() {
   return require(file).default;
 }
 
-describe('jsx-render-engine/strategy/reactTemplates', function () {
+describe('jsx-render-engine/strategy/react/reactTemplates', function () {
   it('should throw an error when no component passed', function (done) {
     reactTemplates({}, {}, null)
       .then(() => {

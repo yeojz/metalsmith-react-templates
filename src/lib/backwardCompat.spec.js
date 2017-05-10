@@ -1,7 +1,7 @@
 import {expect} from 'chai';
-import backwardCompat from 'src/lib/backwardCompat';
+import backwardCompat from './backwardCompat';
 
-describe('backwardCompat', function () {
+describe('lib/backwardCompat', function () {
 
   it('should passthrough when no conditional hits', function () {
     let opt = {
