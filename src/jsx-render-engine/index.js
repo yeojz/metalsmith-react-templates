@@ -1,5 +1,2 @@
-import Engine from './core/engine';
-import registerExtensions from './core/registerExtensions';
-
-export {registerExtensions as registerExtensions}
-export default Engine;
+export {default as registerExtensions} from './core/registerExtensions';
+export {default as default}  from './core/engine';
