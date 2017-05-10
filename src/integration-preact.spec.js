@@ -2,15 +2,14 @@ import {expect} from 'chai';
 import Metalsmith from 'metalsmith';
 
 import helpers from 'tests/helpers';
-import AppRoutes from 'tests/fixtures/templates/AppRoutes';
 import outputs from 'tests/fixtures/outputs';
 
-import index from 'src/index';
-import {v4, getDefaultPropsWithLocation} from 'src/jsx-render-engine/strategy/react-router';
+import index from './index';
+import preactTemplates from './jsx-render-engine/strategy/preact';
 
 const {fixtures, getContent, trimContent} = helpers;
 
-describe('integration - react router', function () {
+describe('integration - preact', function () {
   let files;
   let metalsmith;
 
@@ -24,22 +23,21 @@ describe('integration - react router', function () {
     });
   });
 
-  it('should be able to render with react router v4 strategy', function (done) {
+  it('should be able to render with preact strategy', function (done) {
     const plugin = index({
-      props: getDefaultPropsWithLocation,
-      routes: AppRoutes,
-      strategy: v4
+      strategy: preactTemplates
     });
 
     const test = {
-      'default.md': {
-        ...files['default.md']
+      'preact.md': {
+        ...files['preact.md']
       }
     }
 
     plugin(test, metalsmith, () => {
-      expect(getContent(test['default.html'])).to.eql(trimContent(outputs.default));
+      expect(getContent(test['preact.html'])).to.eql(trimContent(outputs.default));
       done();
     });
   });
+
 });

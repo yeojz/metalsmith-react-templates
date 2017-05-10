@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import Engine from 'src/jsx-render-engine/core/engine';
+import Engine from './engine';
 
 describe('jsx-render-engine/core/engine', function () {
   it('should throw an error', function () {

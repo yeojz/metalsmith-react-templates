@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {spy} from 'sinon';
-import processor from 'src/jsx-render-engine/core/processor';
+import processor from './processor';
 
 describe('jsx-render-engine/core/processor', function () {
   it('should throw an error', function () {

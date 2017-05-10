@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import withInitialProps from 'src/jsx-render-engine/strategy/react/withInitialProps';
+import withInitialProps from './withInitialProps';
 
 describe('jsx-render-engine/core/withInitialProps', function () {
   it('should return a class', function () {

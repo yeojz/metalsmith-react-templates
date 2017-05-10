@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {spy} from 'sinon';
-import createRoutes from 'src/lib/createRoutes';
+import createRoutes from './createRoutes';
 
 describe('createRoutes', function () {
 
