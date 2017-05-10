@@ -7,7 +7,7 @@
     "build": "npm run build:lib && npm run build:engine",
     "build:lib": "cross-env NODE_ENV=production babel src --out-dir . --ignore *.spec.js,*.spec.jsx",
     "build:engine": "node ./build-engine.js",
-    "clean": "rimraf lib jsx-render-engine coverage .nyc_output",
+    "clean": "rimraf lib jsx-render-engine coverage ./index.js ./withInitialProps.js .nyc_output",
     "coverage": "cross-env NODE_ENV=test nyc report --reporter=lcov",
     "coveralls": "cross-env NODE_ENV=test nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint --ext js src tests",

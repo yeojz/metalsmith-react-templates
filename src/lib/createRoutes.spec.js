@@ -2,7 +2,7 @@ import {expect} from 'chai';
 import {spy} from 'sinon';
 import createRoutes from './createRoutes';
 
-describe('createRoutes', function () {
+describe('lib/createRoutes', function () {
 
   it('should return a function', function () {
     expect(createRoutes()).to.be.a.function;

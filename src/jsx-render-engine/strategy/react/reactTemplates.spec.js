@@ -9,7 +9,7 @@ function templateReader() {
   return require(file).default;
 }
 
-describe('jsx-render-engine/strategy/reactTemplates', function () {
+describe('jsx-render-engine/strategy/react/reactTemplates', function () {
   it('should throw an error when no component passed', function (done) {
     reactTemplates({}, {}, null)
       .then(() => {
