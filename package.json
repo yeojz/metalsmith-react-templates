@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-react-templates",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "A metalsmith templating plugin using JSX templates. Supports React / Preact / React-Router etc.",
   "main": "index.js",
   "scripts": {
