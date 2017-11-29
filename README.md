@@ -126,6 +126,7 @@ All parameters are optional.
 | `requireIgnoreExt` | `[ ]` | A list of extensions to ignore. <br /><br /> For example, `{requireIgnoreExt: ['.css']}` would ignore declarations like `require('file.css')`
 | `requireTemplateExt` | `['.jsx']` | A list of extensions to treat as JSX.
 | `strategy` | `reactTemplates` (function) | The function handler of different library types
+| `hydrator` | `null` | Accepts a `function` that takes care of putting the data returned by the strategy in each file object. Takes the current file `data` and the content returned by the strategy in parameters, must return a newly formed `data` object.
 | `templateKey` | `null` | Allows you to specify the key in the markdown file that will serve as the template file name. By default, it is `rtemplate`.
 | `templateTag` | `null` | Accepts a function `pattern(key)` which returns a regex object used to find and replace template tags in your output file. <br /><br /> By default, template tags are assumed to be `{{tag}}`. You may use this to allow for other tag formats (eg. you may want `<!--tag-->` instead). <br /> <br /> Check the test case for an example.
 | `tooling` | `{ }` | Options to pass into the `babel` transpiler.
