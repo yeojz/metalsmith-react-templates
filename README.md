@@ -108,6 +108,14 @@ If you are using [`material-ui`](https://github.com/callemall/material-ui/) v1.0
 
 The solution is to use a higher-order component (HOC) so that the inline css is rendered when `metalsmith` runs. See [this issue and solution](https://github.com/callemall/material-ui/issues/6822).
 
+### Using the hydrator
+
+Using a custom hydrator allows you to control how the data generated via the `strategy` is applied on a file. By default, the integrated hydrator only puts the generated React markup in the `contents` attribute of the file. But there are cases where your React code might generate more than just content markup, for example when using [React Helmet](https://github.com/nfl/react-helmet).
+
+By using a custom strategy and a custom hydrator, you can add additional properties on the processed files and then do whatever you want with it, like render them in your base template or use them in other metalsmith plugins.
+
+[Here is an example](https://gist.github.com/Leimi/b62975a28b202fb6919fa7feb7688f5b) of a custom strategy and hydrator used to make React Helmet work.
+
 ## Options
 
 All parameters are optional.
@@ -126,7 +134,7 @@ All parameters are optional.
 | `requireIgnoreExt` | `[ ]` | A list of extensions to ignore. <br /><br /> For example, `{requireIgnoreExt: ['.css']}` would ignore declarations like `require('file.css')`
 | `requireTemplateExt` | `['.jsx']` | A list of extensions to treat as JSX.
 | `strategy` | `reactTemplates` (function) | The function handler of different library types
-| `hydrator` | `null` | Accepts a `function` that takes care of putting the data returned by the strategy in each file object. Takes the current file `data` and the content returned by the strategy in parameters, must return a newly formed `data` object.
+| `hydrator` | `null` | Accepts a `function` that takes care of putting the data returned by the strategy in each file object. Takes the current file `data` and the content returned by the strategy in parameters, must return a newly formed `data` object. By default, sets the React generated markup on the `contents` attribute.
 | `templateKey` | `null` | Allows you to specify the key in the markdown file that will serve as the template file name. By default, it is `rtemplate`.
 | `templateTag` | `null` | Accepts a function `pattern(key)` which returns a regex object used to find and replace template tags in your output file. <br /><br /> By default, template tags are assumed to be `{{tag}}`. You may use this to allow for other tag formats (eg. you may want `<!--tag-->` instead). <br /> <br /> Check the test case for an example.
 | `tooling` | `{ }` | Options to pass into the `babel` transpiler.
