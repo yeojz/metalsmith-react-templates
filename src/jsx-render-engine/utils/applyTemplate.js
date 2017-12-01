@@ -15,8 +15,8 @@ const getStrategy = (options) => {
 };
 
 const getHydrator = (options) => {
-  if (isFunction(options.hydrator)) {
-    return options.hydrator;
+  if (isFunction(options.postRenderHydrator)) {
+    return options.postRenderHydrator;
   }
 
   return (originalData, renderedContent) => ({
