@@ -14,6 +14,17 @@ const getStrategy = (options) => {
   return get(strategy, 'default', strategy);
 };
 
+const getHydrator = (options) => {
+  if (isFunction(options.postRenderHydrator)) {
+    return options.postRenderHydrator;
+  }
+
+  return (originalData, renderedContent) => ({
+    ...originalData,
+    contents: new Buffer(renderedContent)
+  });
+};
+
 const isRendererValid = (renderer) => (
   renderer
   && isObject(renderer)
@@ -35,7 +46,8 @@ function applyTemplate(syntheticFile) {
   }
 
   return renderer.then((contents) => {
-    syntheticFile.data.contents = new Buffer(contents);
+    const hydrate = getHydrator(syntheticFile.options);
+    syntheticFile.data = hydrate(syntheticFile.data, contents);
     return syntheticFile;
   });
 }
