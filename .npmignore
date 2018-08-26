@@ -13,3 +13,4 @@ tests
 .eslintrc
 .eslintrc.json
 circle.yml
+.circleci
